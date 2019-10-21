@@ -24,3 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin'], function () {
     Route::Resource('artikel','ArtikelController');
 });
+
+
+Route::get('data-desa', 'MenuController@DataDesa');
+Route::get('tranparansi', 'MenuController@Tranparansi');
