@@ -10,7 +10,7 @@
 
                     @include('alert')
 
-                    <a href="/artikel/create" class="btn btn-info">Tambah Artikel</a>
+                    <a href="/admin/artikel/create" class="btn btn-info">Tambah Artikel</a>
                     <hr>
                     <table class="table table-bordered">
                         <tr>
@@ -22,9 +22,9 @@
                         <tr>
                             <td>{{$row->judul}}</td>
                             <td>{{$row->created_at}}</td>
-                            <td width="80"><a href="/artikel/{{$row->id}}/edit" class="btn btn-danger">Edit</a></td>
+                            <td width="80"><a href="/admin/artikel/{{$row->id}}/edit" class="btn btn-danger">Edit</a></td>
                             <td width="80">
-                                {{ Form::open(['url'=>'artikel/'.$row->id,'method'=>'delete'])}}
+                                {{ Form::open(['url'=>'/admin/artikel/'.$row->id,'method'=>'delete'])}}
                                     <button type="submit" class="btn btn-danger">Hapus</button>
                                 {{ Form::close()}}
                             </td>

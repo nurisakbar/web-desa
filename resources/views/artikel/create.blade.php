@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 
-                    {{ Form::open(['url'=>'artikel','files'=>true])}}
+                    {{ Form::open(['url'=>'/admin/artikel','files'=>true])}}
 
                     @include('artikel._form')
 

@@ -42,7 +42,7 @@ class ArtikelController extends Controller
         $input['gambar']    = $file_gambar;
 
         Artikel::create($input);
-        return redirect('artikel')->with('message','A New Article With Title '.$request->name.' Has Created');
+        return redirect('admin/artikel')->with('message','A New Article With Title '.$request->name.' Has Created');
     }
 
     /**
@@ -91,7 +91,7 @@ class ArtikelController extends Controller
         $artikel            = Artikel::find($id);
         $artikel->update($input);
 
-        return redirect('artikel')->with('message','A Article With Title '.$request->name.' Has Updated');
+        return redirect('admin/artikel')->with('message','A Article With Title '.$request->name.' Has Updated');
     }
 
     /**
@@ -106,6 +106,6 @@ class ArtikelController extends Controller
 
         $artikel->delete();
         
-        return redirect('artikel')->with('message','A Article Has Deleted');
+        return redirect('admin/artikel')->with('message','A Article Has Deleted');
     }
 }

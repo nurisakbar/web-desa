@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 
-                    {{ Form::model($artikel,['url'=>'artikel/'.$artikel->id,'files'=>true,'method'=>'PUT'])}}
+                    {{ Form::model($artikel,['url'=>'/admin/artikel/'.$artikel->id,'files'=>true,'method'=>'PUT'])}}
 
                     @include('artikel._form')
 
