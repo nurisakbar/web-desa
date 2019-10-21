@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -20,6 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
     <div id="app">
@@ -55,7 +56,7 @@
                             <a class="nav-link" href="/admin/artikel"><i class="fas fa-user"></i> Artikel</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/user"><i class="fas fa-user"></i> Modul User</a>
+                            <a class="nav-link" href="/admin/kartukeluarga"><i class="fas fa-user"></i> Kartu Keluarga</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/role"><i class="fas fa-user"></i> Modul Role</a>
