@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -52,7 +52,7 @@
                             @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href="/product"><i class="fas fa-user"></i> Product</a>
+                            <a class="nav-link" href="/artikel"><i class="fas fa-user"></i> Artikel</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/user"><i class="fas fa-user"></i> Modul User</a>
@@ -90,5 +90,6 @@
             @yield('content')
         </main>
     </div>
+@stack('js')
 </body>
 </html>
