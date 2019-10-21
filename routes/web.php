@@ -17,12 +17,5 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::Resource('user','UserController');
-Route::get('product/excel','ProductController@excel');
-Route::Resource('product','ProductController');
-Route::Resource('role','RoleController');
-Route::Resource('permission','PermissionController');
+Route::Resource('artikel','ArtikelController');
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('setup','PageController@setup');
-Route::get('test','PageController@test');
