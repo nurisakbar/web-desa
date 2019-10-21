@@ -17,5 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::Resource('user','UserController');
-Route::Resource('artikel','ArtikelController');
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::Resource('artikel','ArtikelController');
+});
