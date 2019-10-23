@@ -11,8 +11,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        \App\User::query()->truncate();
+
         $user = new App\User;
-        $user->create(['name'=>'nuris akbar','email'=>'nuris.akbar@gmail.com','password'=>'password']);
-        factory('App\User',50)->create();
+        $password = Hash::make('password');
+        $user->create(['name'=>'nuris akbar','email'=>'nuris.akbar@gmail.com','password'=>$password]);
+        $user->create(['name'=>'administrator','email'=>'admin@gmail.com','password'=>$password]);
     }
 }
