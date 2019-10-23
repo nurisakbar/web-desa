@@ -7,6 +7,11 @@ use Illuminate\Support\Str;
 
 class KartuKeluargaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $data['kartuKeluarga'] = KartuKeluarga::all();
