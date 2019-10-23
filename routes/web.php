@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::Resource('artikel','ArtikelController');
+    Route::Resource('penduduk','PendudukController');
     Route::Resource('penjabatdesa','PenjabatDesaController');
     Route::Resource('kartukeluarga','KartuKeluargaController');
 });
