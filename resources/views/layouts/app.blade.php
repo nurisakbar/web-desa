@@ -62,7 +62,7 @@
                             <a class="nav-link" href="/admin/penjabatdesa"><i class="fas fa-user"></i> Penjabat Desa</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link" href="/permission"><i class="fas fa-user"></i> Modul Permission</a>
+                                <a class="nav-link" href="/admin/penduduk"><i class="fas fa-user"></i> Penduduk</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
