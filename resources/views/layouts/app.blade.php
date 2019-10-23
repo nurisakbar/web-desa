@@ -59,7 +59,7 @@
                             <a class="nav-link" href="/admin/kartukeluarga"><i class="fas fa-user"></i> Kartu Keluarga</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/role"><i class="fas fa-user"></i> Modul Role</a>
+                            <a class="nav-link" href="/admin/penjabatdesa"><i class="fas fa-user"></i> Penjabat Desa</a>
                         </li>
                         <li class="nav-item">
                                 <a class="nav-link" href="/permission"><i class="fas fa-user"></i> Modul Permission</a>
