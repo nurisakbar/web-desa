@@ -25,7 +25,11 @@ class PendudukController extends Controller
      */
     public function create()
     {
-        return view('kartukeluarga.create');
+        $data['pendidikan']     = \App\Models\Pendidikan::pluck('pendidikan','id');
+        $data['pekerjaan']      = \App\Models\Pekerjaan::pluck('pekerjaan','id');
+        $data['agama']          = \App\Models\Agama::pluck('agama','id');
+        $data['statusKawin']    = \App\Models\StatusKawin::pluck('status_kawin','id');
+        return view('penduduk.create',$data);
     }
 
     /**
@@ -62,7 +66,7 @@ class PendudukController extends Controller
     public function edit($id)
     {
         $data['kartuKeluarga'] = KartuKeluarga::find($id);
-        return view('kartukeluarga.edit',$data);
+        return view('penduduk.edit',$data);
     }
 
     /**
