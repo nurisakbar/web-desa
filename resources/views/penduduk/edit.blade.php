@@ -12,7 +12,7 @@
 
                         {{ Form::model($role,['url'=>'role/'.$role->id,'method'=>'PUT'])}}
                     
-                        @include('role.form')
+                        @include('penduduk.form')
                         
                         {{ Form::close()}}
                     </div>

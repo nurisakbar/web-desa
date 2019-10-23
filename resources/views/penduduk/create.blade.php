@@ -13,7 +13,7 @@
 
                         {{ Form::open(['url'=>'role','files'=>true])}}
                     
-                        @include('role.form')
+                        @include('penduduk.form')
                         
                         {{ Form::close()}}
                     </div>
