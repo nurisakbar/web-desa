@@ -30,3 +30,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('data-desa', 'MenuController@DataDesa');
 Route::get('tranparansi', 'MenuController@Tranparansi');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
