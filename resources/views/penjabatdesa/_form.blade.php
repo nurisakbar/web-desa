@@ -11,7 +11,7 @@
         <td></td>
         <td>
             <button type="submit" class="btn btn-danger">Simpan</button>
-            <a href="/artikel" class="btn btn-danger">Kembali</a>
+            <a href="/admin/penjabatdesa" class="btn btn-danger">Kembali</a>
         </td>
     </tr>
 </table>

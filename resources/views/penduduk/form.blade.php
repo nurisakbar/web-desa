@@ -12,7 +12,7 @@ $btnLabel = isset($role)?'Update':'Create';
                     {{ Form::text('nik',null,['placeholder'=>'NIK','class'=>'form-control'])}}
                 </div>
                 <div class="col-md-4">
-                    {{ Form::date('no_kk',null,['placeholder'=>'Nomor KK','class'=>'form-control'])}}
+                    {{ Form::text('nomor_kk',null,['placeholder'=>'Nomor KK','class'=>'form-control'])}}
                 </div>
             </div>
         </td>

@@ -11,7 +11,7 @@
                             
                         @include('validation')
 
-                        {{ Form::open(['url'=>'role','files'=>true])}}
+                        {{ Form::open(['url'=>'/admin/penduduk','files'=>true]) }}
                     
                         @include('penduduk.form')
                         

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Penduduk;
+use App\Models\KartuKeluarga;
 
 class PendudukController extends Controller
 {
