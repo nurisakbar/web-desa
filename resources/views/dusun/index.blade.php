@@ -4,47 +4,39 @@
    <div class="row justify-content-center">
       <div class="col-md-12">
          <div class="card">
-            <div class="card-header">Daftar Penduduk</div>
+            <div class="card-header">Daftar Dusun</div>
             <div class="card-body">
                @include('alert')
-               <a href="/admin/penduduk/create" class="btn btn-info">Tambah Data Penduduk</a>
+               <a href="/admin/dusun/create" class="btn btn-info">Tambah Dusun</a>
                <hr>
-               <table class="table table-bordered" id="example">
+               <table id="example" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                      <tr>
-                        <th>NIK</th>
-                        <th>Nama</th>
-                        <th>No KK</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Nama Ayah</th>
-                        <th>Nama Ibu</th>
-                        <th>Aksi</th>
+                        <th>Nama Dusun</th>
+                        <th width="100">Aksi</th>
                      </tr>
                   </thead>
                   <tbody>
-                     @foreach($penduduk as $row)
+                  @foreach ($dusun as $row)
+
                      <tr>
-                        <td width="120">{{ $row->nik}}</td>
-                        <td>{{$row->nama}}</td>
-                        <td>{{$row->no_kk}}</td>
-                        <td>{{$row->tanggal_lahir}}</td>
-                        <td>{{$row->nama_ayah}}</td>
-                        <td>{{$row->nama_ibu}}</td>
+                        <td>{{ $row->nama_dusun }}</td>
                         <td>
                            <div class="dropdown show">
                               <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Pilih Aksi
                               </a>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                 <a href="/admin/penduduk/{{$row->nik}}/edit" class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
-                                 {{ Form::open(['url'=>'/admin/penduduk/'.$row->nik,'method'=>'delete'])}}
+                                 <a class="dropdown-item" href=""><i class="fas fa-edit"></i> Edit</a>
+                                 {{-- {{ Form::open(['url'=>'/admin/artikel/'.$row->id,'method'=>'delete'])}} --}}
                                  <button type="submit" class="dropdown-item"><i class="fas fa-trash-alt"></i> Hapus</button>
-                                 {{ Form::close()}}
+                                 {{-- {{ Form::close()}} --}}
                               </div>
                            </div>
                         </td>
                      </tr>
-                     @endforeach
+                                           
+                  @endforeach
                   </tbody>
                </table>
             </div>
@@ -54,6 +46,7 @@
 </div>
 @endsection
 @push('js')
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script>

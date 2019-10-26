@@ -57,6 +57,9 @@
                             <a class="nav-link" href="/admin/artikel"><i class="fas fa-user"></i> Artikel</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/admin/dusun"><i class="fas fa-user"></i> Dusun</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/admin/kartukeluarga"><i class="fas fa-user"></i> Kartu Keluarga</a>
                         </li>
                         <li class="nav-item">

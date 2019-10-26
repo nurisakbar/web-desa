@@ -10,7 +10,7 @@
                     <div class="card-body">
                         @include('validation')
 
-                        {{ Form::model($role,['url'=>'role/'.$role->id,'method'=>'PUT'])}}
+                        {{ Form::model($penduduk,['url'=>'admin/penduduk/'.$penduduk->nik,'method'=>'PUT'])}}
                     
                         @include('penduduk.form')
                         

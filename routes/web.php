@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::Resource('penduduk','PendudukController');
     Route::Resource('penjabatdesa','PenjabatDesaController');
     Route::Resource('kartukeluarga','KartuKeluargaController');
+    Route::resource('dusun','DusunController');
 });
 
 

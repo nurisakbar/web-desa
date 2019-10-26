@@ -43,8 +43,8 @@ class PendudukController extends Controller
     {
         $input = $request->all();
         $input['village_id'] = '3204191001';
-        KartuKeluarga::create($input);
-        return redirect('admin/kartukeluarga')->with('message','A New Data Has Created');
+        Penduduk::create($input);
+        return redirect('admin/penduduk')->with('message','A New Data Has Created');
     }
 
     /**
@@ -66,7 +66,11 @@ class PendudukController extends Controller
      */
     public function edit($id)
     {
-        $data['kartuKeluarga'] = KartuKeluarga::find($id);
+        $data['penduduk'] = Penduduk::where('nik',$id)->first();
+        $data['pendidikan']     = \App\Models\Pendidikan::pluck('pendidikan','id');
+        $data['pekerjaan']      = \App\Models\Pekerjaan::pluck('pekerjaan','id');
+        $data['agama']          = \App\Models\Agama::pluck('agama','id');
+        $data['statusKawin']    = \App\Models\StatusKawin::pluck('status_kawin','id');
         return view('penduduk.edit',$data);
     }
 
@@ -81,9 +85,10 @@ class PendudukController extends Controller
     {
         $input = $request->all();
         $input['village_id'] = '3204191001';
-        $kartuKeluarga = KartuKeluarga::find($id);
-        $kartuKeluarga->update($input);
-        return redirect('admin/kartukeluarga')->with('message','A Article With Title '.$request->name.' Has Updated');
+        $penduduk = Penduduk::where('nik',$id)->first();
+        $penduduk->update($input);
+        
+        return redirect('admin/penduduk')->with('message','A Penduduk With Title '.$request->name.' Has Updated');
     }
 
     /**
@@ -94,10 +99,10 @@ class PendudukController extends Controller
      */
     public function destroy($id)
     {
-        $kk = KartuKeluarga::where('nomor_kk',$id)->first();
-        $kk->delete();
+        $penduduk = Penduduk::where('nik',$id)->first();
+        $penduduk->delete();
 
         
-        return redirect('admin/kartukeluarga')->with('message','Data Kartu Keluarga Berhasil Dihapus');
+        return redirect('admin/penduduk')->with('message','Data Kartu Keluarga Berhasil Dihapus');
     }
 }

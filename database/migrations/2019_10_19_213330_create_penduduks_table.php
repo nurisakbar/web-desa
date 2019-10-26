@@ -17,6 +17,8 @@ class CreatePenduduksTable extends Migration
             $table->bigIncrements('id');
             $table->string('no_kk');
             $table->string('nama');
+            $table->string('nama_ayah');
+            $table->string('nama_ibu');
             $table->string('jenis_kelamin');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');

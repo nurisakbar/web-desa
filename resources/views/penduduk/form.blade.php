@@ -12,7 +12,7 @@ $btnLabel = isset($role)?'Update':'Create';
                     {{ Form::text('nik',null,['placeholder'=>'NIK','class'=>'form-control'])}}
                 </div>
                 <div class="col-md-4">
-                    {{ Form::text('nomor_kk',null,['placeholder'=>'Nomor KK','class'=>'form-control'])}}
+                    {{ Form::text('no_kk',null,['placeholder'=>'Nomor KK','class'=>'form-control'])}}
                 </div>
             </div>
         </td>
@@ -20,6 +20,14 @@ $btnLabel = isset($role)?'Update':'Create';
     <tr>
         <td>Nama Lengkap</td>
         <td>{{ Form::text('nama',null,['placeholder'=>'Nama Lengkap','class'=>'form-control'])}}</td>
+    </tr>
+    <tr>
+        <td>Jenis Kelamin</td>
+        <td>
+            <input type="radio" name="jenis_kelamin" value="laki-laki">Laki Laki
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="jenis_kelamin" value="perempuan">Perempuan
+        </td>
     </tr>
     <tr>
         <td>Tempat, Tanggal Lahir</td>
@@ -42,7 +50,7 @@ $btnLabel = isset($role)?'Update':'Create';
                         {{ Form::select('pendidikan_id',$pendidikan,null,['class'=>'form-control'])}}
                 </div>
                 <div class="col-md-4">
-                        {{ Form::select('pekerjaan_id',$pekerjaan,null,['class'=>'form-control'])}}
+                        {{ Form::select('jenis_pekerjaan_id',$pekerjaan,null,['class'=>'form-control'])}}
                 </div>
             </div>
            </td>
