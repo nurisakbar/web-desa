@@ -163,7 +163,7 @@ var WEF = {"local":"id_ID","version":"v2.11","fb_id":"","adaptive":"1"};
 <div class="np-header-menu-block-wrap">
 <div class="mt-container">
 <div class="np-home-icon">
-<a href="https://klampok.id/" rel="home"> <i class="fa fa-home"> </i> </a>
+<a href="/" rel="home"> <i class="fa fa-home"> </i> </a>
 </div>
 <a href="javascript:void(0)" class="menu-toggle hide"> <i class="fa fa-navicon"> </i> </a>
 <nav id="site-navigation" class="main-navigation" role="navigation">

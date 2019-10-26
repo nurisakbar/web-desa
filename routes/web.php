@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'MenuController@home');
+Route::get('detail-artikel/{id}', 'MenuController@DetailArtikel');
 
 Auth::routes();
 Route::Resource('user','UserController');

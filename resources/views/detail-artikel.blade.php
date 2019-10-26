@@ -169,8 +169,8 @@
                <font style="font-family: algerian; margin-left: 4.7em; font-size: 10px">KEC.ARJOSARI KAB.PACITAN</font>
             </div>
             <div align="right" style="margin-top: -2.5em">
-               <form action="/" method="GET">
-                  <input type="" name="cari" class="cari" placeholder="Cari Artikel">
+               <form action="" method="">
+                  <input type="" name="" class="cari" placeholder="Cari Artikel">
                   <button class="btn btn-info" type="submit">Cari</button>
                </form>
             </div>
@@ -260,19 +260,15 @@
       <div class="row">
       <div class="col-md-8">
       <div class="np-post-thumb">
-       @foreach ($artikels as $artikel)
       <a href="https://klampok.id/2018/08/rapat-kordinasi-dan-evaluasi-pelaksanaan-pembangunan-pemerintah-desa-klampok-dengan-bpd-dan-lp3m/">
       <img style="width: 100%; height: 15em" src="https://klampok.id/wp-content/uploads/2018/08/IMG-20180810-WA0017-305x207.jpg" class="attachment-news-portal-block-medium size-news-portal-block-medium wp-post-image" alt="" srcset="https://klampok.id/wp-content/uploads/2018/08/IMG-20180810-WA0017-305x207.jpg 305w, https://klampok.id/wp-content/uploads/2018/08/IMG-20180810-WA0017-622x420.jpg 622w" sizes="(max-width: 305px) 100vw, 305px" /> </a>
       </div>
       <div class="np-post-content">
-      <h3 class="np-post-title"><a href="detail-artikel/{{ $artikel->id }}">{{ $artikel->judul }}</a></h3>
-      <h5 class="np-post-title small-size">{{ $artikel->artikel }}</h5>
+      <h3 class="np-post-title small-size">{{ $artikels->judul }}</h3>
+      <h5 class="np-post-title small-size">{{ $artikels->artikel }}</h5>
       <div class="np-post-meta">
-      <span class="posted-on"> <a href="" rel="bookmark"><time class="entry-date published">{{ $artikel->created_at }}</time><time class="updated" datetime="2018-08-10T18:29:19+07:00">10/08/2018</time></a></span><span class="byline"> <span class="author vcard"><a class="url fn n" href="https://klampok.id/author/admin/">admin</a></span></span> </div>
-        <br><br>        
-      @endforeach
+      <span class="posted-on"> <a href="" rel="bookmark"><time class="entry-date published">{{ $artikels->created_at }}</time><time class="updated" datetime="2018-08-10T18:29:19+07:00">10/08/2018</time></a></span><span class="byline"> <span class="author vcard"><a class="url fn n" href="https://klampok.id/author/admin/">admin</a></span></span> </div>
 
-      {!! $artikels->links() !!}
       
       </div>
       </div>
@@ -280,15 +276,6 @@
       </div>
       </div>
       </div></div>
-      <div id="comments" class="comments-area">
-      <div id="respond" class="comment-respond">
-      <h3 id="reply-title" class="comment-reply-title">Tinggalkan Balasan <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2018/05/apbdes-desa-klampok-tahun-2018/#respond" style="display:none;">Batalkan balasan</a></small></h3> <form action="https://klampok.id/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-      <p class="comment-notes"><span id="email-notes">Alamat email Anda tidak akan dipublikasikan.</span></p><p class="comment-form-comment"><label for="comment">Komentar</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Nama</label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" /></p>
-      <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Kirim Komentar" /> <input type='hidden' name='comment_post_ID' value='30' id='comment_post_ID' />
-      <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-      </p> </form>
-      </div>
-      </div>
       </main>
       </div>
       <aside id="secondary" class="widget-area" role="complementary">
