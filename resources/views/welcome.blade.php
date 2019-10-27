@@ -165,8 +165,8 @@
          <div class="container">
             <div align="left">
                <img src="{{ asset('gambar/logo.png') }}" style="width: 2em; margin-bottom: -15px">
-               <font style="font-family: algerian; margin-left: 1em">WEBSITE RESMI DESA JETISKIDUL</font><br>
-               <font style="font-family: algerian; margin-left: 4.7em; font-size: 10px">KEC.ARJOSARI KAB.PACITAN</font>
+               <font style="font-family: sans serif; margin-left: 1em">WEBSITE RESMI DESA JETISKIDUL</font><br>
+               <font style="font-family: sans serif; margin-left: 4.7em; font-size: 10px">KEC.ARJOSARI KAB.PACITAN</font>
             </div>
             <div align="right" style="margin-top: -2.5em">
                <form action="/" method="GET">
@@ -255,7 +255,7 @@
       <div id="primary" class="content-area">
       <main id="main" class="site-main" role="main">
     
-     <div class="np-related-section-wrapper"><h2 class="np-related-title np-clearfix">Artikel Terkait</h2><div class="np-related-posts-wrap np-clearfix"> <div class="np-single-post np-clearfix">
+     <div class="np-related-section-wrapper" style="margin-top: -5px"><h2 class="np-related-title np-clearfix">Artikel Terkait</h2><div class="np-related-posts-wrap np-clearfix"> <div class="np-single-post np-clearfix">
       <div class="container">
       <div class="row">
       <div class="col-md-8">

@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    body{
+        background-image: url('https://i1.wp.com/gonegosyo.impactinstrument.com/wp-content/uploads/sites/6729/2018/12/Website-background-1-1.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    .card{
+        background:rgba(2, 2, 2, 0.5);
+        color: white;
+    }
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
