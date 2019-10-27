@@ -7,7 +7,7 @@
         <td></td>
         <td>
             <button type="submit" class="btn btn-danger">Simpan</button>
-            <a href="/admin/artikel" class="btn btn-danger">Kembali</a>
+            <a href="/admin/dusun" class="btn btn-danger">Kembali</a>
         </td>
     </tr>
 </table>

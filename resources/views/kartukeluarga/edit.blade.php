@@ -8,7 +8,7 @@
                 <div class="card-header">Edit Artikel</div>
 
                 <div class="card-body">
-
+                    @include('validation')
                     {{ Form::model($kartuKeluarga,['url'=>'/admin/kartukeluarga/'.$kartuKeluarga->nomor_kk,'files'=>true,'method'=>'PUT'])}}
 
                     @include('kartukeluarga._form')

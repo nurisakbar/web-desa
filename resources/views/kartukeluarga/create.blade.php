@@ -8,7 +8,7 @@
                 <div class="card-header">Input Kartu Keluarga</div>
 
                 <div class="card-body">
-
+                    @include('validation')
                     {{ Form::open(['url'=>'/admin/kartukeluarga','files'=>true])}}
 
                     @include('kartukeluarga._form')

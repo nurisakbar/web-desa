@@ -36,6 +36,16 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Data :attribute Tidak Boleh Ada Yang Kosong',
+        ];
+
+        $request->validate([
+             'judul' => 'required',
+             'artikel' => 'required',
+             'gambar' => 'required',
+        ],$message);
+
         $input          = $request->all();
         $gambar         = $request->file('gambar');
         $file_gambar    = $gambar->getClientOriginalName();
@@ -82,6 +92,15 @@ class ArtikelController extends Controller
      */
     public function update($id, Request $request)
     {
+        $message = [
+            'required' => 'Data :attribute Tidak Boleh Ada Yang Kosong',
+        ];
+
+        $request->validate([
+             'judul' => 'required',
+             'artikel' => 'required',
+        ],$message);
+
         $input              = $request->all();
 
         if ($request->hasFile('gambar')) {

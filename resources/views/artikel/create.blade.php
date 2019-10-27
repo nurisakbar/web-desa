@@ -8,6 +8,7 @@
                 <div class="card-header">Input Artikel Baru</div>
 
                 <div class="card-body">
+                    @include('validation')
 
                     {{ Form::open(['url'=>'/admin/artikel','files'=>true])}}
 

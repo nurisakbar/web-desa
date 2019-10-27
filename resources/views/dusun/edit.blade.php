@@ -8,7 +8,7 @@
                 <div class="card-header">Edit Dusun</div>
 
                 <div class="card-body">
-
+                    @include('validation')
                     {{ Form::model($dusun,['url'=>'/admin/dusun/'.$dusun->id,'files'=>true,'method'=>'PUT'])}}
 
                     @include('dusun._form')

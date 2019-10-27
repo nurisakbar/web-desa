@@ -36,6 +36,16 @@ class KartuKeluargaController extends Controller
      */
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Data :attribute Tidak Boleh Ada Yang Kosong',
+        ];
+
+        $request->validate([
+             'nomor_kk' => 'required',
+             'nama_kk'  => 'required',
+             'alamat'   => 'required',
+        ],$message);
+
         $input = $request->all();
         $input['village_id'] = '3204191001';
         KartuKeluarga::create($input);
@@ -74,6 +84,16 @@ class KartuKeluargaController extends Controller
      */
     public function update($id, Request $request)
     {
+        $message = [
+            'required' => 'Data :attribute Tidak Boleh Ada Yang Kosong',
+        ];
+
+        $request->validate([
+             'nomor_kk' => 'required',
+             'nama_kk'  => 'required',
+             'alamat'   => 'required',
+        ],$message);
+
         $input = $request->all();
         $input['village_id'] = '3204191001';
         $kartuKeluarga = KartuKeluarga::find($id);

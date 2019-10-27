@@ -36,6 +36,14 @@ class DusunController extends Controller
      */
     public function store(Request $request)
     {
+        $message = [
+            'required' => 'Data :attribute Tidak Boleh Ada Yang Kosong',
+        ];
+
+        $request->validate([
+             'nama_dusun' => 'required',
+        ],$message);
+
         $data['dusun'] = Dusun::create($request->all());
         return redirect('admin/dusun')->with('message','A New Dusun With Title  Has Created');
 
@@ -73,6 +81,14 @@ class DusunController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $message = [
+            'required' => 'Data :attribute Tidak Boleh Ada Yang Kosong',
+        ];
+
+        $request->validate([
+             'nama_dusun' => 'required',
+        ],$message);
+
         $data['dusun'] = Dusun::find($id);
         $data['dusun']->update($request->all());
         return redirect('admin/dusun')->with('message','A Dusun With Title  Has Updated');

@@ -8,7 +8,7 @@
                 <div class="card-header">Input Dusun Baru</div>
 
                 <div class="card-body">
-
+                    @include('validation')
                     {{ Form::open(['url'=>'/admin/dusun','files'=>true])}}
 
                     @include('dusun._form')

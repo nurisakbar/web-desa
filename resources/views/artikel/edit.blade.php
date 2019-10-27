@@ -8,6 +8,7 @@
                 <div class="card-header">Edit Artikel</div>
 
                 <div class="card-body">
+                    @include('validation')
 
                     {{ Form::model($artikel,['url'=>'/admin/artikel/'.$artikel->id,'files'=>true,'method'=>'PUT'])}}
 
