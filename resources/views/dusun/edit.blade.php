@@ -5,13 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Edit Artikel</div>
+                <div class="card-header">Edit Dusun</div>
 
                 <div class="card-body">
 
-                    {{ Form::model($artikel,['url'=>'/admin/artikel/'.$artikel->id,'files'=>true,'method'=>'PUT'])}}
+                    {{ Form::model($dusun,['url'=>'/admin/dusun/'.$dusun->id,'files'=>true,'method'=>'PUT'])}}
 
-                    @include('artikel._form')
+                    @include('dusun._form')
 
                     {{ Form::close()}}
                 </div>

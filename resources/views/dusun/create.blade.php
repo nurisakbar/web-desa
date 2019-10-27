@@ -11,7 +11,7 @@
 
                     {{ Form::open(['url'=>'/admin/dusun','files'=>true])}}
 
-                    @include('artikel._form')
+                    @include('dusun._form')
 
                     {{ Form::close()}}
                 </div>

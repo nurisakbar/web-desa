@@ -25,7 +25,7 @@ class DusunController extends Controller
      */
     public function create()
     {
-        //
+        return view('dusun.create');
     }
 
     /**
@@ -36,7 +36,9 @@ class DusunController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data['dusun'] = Dusun::create($request->all());
+        return redirect('admin/dusun')->with('message','A New Dusun With Title  Has Created');
+
     }
 
     /**
@@ -58,7 +60,8 @@ class DusunController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['dusun'] = Dusun::find($id);
+        return view('dusun.edit',$data);
     }
 
     /**
@@ -70,7 +73,9 @@ class DusunController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data['dusun'] = Dusun::find($id);
+        $data['dusun']->update($request->all());
+        return redirect('admin/dusun')->with('message','A Dusun With Title  Has Updated');
     }
 
     /**
@@ -81,6 +86,8 @@ class DusunController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data['dusun'] = Dusun::find($id);
+        $data['dusun']->delete();  
+        return redirect('admin/dusun')->with('message','A Dusun Has Deleted');
     }
 }

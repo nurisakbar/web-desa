@@ -27,10 +27,10 @@
                               Pilih Aksi
                               </a>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                 <a class="dropdown-item" href=""><i class="fas fa-edit"></i> Edit</a>
-                                 {{-- {{ Form::open(['url'=>'/admin/artikel/'.$row->id,'method'=>'delete'])}} --}}
+                                 <a class="dropdown-item" href="/admin/dusun/{{$row->id}}/edit"><i class="fas fa-edit"></i> Edit</a>
+                                 {{ Form::open(['url'=>'/admin/dusun/'.$row->id,'method'=>'delete'])}}
                                  <button type="submit" class="dropdown-item"><i class="fas fa-trash-alt"></i> Hapus</button>
-                                 {{-- {{ Form::close()}} --}}
+                                 {{ Form::close()}}
                               </div>
                            </div>
                         </td>
