@@ -12,9 +12,9 @@
                <table class="table table-bordered" id="example">
                   <thead>
                      <tr>
+                        <th>No KK</th>
                         <th>NIK</th>
                         <th>Nama</th>
-                        <th>No KK</th>
                         <th>Tanggal Lahir</th>
                         <th>Nama Ayah</th>
                         <th>Nama Ibu</th>
@@ -24,10 +24,10 @@
                   <tbody>
                      @foreach($penduduk as $row)
                      <tr>
+                        <td>{{$row->no_kk}}</td>
                         <td width="120">{{ $row->nik}}</td>
                         <td>{{$row->nama}}</td>
-                        <td>{{$row->no_kk}}</td>
-                        <td>{{$row->tanggal_lahir}}</td>
+                        <td>{{date_format(date_create($row->tanggal_lahir),"m-d-Y")}}</td>
                         <td>{{$row->nama_ayah}}</td>
                         <td>{{$row->nama_ibu}}</td>
                         <td>
