@@ -12,7 +12,9 @@
                <table id="example" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                      <tr>
-                        <th>Nama Dusun</th>
+                        <th width="200">Kode Dusun</th>
+                        <th width="400">Nama Dusun</th>
+                        <th>Kepala Dusun</th>
                         <th width="100">Aksi</th>
                      </tr>
                   </thead>
@@ -20,7 +22,9 @@
                   @foreach ($dusun as $row)
 
                      <tr>
+                        <td>{{ $row->kode_dusun }}</td>
                         <td>{{ $row->nama_dusun }}</td>
+                        <td>{{ $row->penduduk->nama }}</td>
                         <td>
                            <div class="dropdown show">
                               <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -25,7 +25,8 @@ class DusunController extends Controller
      */
     public function create()
     {
-        return view('dusun.create');
+        $data['penduduk'] = \App\Models\Penduduk::all();
+        return view('dusun.create',$data);
     }
 
     /**
@@ -42,11 +43,20 @@ class DusunController extends Controller
 
         $request->validate([
              'nama_dusun' => 'required',
+             'kode_dusun' => 'required',
+             'nik'        => 'required'
         ],$message);
 
-        $data['dusun'] = Dusun::create($request->all());
-        return redirect('admin/dusun')->with('message','A New Dusun With Title  Has Created');
-
+        $input          = $request->all();
+        $input['nik']   = trim(explode('|',$request->nik)[0]);
+        if(\DB::table('penduduk')->where('nik',$input['nik'])->first()==null)
+        {
+            return \Redirect::back()->withInput($request->all())->with('message','Data Kepala Dusun Yang Anda Input Tidak Terdata');
+        }else
+        {
+            Dusun::create($input);
+            return redirect('admin/dusun')->with('message','A New Dusun With Title  Has Created');
+        }
     }
 
     /**
@@ -68,6 +78,7 @@ class DusunController extends Controller
      */
     public function edit($id)
     {
+        $data['penduduk'] = \App\Models\Penduduk::all();
         $data['dusun'] = Dusun::find($id);
         return view('dusun.edit',$data);
     }
@@ -89,8 +100,19 @@ class DusunController extends Controller
              'nama_dusun' => 'required',
         ],$message);
 
-        $data['dusun'] = Dusun::find($id);
-        $data['dusun']->update($request->all());
+
+
+        $input          = $request->all();
+        $input['nik']   = trim(explode('|',$request->nik)[0]);
+        if(\DB::table('penduduk')->where('nik',$input['nik'])->first()==null)
+        {
+            return \Redirect::back()->withInput($request->all())->with('message','Data Kepala Dusun Yang Anda Input Tidak Terdata');
+        }else
+        {
+            $dusun = Dusun::find($id);
+            $dusun->update($input);
+            return redirect('admin/dusun')->with('message','A New Dusun With Title  Has Created');
+        }
         return redirect('admin/dusun')->with('message','A Dusun With Title  Has Updated');
     }
 
