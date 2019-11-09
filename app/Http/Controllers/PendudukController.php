@@ -64,8 +64,8 @@ class PendudukController extends Controller
              'pendidikan_id'        => 'required',
              'jenis_pekerjaan_id'   => 'required',
              'status_kawin_id'      => 'required',
-             //'no_passport'          => 'required',
-             //'no_kitab'             => 'required',
+            //  'no_passport'          => 'required',
+            //  'no_kitab'             => 'required',
         ],$message);
 
         $input = $request->all();
@@ -139,8 +139,8 @@ class PendudukController extends Controller
              'pendidikan_id'        => 'required',
              'jenis_pekerjaan_id'   => 'required',
              'status_kawin_id'      => 'required',
-             'no_passport'          => 'required',
-             'no_kitab'             => 'required',
+            //  'no_passport'          => 'required',
+            //  'no_kitab'             => 'required',
         ],$message);
 
         $input = $request->all();
