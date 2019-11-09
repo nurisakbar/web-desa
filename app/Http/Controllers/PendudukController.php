@@ -8,9 +8,12 @@ use App\Models\KartuKeluarga;
 
 class PendudukController extends Controller
 {
+    public $statusHubungan;
+
     public function __construct()
     {
         $this->middleware('auth');
+        $this->statusHubungan = ['ayah'=>'Ayah','ibu'=>'Ibu','anak'=>'Anak'];
     }
     
     public function index()
@@ -31,6 +34,7 @@ class PendudukController extends Controller
         $data['pekerjaan']      = \App\Models\Pekerjaan::pluck('pekerjaan','id');
         $data['agama']          = \App\Models\Agama::pluck('agama','id');
         $data['statusKawin']    = \App\Models\StatusKawin::pluck('status_kawin','id');
+        $data['statusHubungan'] = $this->statusHubungan;
         return view('penduduk.create',$data);
     }
 
