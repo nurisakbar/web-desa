@@ -1,18 +1,30 @@
 @php
-$btnLabel = isset($role)?'Update':'Create'; 
+$btnLabel = isset($penduduk)?'Update':'Create';
+$kk       = isset($penduduk)?"value=".$penduduk->no_kk." disabled":'';
 @endphp
 
-
+@include('alert')
 <table class='table table-bordered'>
     <tr>
         <td>NIK Dan KK</td>
         <td>
             <div class="row">
                 <div class="col-md-4">
-                    {{ Form::text('nik',null,['placeholder'=>'NIK','class'=>'form-control'])}}
+                    @if(isset($penduduk))
+                    
+                        {{ Form::text('nik',null,['placeholder'=>'NIK','class'=>'form-control','disabled'=>'disabled'])}}
+                    @else
+                    
+                        {{ Form::text('nik',null,['placeholder'=>'NIK','class'=>'form-control'])}}
+                    @endif
                 </div>
-                <div class="col-md-4">
-                    {{ Form::text('no_kk',null,['placeholder'=>'Nomor KK','class'=>'form-control'])}}
+                <div class="col-md-5">
+                    <input list="kk" {{ $kk}} name="no_kk" placeholder="Masukan Nomor KK" class="form-control">
+                    <datalist id="kk">
+                        @foreach($kartu_keluarga as $kk)
+                            <option value="{{ $kk->nomor_kk}} | {{ $kk->nama_kk}}">
+                        @endforeach
+                    </datalist>
                 </div>
             </div>
         </td>
@@ -24,9 +36,9 @@ $btnLabel = isset($role)?'Update':'Create';
     <tr>
         <td>Jenis Kelamin</td>
         <td>
-            <input type="radio" name="jenis_kelamin" value="laki-laki">Laki Laki
+            <input type="radio" name="jenis_kelamin" value="laki-laki" checked> Laki Laki
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="jenis_kelamin" value="perempuan">Perempuan
+            <input type="radio" name="jenis_kelamin" value="perempuan"> Perempuan
         </td>
     </tr>
     <tr>
@@ -82,6 +94,19 @@ $btnLabel = isset($role)?'Update':'Create';
         </td>
     </tr>
     <tr>
+        <td>Kewarganegaraan</td>
+        <td>
+            <div class="row">
+            <div class="col-md-5">
+                <select class="form-control" id="kewarganegaraan" onchange="ShowInputPassport()">
+                    <option value="wni">Warga Negara Indonesia</option>
+                    <option value="wna">Warga Negara Asing</option>
+                </select>
+            </div>
+            </div>
+        </td>
+    </tr>
+    <tr class="passport">
         <td>No Passport Dan Kitap )*</td>
         <td>
             <div class="row">
@@ -102,3 +127,25 @@ $btnLabel = isset($role)?'Update':'Create';
         </td>
     </tr>
 </table>
+@push('js')
+<script>
+    $(document).ready(function(){
+        ShowInputPassport();
+      });
+</script>
+
+<script>
+
+    function ShowInputPassport()
+    {
+        var kewarganegaraan = $("#kewarganegaraan").val();
+        if(kewarganegaraan=='wni')
+        {
+            $(".passport").hide();
+        }else
+        {
+            $(".passport").show();
+        }
+    }
+</script>
+@endpush
