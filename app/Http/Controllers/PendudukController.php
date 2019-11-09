@@ -46,6 +46,28 @@ class PendudukController extends Controller
      */
     public function store(Request $request)
     {
+
+          $message = [
+            'required' => 'Data :attribute Tidak Boleh Ada Yang Kosong',
+        ];
+
+        $request->validate([
+            'nik'                   => 'required',
+             'no_kk'                => 'required',
+             'nama'                 => 'required',
+             'nama_ayah'            => 'required',
+             'nama_ibu'             => 'required',
+             'jenis_kelamin'        => 'required',
+             'tempat_lahir'         => 'required',
+             'tanggal_lahir'        => 'required',
+             'agama_id'             => 'required',
+             'pendidikan_id'        => 'required',
+             'jenis_pekerjaan_id'   => 'required',
+             'status_kawin_id'      => 'required',
+             'no_passport'          => 'required',
+             'no_kitab'             => 'required',
+        ],$message);
+
         $input = $request->all();
         $input['village_id'] = '3204191001';
         $input['no_kk'] = trim(explode('|',$request->no_kk)[0]);
@@ -99,6 +121,28 @@ class PendudukController extends Controller
      */
     public function update($id, Request $request)
     {
+
+          $message = [
+            'required' => 'Data :attribute Tidak Boleh Ada Yang Kosong',
+        ];
+
+        $request->validate([
+            'nik'                   => 'required',
+             'no_kk'                => 'required',
+             'nama'                 => 'required',
+             'nama_ayah'            => 'required',
+             'nama_ibu'             => 'required',
+             'jenis_kelamin'        => 'required',
+             'tempat_lahir'         => 'required',
+             'tanggal_lahir'        => 'required',
+             'agama_id'             => 'required',
+             'pendidikan_id'        => 'required',
+             'jenis_pekerjaan_id'   => 'required',
+             'status_kawin_id'      => 'required',
+             'no_passport'          => 'required',
+             'no_kitab'             => 'required',
+        ],$message);
+
         $input = $request->all();
         $input['village_id'] = '3204191001';
         $penduduk = Penduduk::where('nik',$id)->first();

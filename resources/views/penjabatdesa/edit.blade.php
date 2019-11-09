@@ -8,7 +8,8 @@
                 <div class="card-header">Edit Penjabat Desa</div>
 
                 <div class="card-body">
-
+                @include('alert')
+                @include('validation')
                     {{ Form::model($penjabatDesa,['url'=>'/admin/penjabatdesa/'.$penjabatDesa->id,'files'=>true,'method'=>'PUT'])}}
 
                     @include('penjabatdesa._form')
