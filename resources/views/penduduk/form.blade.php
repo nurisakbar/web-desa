@@ -120,7 +120,7 @@ $kk       = isset($penduduk)?"value=".$penduduk->no_kk." disabled":'';
                     {{ Form::text('no_passport',null,['placeholder'=>'Nomor Kitap','class'=>'form-control'])}}
                 </div>
                 <div class="col-md-4">
-                    {{ Form::text('kitap',null,['placeholder'=>'No Passport','class'=>'form-control'])}}
+                    {{ Form::text('no_kitap',null,['placeholder'=>'No Passport','class'=>'form-control'])}}
                 </div>
             </div>
         </td>
