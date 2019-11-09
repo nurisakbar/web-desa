@@ -26,6 +26,7 @@ class PendudukController extends Controller
      */
     public function create()
     {
+        $data['kartu_keluarga'] = \DB::table('kartu_keluarga')->select('nomor_kk','nama_kk')->get();
         $data['pendidikan']     = \App\Models\Pendidikan::pluck('pendidikan','id');
         $data['pekerjaan']      = \App\Models\Pekerjaan::pluck('pekerjaan','id');
         $data['agama']          = \App\Models\Agama::pluck('agama','id');
@@ -43,8 +44,17 @@ class PendudukController extends Controller
     {
         $input = $request->all();
         $input['village_id'] = '3204191001';
-        Penduduk::create($input);
-        return redirect('admin/penduduk')->with('message','A New Data Has Created');
+        $input['no_kk'] = trim(explode('|',$request->no_kk)[0]);
+
+        // validasi apakah nomor kk ada di tabel kartu keluarga atau tidak
+        if(\DB::table('kartu_keluarga')->where('nomor_kk',$input['no_kk'])->first()==null)
+        {
+            return \Redirect::back()->withInput($request->all())->with('message','Data KK Yang Anda Input Tidak Terdata');
+        }else
+        {
+            Penduduk::create($input);
+            return redirect('admin/penduduk')->with('message','Data Penduduk Berhasil Disimpan');
+        }
     }
 
     /**
@@ -66,6 +76,7 @@ class PendudukController extends Controller
      */
     public function edit($id)
     {
+        $data['kartu_keluarga'] = \DB::table('kartu_keluarga')->select('nomor_kk','nama_kk')->get();
         $data['penduduk'] = Penduduk::where('nik',$id)->first();
         $data['pendidikan']     = \App\Models\Pendidikan::pluck('pendidikan','id');
         $data['pekerjaan']      = \App\Models\Pekerjaan::pluck('pekerjaan','id');
