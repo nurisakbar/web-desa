@@ -54,6 +54,9 @@
                             @endif
                         @else
                         <li class="nav-item">
+                                <a class="nav-link" href="/admin/setting"><i class="fas fa-user"></i> Setting</a>
+                            </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/admin/artikel"><i class="fas fa-user"></i> Artikel</a>
                         </li>
                         <li class="nav-item">

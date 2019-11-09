@@ -23,10 +23,23 @@
                 </table>
     </div>
     <div class="col-md-4">
-        <table>
-            <tr>
-                <td></td>
-            </tr>
-        </table>
+            <table class="table table-bordered">
+                    <tr><th colspan="2">Alamat Desa</th></th>
+                    <tr>
+                        <td width="150">Provinsi</td>
+                        <td>{{ $region->province_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Kabupaten</td>
+                        <td>{{ $region->regency_name}}</td>
+                    </tr>
+                        <td>Kecamatan</td>
+                        <td>{{ $region->district_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Desa</td>
+                        <td>{{ $region->village_name}}</td>
+                    </tr>
+                </table>
     </div>
 </div>

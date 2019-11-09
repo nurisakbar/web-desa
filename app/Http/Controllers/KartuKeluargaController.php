@@ -25,7 +25,9 @@ class KartuKeluargaController extends Controller
      */
     public function create()
     {
-        return view('kartukeluarga.create');
+        $data['setting'] = \DB::table('setting')->find(1);
+        $data['region'] = \DB::table('view_region')->where('id',$data['setting']->village_id)->first();
+        return view('kartukeluarga.create',$data);
     }
 
     /**
@@ -71,6 +73,9 @@ class KartuKeluargaController extends Controller
      */
     public function edit($id)
     {
+        $data['setting'] = \DB::table('setting')->find(1);
+        $data['region'] = \DB::table('view_region')->where('id',$data['setting']->village_id)->first();
+
         $data['kartuKeluarga'] = KartuKeluarga::find($id);
         return view('kartukeluarga.edit',$data);
     }
