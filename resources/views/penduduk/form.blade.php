@@ -94,6 +94,12 @@ $kk       = isset($penduduk)?"value=".$penduduk->no_kk." disabled":'';
         </td>
     </tr>
     <tr>
+        <td>Status Hubungan Dalam Keluarga</td>
+        <td>
+            {{ Form::select('status_hubungan',$statusHubungan,null,['class'=>'form-control'])}}
+        </td>
+    </tr>
+    <tr>
         <td>Kewarganegaraan</td>
         <td>
             <div class="row">
