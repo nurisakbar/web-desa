@@ -30,7 +30,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::Resource('penjabatdesa','PenjabatDesaController');
     Route::Resource('kartukeluarga','KartuKeluargaController');
     Route::resource('dusun','DusunController');
+    Route::resource('pendapatan','PendapatanController');
+    Route::resource('realisasi','RealisasiController');
+    Route::resource('komponendana','KomponenDanaController');
     Route::get('setting','HomeController@setting');
+    Route::post('setting','HomeController@savesetting');
 });
 
 

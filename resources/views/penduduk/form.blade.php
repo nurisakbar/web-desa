@@ -104,10 +104,8 @@ $kk       = isset($penduduk)?"value=".$penduduk->no_kk." disabled":'';
         <td>
             <div class="row">
             <div class="col-md-5">
-                <select class="form-control" id="kewarganegaraan" onchange="ShowInputPassport()">
-                    <option value="wni">Warga Negara Indonesia</option>
-                    <option value="wna">Warga Negara Asing</option>
-                </select>
+                {{ Form::select('kewarganegaraan',['wni'=>'Warga Negara Indonesia','wna'=>'Warga Negara Asing'],null,['class'=>'form-control','id'=>'kewarganegaraan','onchange'=>'ShowInputPassport()'])}}
+                
             </div>
             </div>
         </td>
@@ -137,6 +135,8 @@ $kk       = isset($penduduk)?"value=".$penduduk->no_kk." disabled":'';
 <script>
     $(document).ready(function(){
         ShowInputPassport();
+        var kewarganegaraan = $("#kewarganegaraan").val();
+        console.log(kewarganegaraan);
       });
 </script>
 

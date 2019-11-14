@@ -30,6 +30,13 @@ class HomeController extends Controller
     {
         $data['setting'] = \DB::table('setting')->find(1);
         $data['region'] = \DB::table('view_region')->where('id',$data['setting']->village_id)->first();
+        $data['vregion'] = \DB::table('view_region')->get();
         return view('setting',$data);
+    }
+
+    public function savesetting(Request $request)
+    {
+        \DB::table('setting')->where('id',1)->update(['village_id'=>trim(explode(',',$request->village)[4])]);
+        return redirect('/admin/setting')->with('message','Perubahan Sudah Disimpan');
     }
 }
