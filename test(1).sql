@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2019 at 04:42 PM
+-- Generation Time: Nov 14, 2019 at 05:01 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -7381,27 +7381,6 @@ INSERT INTO `kartu_keluarga` (`nomor_kk`, `nama_kk`, `alamat`, `village_id`, `cr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `keuangan`
---
-
-CREATE TABLE `keuangan` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `komponen_dana_id` int(11) NOT NULL,
-  `nilai` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `keuangan`
---
-
-INSERT INTO `keuangan` (`id`, `komponen_dana_id`, `nilai`, `created_at`, `updated_at`) VALUES
-(3, 5, 700000, '2019-11-12 08:41:51', '2019-11-12 08:41:51');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `komponen_dana`
 --
 
@@ -7457,7 +7436,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2019_11_09_174049_create_settings_table', 8),
 (17, '2019_11_09_175309_create_view_region', 9),
 (18, '2019_11_11_203504_create_komponen_danas_table', 10),
-(19, '2019_11_12_150752_create_keuangans_table', 11);
+(19, '2019_11_12_150752_create_keuangans_table', 11),
+(20, '2019_11_14_150023_add_kewarganegaraan', 12),
+(21, '2019_11_14_152138_change_table_keuangan_to_pendapatan', 13),
+(22, '2019_11_14_153323_create_realisasis_table', 14),
+(23, '2019_11_14_153439_add_tahun_to_pendapatan', 15);
 
 -- --------------------------------------------------------
 
@@ -7493,6 +7476,28 @@ INSERT INTO `pekerjaan` (`id`, `pekerjaan`, `created_at`, `updated_at`) VALUES
 (2, 'Buruh Bangunan', NULL, NULL),
 (3, 'Polisi', NULL, NULL),
 (4, 'Kuli', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pendapatan`
+--
+
+CREATE TABLE `pendapatan` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `komponen_dana_id` int(11) NOT NULL,
+  `nilai` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `tahun` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `pendapatan`
+--
+
+INSERT INTO `pendapatan` (`id`, `komponen_dana_id`, `nilai`, `created_at`, `updated_at`, `tahun`) VALUES
+(3, 5, 700000, '2019-11-12 08:41:51', '2019-11-12 08:41:51', 0);
 
 -- --------------------------------------------------------
 
@@ -7541,21 +7546,26 @@ CREATE TABLE `penduduk` (
   `nik` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `nama_ayah` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `nama_ibu` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `status_hubungan` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `status_hubungan` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `kewarganegaraan` varchar(3) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `penduduk`
 --
 
-INSERT INTO `penduduk` (`id`, `no_kk`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama_id`, `pendidikan_id`, `jenis_pekerjaan_id`, `status_kawin_id`, `no_passport`, `no_kitap`, `created_at`, `updated_at`, `nik`, `nama_ayah`, `nama_ibu`, `status_hubungan`) VALUES
-(1, '1107072006130001', 'john doe', 'l', 'langsa', '1992-08-25', 1, 1, 1, 1, NULL, NULL, NULL, NULL, '1107072006130001', '', '', ''),
-(2, '1107072006130001', 'nsassas sasas', 'laki-laki', 'langsa', '2019-11-21', 2, 2, 2, 1, NULL, NULL, '2019-11-09 09:06:04', '2019-11-09 09:06:04', 'wewewewewe', 'sasas', 'sasasas', ''),
-(3, '1107072006130002', 'dsdsdsd', 'laki-laki', 'sdsdsd', '2019-11-05', 1, 1, 1, 1, NULL, NULL, '2019-11-09 09:22:48', '2019-11-09 09:22:48', 'asdasdsad', 'dsdsd', 'sdsdsd', 'ibu'),
-(4, '1107072006130001', 'ewewew', 'laki-laki', 'ewewewe', '2019-11-04', 1, 1, 1, 1, NULL, NULL, '2019-11-09 09:23:25', '2019-11-09 09:23:25', 'ewewew', 'dsdsd', 'sdsdsd', 'ayah'),
-(6, '1107072006130001', 'ucok nababan', 'laki-laki', 'medan', '2019-11-06', 1, 1, 1, 1, 'dsdsd', 'sdsdsd', '2019-11-09 09:26:22', '2019-11-09 09:30:45', 'dsdsdsd', 'dsdsd', 'sdsdsd', 'ayah'),
-(7, '1107072006130001', 'sasass', 'laki-laki', 'dsdsd', '2019-11-19', 1, 1, 1, 1, 'sdsd', 'sdsdsdd', '2019-11-09 10:22:05', '2019-11-09 10:22:05', 'wqwqwq', 'sds', 'dsdsdsd', 'ayah'),
-(8, '1107072006130002', 'ewewewe', 'laki-laki', 'dsdsd', '2019-11-19', 1, 1, 1, 1, 'sdsd', 'sdsdsd', '2019-11-09 10:32:35', '2019-11-09 10:32:35', 'wewewe', 'dsds', 'dsdsd', 'ayah');
+INSERT INTO `penduduk` (`id`, `no_kk`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama_id`, `pendidikan_id`, `jenis_pekerjaan_id`, `status_kawin_id`, `no_passport`, `no_kitap`, `created_at`, `updated_at`, `nik`, `nama_ayah`, `nama_ibu`, `status_hubungan`, `kewarganegaraan`) VALUES
+(1, '1107072006130001', 'john doe', 'l', 'langsa', '1992-08-25', 1, 1, 1, 1, NULL, NULL, NULL, NULL, '1107072006130001', '', '', '', 'wna'),
+(2, '1107072006130001', 'nsassas sasas', 'laki-laki', 'langsa', '2019-11-21', 2, 2, 2, 1, NULL, NULL, '2019-11-09 09:06:04', '2019-11-09 09:06:04', 'wewewewewe', 'sasas', 'sasasas', '', 'wna'),
+(3, '1107072006130002', 'dsdsdsd', 'laki-laki', 'sdsdsd', '2019-11-05', 1, 1, 1, 1, NULL, NULL, '2019-11-09 09:22:48', '2019-11-09 09:22:48', 'asdasdsad', 'dsdsd', 'sdsdsd', 'ibu', 'wna'),
+(4, '1107072006130001', 'ewewew', 'laki-laki', 'ewewewe', '2019-11-04', 1, 1, 1, 1, NULL, NULL, '2019-11-09 09:23:25', '2019-11-09 09:23:25', 'ewewew', 'dsdsd', 'sdsdsd', 'ayah', 'wna'),
+(6, '1107072006130001', 'ucok nababan', 'laki-laki', 'medan', '2019-11-06', 1, 1, 1, 1, 'dsdsd', 'sdsdsd', '2019-11-09 09:26:22', '2019-11-09 09:30:45', 'dsdsdsd', 'dsdsd', 'sdsdsd', 'ayah', 'wna'),
+(7, '1107072006130001', 'sasass', 'laki-laki', 'dsdsd', '2019-11-19', 1, 1, 1, 1, 'sdsd', 'sdsdsdd', '2019-11-09 10:22:05', '2019-11-09 10:22:05', 'wqwqwq', 'sds', 'dsdsdsd', 'ayah', 'wna'),
+(8, '1107072006130002', 'ewewewe', 'laki-laki', 'dsdsd', '2019-11-19', 1, 1, 1, 1, 'sdsd', 'sdsdsd', '2019-11-09 10:32:35', '2019-11-09 10:32:35', 'wewewe', 'dsds', 'dsdsd', 'ayah', 'wna'),
+(9, '1107072006130001', 'joh doe', 'laki-laki', 'dsds', '2019-11-19', 1, 1, 1, 1, 'dsd', 'sdsdsd', '2019-11-14 08:02:56', '2019-11-14 08:02:56', '132323', 'dsd', 'sdd', 'ibu', 'wni'),
+(10, '1107072006130001', 'andrian', 'laki-laki', 'assa', '2019-11-20', 1, 1, 1, 1, NULL, NULL, '2019-11-14 08:03:31', '2019-11-14 08:03:31', '32323232323', 'sasas', 'asas', 'ayah', 'wna'),
+(11, '1107072006130001', 'wahyu safrizal', 'laki-laki', 'dsds', '2019-11-20', 1, 1, 1, 1, NULL, NULL, '2019-11-14 08:17:35', '2019-11-14 08:17:35', '67326736273', 'dsd', 'sdsdsd', 'ayah', 'wni'),
+(12, '1107072006130002', 'john stepen', 'laki-laki', 'ass', '2019-11-13', 1, 1, 1, 1, 'sasas', 'asasas', '2019-11-14 08:18:04', '2019-11-14 08:18:04', 'wqwqw', 'sas', 'asassas', 'ayah', 'wna');
 
 -- --------------------------------------------------------
 
@@ -7629,6 +7639,28 @@ INSERT INTO `provinces` (`id`, `name`) VALUES
 ('82', 'MALUKU UTARA'),
 ('91', 'PAPUA BARAT'),
 ('94', 'PAPUA');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `realisasi`
+--
+
+CREATE TABLE `realisasi` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `komponen_dana_id` int(11) NOT NULL,
+  `nilai` int(11) NOT NULL,
+  `tahun` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `realisasi`
+--
+
+INSERT INTO `realisasi` (`id`, `komponen_dana_id`, `nilai`, `tahun`, `created_at`, `updated_at`) VALUES
+(1, 4, 40000, 2019, '2019-11-14 08:46:26', '2019-11-14 08:46:26');
 
 -- --------------------------------------------------------
 
@@ -8180,7 +8212,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `village_id`, `created_at`, `updated_at`) VALUES
-(1, '3204191001', NULL, NULL);
+(1, '1114061007', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -83315,12 +83347,6 @@ ALTER TABLE `kartu_keluarga`
   ADD PRIMARY KEY (`nomor_kk`);
 
 --
--- Indexes for table `keuangan`
---
-ALTER TABLE `keuangan`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `komponen_dana`
 --
 ALTER TABLE `komponen_dana`
@@ -83345,6 +83371,12 @@ ALTER TABLE `pekerjaan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pendapatan`
+--
+ALTER TABLE `pendapatan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pendidikan`
 --
 ALTER TABLE `pendidikan`
@@ -83366,6 +83398,12 @@ ALTER TABLE `penjabat_desa`
 -- Indexes for table `provinces`
 --
 ALTER TABLE `provinces`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `realisasi`
+--
+ALTER TABLE `realisasi`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -83424,12 +83462,6 @@ ALTER TABLE `dusun`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `keuangan`
---
-ALTER TABLE `keuangan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `komponen_dana`
 --
 ALTER TABLE `komponen_dana`
@@ -83439,13 +83471,19 @@ ALTER TABLE `komponen_dana`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `pekerjaan`
 --
 ALTER TABLE `pekerjaan`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `pendapatan`
+--
+ALTER TABLE `pendapatan`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pendidikan`
@@ -83457,13 +83495,19 @@ ALTER TABLE `pendidikan`
 -- AUTO_INCREMENT for table `penduduk`
 --
 ALTER TABLE `penduduk`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `penjabat_desa`
 --
 ALTER TABLE `penjabat_desa`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `realisasi`
+--
+ALTER TABLE `realisasi`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `setting`

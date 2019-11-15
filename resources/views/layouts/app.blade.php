@@ -69,9 +69,9 @@
                               <a class="dropdown-item" href="/admin/realisasi">Laporan Realisasi</a>
                             </div>
                           </li>
-                        <li class="nav-item">
+                        {{--  <li class="nav-item">
                             <a class="nav-link" href="/admin/dusun"><i class="fas fa-user"></i> Dusun</a>
-                        </li>
+                        </li>  --}}
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/kartukeluarga"><i class="fas fa-user"></i> Kartu Keluarga</a>
                         </li>

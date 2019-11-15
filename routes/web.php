@@ -37,7 +37,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('setting','HomeController@savesetting');
 });
 
-
+Route::get('laporan-keuangan-pendapatan','FrontController@lapKeuanganPendapatan');
+Route::get('laporan-keuangan-realisasi','FrontController@lapKeuanganRealisasi');
+Route::get('pengurus-desa','FrontController@pengurusDesa');
 Route::get('data-desa', 'MenuController@DataDesa');
 Route::get('tranparansi', 'MenuController@Tranparansi');
 
