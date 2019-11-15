@@ -14,8 +14,15 @@ class KomponenDanaController extends Controller
      */
     public function index()
     {
-        $data['KomponenDana'] = KomponenDana::all();
+        $data['KomponenDana'] = KomponenDana::where('keterangan','pendapatan')->get();
         return view('KomponenDana.index',$data);
+    }
+
+
+    function realisasi()
+    {
+        $data['KomponenDana'] = KomponenDana::where('keterangan','realisasi')->get();
+        return view('KomponenDana.realisasi',$data);
     }
 
     /**

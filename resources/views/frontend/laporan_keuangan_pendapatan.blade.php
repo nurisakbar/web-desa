@@ -1,5 +1,8 @@
-<h3>Laporan Realisasi Tahun 2019</h3>
-<table>
+@extends('template') 
+@section('content')
+<div class='col-md-8 mb20'>
+    <h1 class='text-title content-title mt0 mb20'><span>Laporan Pendapatan Tahun 2019</span></h1>
+    <table class="table table-bordered">
     <tr>
         <th>Kode</th>
         <th>Sumber Pendapatan</th>
@@ -13,3 +16,5 @@
     </tr>
     @endforeach
 </table>
+</div>
+@endsection()

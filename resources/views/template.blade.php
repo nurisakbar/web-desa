@@ -41,8 +41,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="https://negari.desa.id/index.php/first"><img src="https://negari.desa.id/desa/logo/negari_logo__sid__abw639r.png" class='hidden-xs'></a>
-                <a class='navbar-brand with-subbrand' href="https://negari.desa.id/index.php/first">
+                <a href="/"><img src="https://negari.desa.id/desa/logo/negari_logo__sid__abw639r.png" class='hidden-xs'></a>
+                <a class='navbar-brand with-subbrand' href="/">
                     <div>
                         <div class='title hidden-sm'><span class='hidden-xs web-title-desa'>Desa </span>{{ setting()->village_name }}</div>
                         <div class='sub-title hidden-xs hidden-sm'><span class='web-title-kabupaten'>KABUPATEN </span>{{ setting()->district_name}}, {{ setting()->province_name}}</div>
@@ -52,7 +52,7 @@
 
             <div id="navbar" class="navbar-collapse collapse">
                 <div class="navbar-form ">
-                    <form id='formSearch' method='get' action="https://negari.desa.id/index.php/first">
+                    <form id='formSearch' method='get' action="/">
                         <div class="form-group">
                             <div class="input-group">
                                 <input type='text' class='form-control' placeholder="Pencarian..." name='cari' value="">
@@ -65,30 +65,25 @@
                 </div>
 
                 <ul class="nav navbar-nav navbar-right">
+                    <li class='$item[status]'>{{ link_to('/','Home')}}</li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="https://negari.desa.id/index.php/first/artikel/32">Profil Desa <i class='fa fa-angle-down'></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://negari.desa.id/index.php/first/artikel/99">Sejarah Desa</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/artikel/98">Profil Wilayah Desa</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/artikel/7">Arti Lambang Desa</a></li>
+                            <li><a href="#">Sejarah Desa</a></li>
+                            <li><a href="#">Profil Wilayah Desa</a></li>
+                            <li><a href="#">Arti Lambang Desa</a></li>
                         </ul>
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="https://negari.desa.id/index.php/first/artikel/85">Pemerintahan Desa <i class='fa fa-angle-down'></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://negari.desa.id/index.php/first/artikel/93">Visi dan Misi</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/artikel/92">Pemerintah Desa</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/artikel/37">Badan Permusyawaratan Desa</a></li>
-                        </ul>
-                    </li>
-                    <li class='$item[status]'><a href="https://drive.google.com/open?id=1vG1Dh51GZd9bo0vlG4h2YrGFzE5R2FnX">PPID</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="https://negari.desa.id/index.php/first/">SIG <i class='fa fa-angle-down'></i></a>
+                      {{--  <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="https://negari.desa.id/index.php/first/">SIG <i class='fa fa-angle-down'></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="https://negari.desa.id/index.php/first/artikel/99">Lokasi Balai Banjar </a></li>
                             <li><a href="https://negari.desa.id/index.php/first/artikel/99">Lokasi Pura</a></li>
                             <li><a href="https://negari.desa.id/index.php/first/artikel/99">Lokasi Rumah Tangga Miskin</a></li>
                         </ul>
-                    </li>
-                    <li class='$item[status]'><a href="https://negari.desa.id/online/">Surat Online</a></li>
-                    <li class='$item[status]'><a href="https://negari.desa.id/index.php/first/kategori/24">Transparansi Keuangan</a></li>
+                    </li>  --}}
+                    
+                    <li class='$item[status]'>{{ link_to('pengurus-desa','Pengurus Desa')}}</li>
+                    <li class='$item[status]'>{{ link_to('laporan-keuangan-realisasi','Realisasi Keuangan')}}</li>
+                    <li class='$item[status]'>{{ link_to('laporan-keuangan-pendapatan','Pendapatan Keuangan')}}</li>
                     <li class='hidden-xs'><a href='javascript:void(0)' id='btnSearch' class=""><i class='fa fa-search'></i></a></li>
                 </ul>
 
@@ -257,162 +252,7 @@
     <div id='batanga'>
         <div class='container'>
             <div class='row mt20'>
-                <div class='col-md-8 mb20'>
-
-                    <h1 class='text-title content-title mt0 mb20'><span>Artikel Terkini</span></h1>
-
-                    <div class='list-view artikel-daftar'>
-                        <div class='btd-card btd-card-top mb20'>
-                            <h3 class='artikel-judul title mt0'><a href='https://negari.desa.id/index.php/first/artikel/107'>Kegiatan di Kantor Desa Negari (13 November 2019)</a></h3>
-                            <div class='artikel-waktu text-muted'>
-
-                                <span class='mr10'><i class='fa fa-user'></i>  ADMIN DESA NEGARI</span> <span><i class='fa fa-tag'></i> <a href='https://negari.desa.id/index.php/first/kategori/1'>Berita Desa</a></span>
-                            </div>
-                            <div class='clearfix mt20'>
-                                <div class='artikel-gambar-kecil'>
-                                    <div class='artikel-opensid-img'>
-                                        <img src='https://negari.desa.id/desa/upload/artikel/kecil_1573628097_72595457_497197657543417_5679668093714956288_n.jpg' alt='Kegiatan di Kantor Desa Negari (13 November 2019)' />
-                                    </div>
-                                </div>
-                                <div class='artikel-konten'>Rabu, (13/9) Kantor Desa Negari penuh dgn Kegiatan diantaranya : 1. Sosialisasi Desa Layak Anak dari Dinas Sosial P3A Kabupaten Klungkung. 2. Penyusunan Kajian Resiko Bencana Desa dari BPBD Kabupaten Klungkung 3. Penilaian Lomba Desa Terpadu tentang Kelinmasan oleh Sat. Pol PP dan DAMKAR Kabupaten Klungkung. 4. Verifikasi Kelompok SPP Sekar Gadung Banjar Sarimertha dari UPK Kecamatan Banjarangkan. 5. Kedatangan <a href='https://negari.desa.id/index.php/first/artikel/107'>..selengkapnya</a></div>
-                            </div>
-                        </div>
-
-                        <div class='clearfix mb20'></div>
-                        <div class='btd-card btd-card-top mb20'>
-                            <h3 class='artikel-judul title mt0'><a href='https://negari.desa.id/index.php/first/artikel/106'>APBDes Negari Tahun 2019</a></h3>
-                            <div class='artikel-waktu text-muted'>
-
-                                <span class='mr10'><i class='fa fa-user'></i>  ADMIN DESA NEGARI</span> <span><i class='fa fa-tag'></i> <a href='https://negari.desa.id/index.php/first/kategori/24'>Transparansi Keuangan</a></span>
-                            </div>
-                            <div class='clearfix mt20'>
-                                <div class='artikel-gambar-kecil'>
-                                    <div class='artikel-opensid-img'>
-                                        <img src='https://negari.desa.id/desa/upload/artikel/kecil_1572604506_APBDes+2019.jpg' alt='APBDes Negari Tahun 2019' />
-                                    </div>
-                                </div>
-                                <div class='artikel-konten'>Anggaran Pendapatan dan Belanja Desa Negari, Kecamatan Banjarangkan, Kabupaten Klungkung. <a href='https://negari.desa.id/index.php/first/artikel/106'>..selengkapnya</a></div>
-                            </div>
-                        </div>
-
-                        <div class='clearfix mb20'></div>
-                        <div class='btd-card btd-card-top mb20'>
-                            <h3 class='artikel-judul title mt0'><a href='https://negari.desa.id/index.php/first/artikel/105'>Pemberian Bantuan Kepada anak Yatim Piatu Desa Negari</a></h3>
-                            <div class='artikel-waktu text-muted'>
-
-                                <span class='mr10'><i class='fa fa-user'></i>  ADMIN DESA NEGARI</span> <span><i class='fa fa-tag'></i> <a href='https://negari.desa.id/index.php/first/kategori/1'>Berita Desa</a></span>
-                            </div>
-                            <div class='clearfix mt20'>
-                                <div class='artikel-gambar-kecil'>
-                                    <div class='artikel-opensid-img'>
-                                        <img src='https://negari.desa.id/desa/upload/artikel/kecil_1572600684_1a.jpg' alt='Pemberian Bantuan Kepada anak Yatim Piatu Desa Negari' />
-                                    </div>
-                                </div>
-                                <div class='artikel-konten'>Pemberian bantuan kepada anak yatim piatu Desa Negari berjalan dengan lancar (01 November 2019) bertempat di Ruang Rapat Tri Satya Mandala Kantor Desa Negari bantuan tersebut berupa sarana sekolah. diharapkan bantuan ini dapat bermanfaat bagi penerima. Bantuan tersebut diserahkan oleh BKAD Kecamatan "I Ketut Murtika", Sekretaris Desa "I Wayan Kesumalara" didampingi oleh Kasi Kesejahteraan "I Ketut Darta", Perangkat <a href='https://negari.desa.id/index.php/first/artikel/105'>..selengkapnya</a></div>
-                            </div>
-                        </div>
-
-                        <div class='clearfix mb20'></div>
-                        <div class='btd-card btd-card-top mb20'>
-                            <h3 class='artikel-judul title mt0'><a href='https://negari.desa.id/index.php/first/artikel/104'>BADAN USAHA MILIK DESA (BUMDES) TRI ARTA GUNA DESA NEGARI</a></h3>
-                            <div class='artikel-waktu text-muted'>
-
-                                <span class='mr10'><i class='fa fa-user'></i>  ADMIN DESA NEGARI</span>
-                            </div>
-                            <div class='clearfix mt20'>
-                                <div class='artikel-gambar-kecil'>
-                                    <div class='artikel-opensid-img'>
-                                        <img src='https://negari.desa.id/desa/upload/artikel/kecil_1572317107_bumdes_20170903_135819.jpg' alt='BADAN USAHA MILIK DESA (BUMDES) TRI ARTA GUNA DESA NEGARI' />
-                                    </div>
-                                </div>
-                                <div class='artikel-konten'>SUSUNAN KEPENGURUSAN&nbsp; BADAN USAHA MILIK DESA (BUM DESA) "TRI ARTA GUNA" SK PERBEKEL , NOMOR : 6 TAHUN 2017 &nbsp; PENANGGUNG JAWAB "PERBEKEL DESA NEGARI" BADAN PENGURUS : KETUA : I MADE SUARYANA SEKRETARIS : NI NENGAH SUMARTINI BENDAHARA : NI KETUT MENTIKAWATI ANGGOTA : I WAYAN SURADNYA, I WAYAN PASEK &nbsp; BADAN PENGAWAS DAN PEMERIKSA : KETUA : I GUSTI NGURAH BAGUS MAHENDRA ANGGOTA : I <a href='https://negari.desa.id/index.php/first/artikel/104'>..selengkapnya</a></div>
-                            </div>
-                        </div>
-
-                        <div class='clearfix mb20'></div>
-                        <div class='btd-card btd-card-top mb20'>
-                            <h3 class='artikel-judul title mt0'><a href='https://negari.desa.id/index.php/first/artikel/62'>LPM</a></h3>
-                            <div class='artikel-waktu text-muted'>
-
-                                <span class='mr10'><i class='fa fa-user'></i>  ADMIN DESA NEGARI</span>
-                            </div>
-                            <div class='clearfix mt20'>
-                                <div class='artikel-gambar-kecil'>
-                                    <div class='artikel-opensid-img'>
-                                        <img src='https://negari.desa.id/desa/upload/artikel/kecil_1572317547_lpm.png' alt='LPM' />
-                                    </div>
-                                </div>
-                                <div class='artikel-konten'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Lembaga Pemberdayaan Masyarakat (LPM) adalah salah satu lembaga kemasyaratan yang berada di desa. Lembaga Pemberdayaan Masyarakat mempunyai tugas menyusun rencana pembangunan secara partisipatif, menggerakkan swadaya gotong royong masyarakat, melaksanakan dan mengendalikan pembangunan. FUNGSI LPM penampungan dan penyaluran aspirasi masyarakat dalam pembangunan; penanaman <a href='https://negari.desa.id/index.php/first/artikel/62'>..selengkapnya</a></div>
-                            </div>
-                        </div>
-
-                        <div class='clearfix mb20'></div>
-                        <div class='btd-card btd-card-top mb20'>
-                            <h3 class='artikel-judul title mt0'><a href='https://negari.desa.id/index.php/first/artikel/64'>Karang Taruna</a></h3>
-                            <div class='artikel-waktu text-muted'>
-
-                                <span class='mr10'><i class='fa fa-user'></i>  ADMIN DESA NEGARI</span>
-                            </div>
-                            <div class='clearfix mt20'>
-                                <div class='artikel-gambar-kecil'>
-                                    <div class='artikel-opensid-img'>
-                                        <img src='https://negari.desa.id/desa/upload/artikel/kecil_1572317748_karang+taruna.jpg' alt='Karang Taruna' />
-                                    </div>
-                                </div>
-                                <div class='artikel-konten'>TUGAS &nbsp;KARANGTARUNA &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; menanggulangi berbagai masalah kesejahteraan sosial terutama yang dihadapi generasi muda, baik yang bersifat preventif, rehabilitatif, maupun pengembangan potensi generasi muda di lingkungannya FUNGSI KARANGTARUNA penyelenggara usaha kesejahteraan sosial; penyelenggara pendidikan dan pelatihan bagi masyarakat; penyelenggara <a href='https://negari.desa.id/index.php/first/artikel/64'>..selengkapnya</a></div>
-                            </div>
-                        </div>
-
-                        <div class='clearfix mb20'></div>
-                        <div class='btd-card btd-card-top mb20'>
-                            <h3 class='artikel-judul title mt0'><a href='https://negari.desa.id/index.php/first/artikel/99'>Sejarah Desa Negari</a></h3>
-                            <div class='artikel-waktu text-muted'>
-
-                                <span class='mr10'><i class='fa fa-user'></i>  ADMIN DESA NEGARI</span>
-                            </div>
-                            <div class='clearfix mt20'>
-                                <div class='artikel-gambar-kecil'>
-                                    <div class='artikel-opensid-img'>
-                                        <img src='https://negari.desa.id/desa/upload/artikel/kecil_1555905938_WhatsApp+Image+2019-04-21+at+9.04.38+PM.jpeg' alt='Sejarah Desa Negari' />
-                                    </div>
-                                </div>
-                                <div class='artikel-konten'>&nbsp;&nbsp;&nbsp;&nbsp; Berdasarkan sumber babad bendesa bahwa Desa Negari tergolong desa tua yang dibangun sesudah tahun caka 1541 (tahun 1619 Masehi) oleh sekelompok masyarakat yang berasal dari Sarimertha, Negari dan Tegal besar. &nbsp;&nbsp;&nbsp;&nbsp; Desa Negari berasal dari kata Negarin dan asal usul Desa Negari adalah mawang Singapadu/Gianyar sebagai utusan negari menjadi pacek/benteng wilayah Gianyar. <a href='https://negari.desa.id/index.php/first/artikel/99'>..selengkapnya</a></div>
-                            </div>
-                        </div>
-
-                        <div class='clearfix mb20'></div>
-                        <div class='btd-card btd-card-top mb20'>
-                            <h3 class='artikel-judul title mt0'><a href='https://negari.desa.id/index.php/first/artikel/103'>Penyerahan Bantuan Sembako untuk penyandang Disabilitas Desa Negari</a></h3>
-                            <div class='artikel-waktu text-muted'>
-
-                                <span class='mr10'><i class='fa fa-user'></i>  ADMIN DESA NEGARI</span> <span><i class='fa fa-tag'></i> <a href='https://negari.desa.id/index.php/first/kategori/1'>Berita Desa</a></span>
-                            </div>
-                            <div class='clearfix mt20'>
-                                <div class='artikel-gambar-kecil'>
-                                    <div class='artikel-opensid-img'>
-                                        <img src='https://negari.desa.id/desa/upload/artikel/kecil_1572069863_sudah+di+edit+2.jpg' alt='Penyerahan Bantuan Sembako untuk penyandang Disabilitas Desa Negari' />
-                                    </div>
-                                </div>
-                                <div class='artikel-konten'>Jumat, 25 Oktober 2019 betempat di Kantor Desa Negari, Penyerahan Bantuan Sembako untuk penyandang Disabilitas Desa Negari yang diserahkan langsung oleh Sekretaris Desa "I Wayan Kesumalara"&nbsp;. Pemberian bantuan sembako ini berupa beras, telor dan susu. <a href='https://negari.desa.id/index.php/first/artikel/103'>..selengkapnya</a></div>
-                            </div>
-                        </div>
-
-                        <div class='clearfix mb20'></div>
-                    </div>
-                    <!-- .list-view -->
-                    <div>
-                        <ul class='pagination'>
-                            <li><a href="https://negari.desa.id/index.php/first/index/1" title='Halaman Pertama'>&laquo;</a></li>
-                            <li class='active'><a href="https://negari.desa.id/index.php/first/index/1" title='Halaman 1'>1</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/index/2" title='Halaman 2'>2</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/index/3" title='Halaman 3'>3</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/index/4" title='Halaman 4'>4</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/index/5" title='Halaman 5'>5</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/index/2" title='Halaman Selanjutnya'>&rarr;</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/index/5" title='Halaman Terakhir'>&raquo;</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @yield('content')
                 <div class='col-md-4'>
 
                     <!-- Daftar Widget disebelah kanan -->
@@ -444,25 +284,6 @@
                                 <div class='mb20'></div>
                             </div>
                             <div class='clearfix visible-sm'></div>
-                            <div class='col-sm-6 col-md-12'>
-                                <!-- widget Layanan Mandiri -->
-                                <div class="box box-primary box-solid">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><i class="fa fa-user"></i> Layanan Mandiri</h3>
-                                        <br /> Silakan datang atau hubungi operator desa untuk mendapatkan kode PIN anda.
-                                    </div>
-                                    <div class="box-body">
-                                        <h4>Masukan NIK dan PIN</h4>
-                                        <form action="https://negari.desa.id/index.php/first/auth" method="post">
-                                            <input name="nik" type="text" placeholder="NIK" style="margin-left:0px" value="" required>
-                                            <input name="pin" type="password" placeholder="PIN" style="margin-left:0px" value="" required>
-                                            <button type="submit" id="but" style="margin-left:0px">Masuk</button>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div class='mb20'></div>
-                            </div>
                             <div class='col-sm-6 col-md-12'>
                                 <!-- widget Statistik -->
 
@@ -765,29 +586,13 @@
     </div>
 
     <div id="footer">
-        <div class='container'>
+        {{--  <div class='container'>
             <div class='row'>
                 <div class='col-md-6 col-xs-3 lang'>
                     <a href='#' class='btn btn-warning'><i class='fa fa-arrow-up'></i></a>
                 </div>
-                <div class='col-md-6 col-xs-9 text-right'>
-                    <div class='footer-copyleft'><a href="https://www.facebook.com/groups/opensid/" target='_new' title='Forum'>Komunitas</a> <a href="https://negari.desa.id/index.php/siteman" target='_new' title='Login'>OpenSID</a> <a href="https://sid.my.id/" target='_new' title='SID'>Klungkung</a> &copy; 2019</div>
-                    <div>Content by &reg; Desa Negari Kec. Banjarangkan, Kab. Klungkung
-                        <br />
-                    </div>
-                    <i class="fa fa-phone-square"></i>0366 25935 - <a href="mailto:info@negari.desa.id"><i class="fa fa-envelope"></i>info@negari.desa.id</a>
-                    <br />
-                    <a href="http://negari.desa.id"><i class="fa fa-globe"></i>http://negari.desa.id</a>
-                    <div>
-                        <a href="" target="_blank"><i class="fa fa-facebook-square fa-lg"></i></a>
-                        <a href="" target="_blank"><i class="fa fa-twitter-square fa-lg"></i></a>
-                        <a href="" target="_blank"><i class="fa fa-youtube-square fa-lg"></i></a>
-                        <a href="" target="_blank"><i class="fa fa-google-plus-square fa-lg"></i></a>
-                        <a href="" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
-                    </div>
-                </div>
             </div>
-        </div>
+        </div>  --}}
     </div>
 </body>
 

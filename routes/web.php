@@ -15,15 +15,14 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'MenuController@home');
-Route::get('detail-artikel/{id}', 'MenuController@DetailArtikel');
+Route::get('/', 'PageController@home');
+Route::get('artikel/{slug}', 'PageController@DetailArtikel');
+Route::get('laporan-keuangan-pendapatan','FrontController@lapKeuanganPendapatan');
+Route::get('laporan-keuangan-realisasi','FrontController@lapKeuanganRealisasi');
+Route::get('pengurus-desa','FrontController@pengurusDesa');
 
 Auth::routes();
 Route::Resource('user','UserController');
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::group(['prefix' => 'admin'], function () {
     Route::Resource('artikel','ArtikelController');
     Route::Resource('penduduk','PendudukController');
@@ -32,23 +31,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('dusun','DusunController');
     Route::resource('pendapatan','PendapatanController');
     Route::resource('realisasi','RealisasiController');
+    Route::get('komponendana/realisasi','KomponenDanaController@realisasi');
     Route::resource('komponendana','KomponenDanaController');
     Route::get('setting','HomeController@setting');
     Route::post('setting','HomeController@savesetting');
 });
-
-Route::get('laporan-keuangan-pendapatan','FrontController@lapKeuanganPendapatan');
-Route::get('laporan-keuangan-realisasi','FrontController@lapKeuanganRealisasi');
-Route::get('pengurus-desa','FrontController@pengurusDesa');
-Route::get('data-desa', 'MenuController@DataDesa');
-Route::get('tranparansi', 'MenuController@Tranparansi');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('x',function()
-{
-    dd(setting());
-});

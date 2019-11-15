@@ -12,7 +12,7 @@ class FrontController extends Controller
                             ->leftJoin('komponen_dana','komponen_dana.id','pendapatan.komponen_dana_id')
                             ->orderBy('komponen_dana.kode_komponen','ASC')
                             ->get();
-        return view('laporan_keuangan_pendapatan',$data);
+        return view('frontend.laporan_keuangan_pendapatan',$data);
     }
 
     function lapKeuanganRealisasi()
@@ -21,13 +21,13 @@ class FrontController extends Controller
                             ->leftJoin('komponen_dana','komponen_dana.id','realisasi.komponen_dana_id')
                             ->orderBy('komponen_dana.kode_komponen','ASC')
                             ->get();
-        return view('laporan_keuangan_realisasi',$data);
+        return view('frontend.laporan_keuangan_realisasi',$data);
     }
 
 
     function pengurusDesa()
     {
         $data['penjabat'] = \DB::table('penjabat_desa')->leftJoin('penduduk','penduduk.nik','penjabat_desa.nik')->get();
-        return view('pengurus_desa',$data);
+        return view('frontend.pengurus_desa',$data);
     }
 }

@@ -69,18 +69,26 @@
                               <a class="dropdown-item" href="/admin/realisasi">Laporan Realisasi</a>
                             </div>
                           </li>
+
+                          <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user"></i> Kependudukan
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="/admin/kartukeluarga">Kartu Keluarga</a>
+                                  <a class="dropdown-item" href="/admin/penduduk">Penduduk</a>
+                                </div>
+                              </li>
                         {{--  <li class="nav-item">
                             <a class="nav-link" href="/admin/dusun"><i class="fas fa-user"></i> Dusun</a>
                         </li>  --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/kartukeluarga"><i class="fas fa-user"></i> Kartu Keluarga</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="/admin/penjabatdesa"><i class="fas fa-user"></i> Penjabat Desa</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link" href="/admin/penduduk"><i class="fas fa-user"></i> Penduduk</a>
+                                <a class="nav-link" href="/" target="new"><i class="fas fa-eye"></i> Lihat Web</a>
                             </li>
+    
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Welcome : <b>{{ Auth::user()->name }} </b><span class="caret"></span>
