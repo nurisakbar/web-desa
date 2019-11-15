@@ -46,3 +46,9 @@ Route::get('tranparansi', 'MenuController@Tranparansi');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('x',function()
+{
+    dd(setting());
+});

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
     <meta content="utf-8" http-equiv="encoding">
@@ -11,20 +10,20 @@
     <meta name='theme:version' content='1.1.1' />
     <meta name='theme:url' content='http://github.com/batudaa/batudaa-theme' />
     <meta name='keywords' content="sid, sistem informasi desa, web, blog, informasi, website, batudaa, desa, kecamatan, kabupaten, indonesia, kampung, Negari, Banjarangkan, Klungkung" />
-    <meta property="og:site_name" content="Desa Negari" />
+    <meta property="og:site_name" content="{{ setting()->village_name }}" />
     <meta property="og:type" content="article" />
-    <title>Desa Negari</title>
-    <meta name='description' content="Website Resmi Desa Negari" />
-    <meta property="og:title" content="Desa Negari" />
-    <meta property='og:description' content="Website Resmi Desa Negari" />
+    <title>Website Resmi Desa {{ setting()->village_name }}</title>
+    <meta name='description' content="Website Resmi Desa {{ setting()->village_name }}" />
+    <meta property="og:title" content="{{ setting()->village_name }}" />
+    <meta property='og:description' content="Website Resmi Desa {{ setting()->village_name }}" />
     <meta property='og:url' content="https://negari.desa.id/index.php/first" />
     <link rel="shortcut icon" href="https://negari.desa.id/favicon.ico" />
     <link type='text/css' href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel='stylesheet' />
     <link type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel='stylesheet' />
     <link type='text/css' href='{{ asset('batudaa/vendor/fancybox/jquery.fancybox.css')}}' rel='stylesheet' />
     <link type='text/css' href='{{ asset('batudaa/assets/css/batudaa.css')}}' rel='stylesheet' />
-    <script language='javascript' src="https://negari.desa.id/assets/js/jquery.min.js"></script>
-    <script language='javascript' src="https://negari.desa.id/assets/bootstrap/js/bootstrap.js"></script>
+    <script language='javascript' src="{{ asset('js/app.js')}}"></script>
+    <script language='javascript' src="{{ asset('/bootstrap/js/bootstrap.js')}}"></script>
     <script language='javascript' src='{{ asset('batudaa/vendor/fancybox/jquery.fancybox.js')}}'></script>
     <script language='javascript' src="https://negari.desa.id/assets/js/jquery.cycle2.min.js"></script>
     <script language='javascript' src="https://negari.desa.id/assets/js/jquery.cycle2.carousel.js"></script>
@@ -45,8 +44,8 @@
                 <a href="https://negari.desa.id/index.php/first"><img src="https://negari.desa.id/desa/logo/negari_logo__sid__abw639r.png" class='hidden-xs'></a>
                 <a class='navbar-brand with-subbrand' href="https://negari.desa.id/index.php/first">
                     <div>
-                        <div class='title hidden-sm'><span class='hidden-xs web-title-desa'>Desa </span>Negari</div>
-                        <div class='sub-title hidden-xs hidden-sm'><span class='web-title-kabupaten'>Kabupaten </span>Klungkung</div>
+                        <div class='title hidden-sm'><span class='hidden-xs web-title-desa'>Desa </span>{{ setting()->village_name }}</div>
+                        <div class='sub-title hidden-xs hidden-sm'><span class='web-title-kabupaten'>KABUPATEN </span>{{ setting()->district_name}}, {{ setting()->province_name}}</div>
                     </div>
                 </a>
             </div>
@@ -78,18 +77,6 @@
                             <li><a href="https://negari.desa.id/index.php/first/artikel/93">Visi dan Misi</a></li>
                             <li><a href="https://negari.desa.id/index.php/first/artikel/92">Pemerintah Desa</a></li>
                             <li><a href="https://negari.desa.id/index.php/first/artikel/37">Badan Permusyawaratan Desa</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="https://negari.desa.id/index.php/first/artikel/97">Data Desa <i class='fa fa-angle-down'></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="https://negari.desa.id/index.php/first/wilayah">Data Wilayah Administratif</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/statistik/0">Data Pendidikan dalam KK</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/statistik/14">Data Pendidikan Ditempuh</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/statistik/1">Data Pekerjaan</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/statistik/4">Data Jenis Kelamin</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/statistik/7">Data Golongan Darah</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/statistik/13">Data Kelompok Umur</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/statistik/2">Data Perkawinan</a></li>
                         </ul>
                     </li>
                     <li class='$item[status]'><a href="https://drive.google.com/open?id=1vG1Dh51GZd9bo0vlG4h2YrGFzE5R2FnX">PPID</a></li>
