@@ -166,6 +166,7 @@ return [
         Codedge\Fpdf\FpdfServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
         /*
          * Package Service Providers...

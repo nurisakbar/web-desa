@@ -72,18 +72,20 @@
                             <li><a href="#">Profil Wilayah Desa</a></li>
                             <li><a href="#">Arti Lambang Desa</a></li>
                         </ul>
-                      {{--  <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="https://negari.desa.id/index.php/first/">SIG <i class='fa fa-angle-down'></i></a>
+                       <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Infografi <i class='fa fa-angle-down'></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://negari.desa.id/index.php/first/artikel/99">Lokasi Balai Banjar </a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/artikel/99">Lokasi Pura</a></li>
-                            <li><a href="https://negari.desa.id/index.php/first/artikel/99">Lokasi Rumah Tangga Miskin</a></li>
+                            <li>{{ link_to('data-pendidikan-dalam-kk','Data Pendidikan Dalam KK')}}</li>
+                            <li>{{ link_to('data-pekerjaan-dalam-kk','Data Pekerjaan Dalam KK')}}</li>
+                            <li>{{ link_to('data-jk-dalam-kk','Data Jenis Kelamin Dalam KK')}}</li>
+                            <li>{{ link_to('data-umur-dalam-kk','Data Kelompok Umur Dalam KK')}}</li>
+                            <li>{{ link_to('data-perkawinan-dalam-kk','Data Perkawinan Dalam KK')}}</li>
                         </ul>
-                    </li>  --}}
+                    </li> 
                     
                     <li class='$item[status]'>{{ link_to('pengurus-desa','Pengurus Desa')}}</li>
+                    <li class='$item[status]'>{{ link_to('laporan-keuangan-pendapatan','Pendapatan')}}</li>
                     <li class='$item[status]'>{{ link_to('laporan-keuangan-realisasi','Realisasi Keuangan')}}</li>
-                    <li class='$item[status]'>{{ link_to('laporan-keuangan-pendapatan','Pendapatan Keuangan')}}</li>
                     <li class='hidden-xs'><a href='javascript:void(0)' id='btnSearch' class=""><i class='fa fa-search'></i></a></li>
                 </ul>
 
@@ -259,7 +261,7 @@
 
                     <div class='btd-right-menu'>
                         <div class='row'>
-                            <div class='col-sm-6 col-md-12'>
+                            {{--  <div class='col-sm-6 col-md-12'>
                                 <div class='list-frame'>
                                     <div class='list-view'>
                                         <h1 class='title'><span>Pengaduan Online</span></h1>
@@ -271,11 +273,11 @@
                                     </div>
                                 </div>
                                 <div class='mb20'></div>
-                            </div>
+                            </div>  --}}
                             <div class='col-sm-6 col-md-12'>
                                 <div class='list-frame'>
                                     <div class='list-view'>
-                                        <h1 class='title'><span>Peta Desa</span></h1>
+                                        <h1 class='title'><span>Peta Gampong</span></h1>
                                         <div>
                                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15781.33166144278!2d115.36686522718249!3d-8.563951401508003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd21407275927c7:0x5030bfbca832130!2sNegari,+Banjarangkan,+Klungkung+Regency,+Bali!5e0!3m2!1sen!2sid!4v1546483850806" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
                                         </div>
@@ -284,7 +286,7 @@
                                 <div class='mb20'></div>
                             </div>
                             <div class='clearfix visible-sm'></div>
-                            <div class='col-sm-6 col-md-12'>
+                            {{--  <div class='col-sm-6 col-md-12'>
                                 <!-- widget Statistik -->
 
                                 <div class="box box-info box-solid">
@@ -344,62 +346,8 @@
                                 </div>
 
                                 <div class='mb20'></div>
-                            </div>
-                            <div class='clearfix visible-sm'></div>
-                            <div class='col-sm-6 col-md-12'>
-                                <!-- widget Sinergi Program-->
-
-                                <style>
-                                    #sinergi_program {
-                                        text-align: center;
-                                    }
-                                    
-                                    #sinergi_program table {
-                                        margin: auto;
-                                    }
-                                    
-                                    #sinergi_program img {
-                                        max-width: 100%;
-                                        max-height: 100%;
-                                        transition: all 0.5s;
-                                        -o-transition: all 0.5s;
-                                        -moz-transition: all 0.5s;
-                                        -webkit-transition: all 0.5s;
-                                    }
-                                    
-                                    #sinergi_program img:hover {
-                                        transition: all 0.3s;
-                                        -o-transition: all 0.3s;
-                                        -moz-transition: all 0.3s;
-                                        -webkit-transition: all 0.3s;
-                                        transform: scale(1.5);
-                                        -moz-transform: scale(1.5);
-                                        -o-transform: scale(1.5);
-                                        -webkit-transform: scale(1.5);
-                                        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-                                    }
-                                </style>
-                                <div class="box box-warning box-solid">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><i class="fa fa-external-link"></i> Sinergi Program</h3>
-                                    </div>
-                                    <div id="sinergi_program" class="box-body">
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <span style="display: inline-block; width: 48%">
-                <a href="http://prodeskel.binapemdes.kemendagri.go.id/mpublik/" target="_blank"><img src="https://negari.desa.id/desa/upload/widget/1539351074_prodeskel.JPG" alt="Prodeskel" /></a>
-              </span>
-                                                    <span style="display: inline-block; width: 48%">
-                <a href="https://sse3.pajak.go.id/" target="_blank"><img src="https://negari.desa.id/desa/upload/widget/1539351074_sse.jpg" alt="Pajak Online" /></a>
-              </span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class='mb20'></div>
-                            </div>
+                            </div>  --}}
+        
                             <div class='col-sm-6 col-md-12'>
                                 <link type='text/css' href="https://negari.desa.id/assets/css/slider.css" rel='Stylesheet' />
                                 <script type="text/javascript">
@@ -426,27 +374,20 @@
                                 <!-- widget Aparatur Desa -->
                                 <div class="box box-warning box-solid">
                                     <div class="box-header">
-                                        <h3 class="box-title"><i class="fa fa-user"></i> Aparatur Desa</h3>
+                                        <h3 class="box-title"><i class="fa fa-user"></i> Perangkat Gampong</h3>
                                     </div>
                                     <div class="box-body">
 
                                         <div id="aparatur_desa">
                                             <span class="cycle-pager"></span>
                                             <!-- Untuk membuat tanda bulat atau link pada slider -->
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/NvmRsO_WhatsApp+Image+2019-04-08+at+6.31.03+PM.jpeg" alt="Perbekel Desa">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/pIQFaY_WhatsApp+Image+2019-10-22+at+14.38.58.jpg" alt="Sekretaris Desa">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/LqQA94_astin.jpg" alt="Kaur Tata Usaha dan Umum">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/NFRgnj_landri.jpg" alt="Kasi Pemerintahan">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/Uvc5ns_gst+ngr+nurada.jpg" alt="Kaur Keuangan">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/zk6Ki8_masning.jpg" alt="Kaur Perencanaan">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/iTjNME_darta.jpg" alt="Kasi Kesejahteraan">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/pHBiOj_nirmala.jpg" alt="Kasi Pelayanan">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/Dqf3U7_buk+mentik.jpg" alt="Kelihan Banjar Dinas Tegal Besar">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/A0YIic_suradnya.jpg" alt="Kelihan Banjar Dinas Negari">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/mokCR6_pasek.jpg" alt="Kelihan Banjar Dinas Sarimertha">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/qr8UCD_IMG20190225231656.jpg" alt="Staf Perangkat Desa">
-                                            <img src="https://negari.desa.id/desa/upload/user_pict/meJwEK_received_278624969636036.jpg" alt="Staf Perangkat Desa">
-                                        </div>
+                                            <?php
+                                             $perangkat = \DB::table('penjabat_desa')->get();
+                                             foreach($perangkat as $p)
+                                             {
+                                                 echo " <img src='https://negari.desa.id/desa/upload/user_pict/NvmRsO_WhatsApp+Image+2019-04-08+at+6.31.03+PM.jpeg' alt='Perbekel Desa'>";
+                                             }
+                                            ?>                                        </div>
                                     </div>
                                 </div>
                                 <div class='mb20'></div>

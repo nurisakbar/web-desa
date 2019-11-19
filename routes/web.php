@@ -20,7 +20,12 @@ Route::get('artikel/{slug}', 'PageController@DetailArtikel');
 Route::get('laporan-keuangan-pendapatan','FrontController@lapKeuanganPendapatan');
 Route::get('laporan-keuangan-realisasi','FrontController@lapKeuanganRealisasi');
 Route::get('pengurus-desa','FrontController@pengurusDesa');
-
+Route::post('ubah-periode-laporan-keuangan','FrontController@ubahPeriodeLaporanKeuangan');
+Route::get('data-pendidikan-dalam-kk','FrontController@pendidikanDalamKK');
+Route::get('data-pekerjaan-dalam-kk','FrontController@pekerjaanDalamKK');
+Route::get('data-jk-dalam-kk','FrontController@jkDalamKK');
+Route::get('data-umur-dalam-kk','FrontController@umurDalamKK');
+Route::get('data-perkawinan-dalam-kk','FrontController@perkawinanDalamKK');
 Auth::routes();
 Route::Resource('user','UserController');
 Route::group(['prefix' => 'admin'], function () {

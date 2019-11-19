@@ -25,7 +25,9 @@ class PendapatanController extends Controller
      */
     public function create()
     {
-        $data['komponenDana'] = \App\Models\KomponenDana::all();
+        $data['komponenDana'] = \App\Models\KomponenDana::where('keterangan','pendapatan')
+                                ->whereRaw('length(kode_komponen)>4')
+                                ->get();
         return view('pendapatan.create',$data);
     }
 

@@ -1,7 +1,25 @@
 @extends('template') 
 @section('content')
 <div class='col-md-8 mb20'>
-    <h1 class='text-title content-title mt0 mb20'><span>Laporan Pendapatan Tahun 2019</span></h1>
+
+
+    <h1 class='text-title content-title mt0 mb20'><span>Laporan Pendapatan Tahun {{ $tahun_sekarang }}</span></h1>
+    {{ Form::open(['url'=>'ubah-periode-laporan-keuangan'])}}
+    {{ Form::hidden('url','laporan-keuangan-pendapatan')}}
+    <table class="table table-bordered">
+        <tr>
+            <td>Pilih Tahun</td>
+            <td>
+                <select class="form-control" name="tahun">
+                    @foreach($tahun as $t)
+                        <option value="{!!$t->tahun!!}">{!! $t->tahun!!}</option>
+                    @endforeach
+                </select>
+            </td>
+            <td>{{ Form::submit('Tampilkan',['class'=>'btn btn-info'])}}</td>
+        </tr>
+    </table>
+    {{ Form::close()}}
     <table class="table table-bordered">
     <tr>
         <th>Kode</th>

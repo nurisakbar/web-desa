@@ -25,7 +25,9 @@ class RealisasiController extends Controller
      */
     public function create()
     {
-        $data['komponenDana'] = \App\Models\KomponenDana::all();
+        $data['komponenDana'] = \App\Models\KomponenDana::where('keterangan','realisasi')
+                                ->whereRaw('length(kode_komponen)>4')
+                                ->get();
         return view('realisasi.create',$data);
     }
 
