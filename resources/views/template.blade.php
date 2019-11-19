@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/"><img src="https://negari.desa.id/desa/logo/negari_logo__sid__abw639r.png" class='hidden-xs'></a>
+                <a href="/"><img src="{{ asset('logo.jpeg')}}" class='hidden-xs'></a>
                 <a class='navbar-brand with-subbrand' href="/">
                     <div>
                         <div class='title hidden-sm'><span class='hidden-xs web-title-desa'>Desa </span>{{ setting()->village_name }}</div>
@@ -66,14 +66,16 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class='$item[status]'>{{ link_to('/','Home')}}</li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="https://negari.desa.id/index.php/first/artikel/32">Profil Desa <i class='fa fa-angle-down'></i></a>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profil Gampong <i class='fa fa-angle-down'></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Sejarah Desa</a></li>
                             <li><a href="#">Profil Wilayah Desa</a></li>
                             <li><a href="#">Arti Lambang Desa</a></li>
                         </ul>
+                    </li>
+                        <li class='$item[status]'>{{ link_to('pengurus-desa','Lembaga Gampong')}}</li>
                        <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Infografi <i class='fa fa-angle-down'></i></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Data Penduduk<i class='fa fa-angle-down'></i></a>
                         <ul class="dropdown-menu">
                             <li>{{ link_to('data-pendidikan-dalam-kk','Data Pendidikan Dalam KK')}}</li>
                             <li>{{ link_to('data-pekerjaan-dalam-kk','Data Pekerjaan Dalam KK')}}</li>
@@ -83,9 +85,13 @@
                         </ul>
                     </li> 
                     
-                    <li class='$item[status]'>{{ link_to('pengurus-desa','Pengurus Desa')}}</li>
-                    <li class='$item[status]'>{{ link_to('laporan-keuangan-pendapatan','Pendapatan')}}</li>
-                    <li class='$item[status]'>{{ link_to('laporan-keuangan-realisasi','Realisasi Keuangan')}}</li>
+                    
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Transparansi Keuangan <i class='fa fa-angle-down'></i></a>
+                        <ul class="dropdown-menu">
+                            <li>{{ link_to('laporan-keuangan-pendapatan','Pendapatan')}}</li>
+                            <li>{{ link_to('laporan-keuangan-realisasi','Realisasi Penggunaan')}}</li>
+                        </ul>
+                    </li>
                     <li class='hidden-xs'><a href='javascript:void(0)' id='btnSearch' class=""><i class='fa fa-search'></i></a></li>
                 </ul>
 
@@ -116,96 +122,36 @@
                     </ol>
                     <div class='carousel-inner'>
 
+                        <?php
+                        $artikel = \DB::table('artikel')->take(1)->get();
+                        ?>
+                        @foreach($artikel as $ar)
                         <div class='item active'>
-                            <img src="https://negari.desa.id/desa/upload/artikel/sedang_1573628097_72595457_497197657543417_5679668093714956288_n.jpg" />
+                            <img src="{{ asset('img_artikel/'.$ar->gambar)}}" />
                             <div class='luncuran-caption'>
                                 <div class='luncuran-body'>
-                                    <h2>Kegiatan di Kantor Desa Negari (13 November 2019)</h2>
-                                    <div class='hidden-xs'><a href='https://negari.desa.id/index.php/first/artikel/107' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
+                                    <h2>{{ $ar->judul}}</h2>
+                                    <div class='hidden-xs'><a href='/artikel/{{ $ar->slug }}' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+
+                        <?php
+                        $artikel = \DB::table('artikel')->take(9)->offset(1)->get();
+                        ?>
+                        @foreach($artikel as $ar)
                         <div class='item '>
-                            <img src="https://negari.desa.id/desa/upload/artikel/sedang_1572604506_APBDes+2019.jpg" />
+                            <img src="{{ asset('img_artikel/'.$ar->gambar)}}" />
                             <div class='luncuran-caption'>
                                 <div class='luncuran-body'>
-                                    <h2>APBDes Negari Tahun 2019</h2>
-                                    <div class='hidden-xs'><a href='https://negari.desa.id/index.php/first/artikel/106' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
+                                    <h2>{{ $ar->judul}}</h2>
+                                    <div class='hidden-xs'><a href='/artikel/{{ $ar->slug }}' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
                                 </div>
                             </div>
                         </div>
-                        <div class='item '>
-                            <img src="https://negari.desa.id/desa/upload/artikel/sedang_1572600684_1a.jpg" />
-                            <div class='luncuran-caption'>
-                                <div class='luncuran-body'>
-                                    <h2>Pemberian Bantuan Kepada anak Yatim Piatu Desa Negari</h2>
-                                    <div class='hidden-xs'><a href='https://negari.desa.id/index.php/first/artikel/105' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='item '>
-                            <img src="https://negari.desa.id/desa/upload/artikel/sedang_1572317107_bumdes_20170903_135819.jpg" />
-                            <div class='luncuran-caption'>
-                                <div class='luncuran-body'>
-                                    <h2>BADAN USAHA MILIK DESA (BUMDES) TRI ARTA GUNA DESA NEGARI</h2>
-                                    <div class='hidden-xs'><a href='https://negari.desa.id/index.php/first/artikel/104' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='item '>
-                            <img src="https://negari.desa.id/desa/upload/artikel/sedang_1572317547_lpm.png" />
-                            <div class='luncuran-caption'>
-                                <div class='luncuran-body'>
-                                    <h2>LPM</h2>
-                                    <div class='hidden-xs'><a href='https://negari.desa.id/index.php/first/artikel/62' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='item '>
-                            <img src="https://negari.desa.id/desa/upload/artikel/sedang_1572317748_karang+taruna.jpg" />
-                            <div class='luncuran-caption'>
-                                <div class='luncuran-body'>
-                                    <h2>Karang Taruna</h2>
-                                    <div class='hidden-xs'><a href='https://negari.desa.id/index.php/first/artikel/64' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='item '>
-                            <img src="https://negari.desa.id/desa/upload/artikel/sedang_1555905938_WhatsApp+Image+2019-04-21+at+9.04.38+PM.jpeg" />
-                            <div class='luncuran-caption'>
-                                <div class='luncuran-body'>
-                                    <h2>Sejarah Desa Negari</h2>
-                                    <div class='hidden-xs'><a href='https://negari.desa.id/index.php/first/artikel/99' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='item '>
-                            <img src="https://negari.desa.id/desa/upload/artikel/sedang_1572069863_sudah+di+edit+2.jpg" />
-                            <div class='luncuran-caption'>
-                                <div class='luncuran-body'>
-                                    <h2>Penyerahan Bantuan Sembako untuk penyandang Disabilitas Desa Negari</h2>
-                                    <div class='hidden-xs'><a href='https://negari.desa.id/index.php/first/artikel/103' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='item '>
-                            <img src="https://negari.desa.id/desa/upload/artikel/sedang_1569459942_WhatsApp+Image+2019-09-25+at+14.00.55.jpeg" />
-                            <div class='luncuran-caption'>
-                                <div class='luncuran-body'>
-                                    <h2>MUSRENBANGDES NEGARI</h2>
-                                    <div class='hidden-xs'><a href='https://negari.desa.id/index.php/first/artikel/102' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='item '>
-                            <img src="https://negari.desa.id/desa/upload/artikel/sedang_1567399882_69297682_452096992053484_8771161802206609408_o.jpg" />
-                            <div class='luncuran-caption'>
-                                <div class='luncuran-body'>
-                                    <h2>Kantor Desa Negari</h2>
-                                    <div class='hidden-xs'><a href='https://negari.desa.id/index.php/first/artikel/101' class='btn btn-success btn-lg'><i class='fa fa-newspaper-o'></i> Baca Artikel</a></div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+                        
                     </div>
 
                     <!-- Controls -->
