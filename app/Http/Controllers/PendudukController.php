@@ -69,8 +69,15 @@ class PendudukController extends Controller
         ],$message);
 
         $input = $request->all();
+        $foto         = $request->file('foto');
+        $file_gambar    = $foto->getClientOriginalName();
         $input['village_id'] = '3204191001';
         $input['no_kk'] = trim(explode('|',$request->no_kk)[0]);
+
+        $destinationPath = 'foto_penduduk';
+        $foto->move($destinationPath,$file_gambar);
+
+        $input['foto']    = $file_gambar;
 
         // validasi apakah nomor kk ada di tabel kartu keluarga atau tidak
         if(\DB::table('kartu_keluarga')->where('nomor_kk',$input['no_kk'])->first()==null)
@@ -127,8 +134,8 @@ class PendudukController extends Controller
         ];
 
         $request->validate([
-            'nik'                   => 'required',
-             'no_kk'                => 'required',
+            // 'nik'                   => 'required',
+            //  'no_kk'                => 'required',
              'nama'                 => 'required',
              'nama_ayah'            => 'required',
              'nama_ibu'             => 'required',
@@ -144,6 +151,15 @@ class PendudukController extends Controller
         ],$message);
 
         $input = $request->all();
+
+       if ($request->hasFile('foto')) {
+            $foto         = $request->file('foto');
+            $file_gambar    = $foto->getClientOriginalName();
+            $destinationPath = 'foto_penduduk';
+            $foto->move($destinationPath,$file_gambar);
+            $input['foto']    = $file_gambar;
+        }
+
         $input['village_id'] = '3204191001';
         $penduduk = Penduduk::where('nik',$id)->first();
         $penduduk->update($input);

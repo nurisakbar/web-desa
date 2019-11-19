@@ -34,6 +34,10 @@ $kk       = isset($penduduk)?"value=".$penduduk->no_kk." disabled":'';
         <td>{{ Form::text('nama',null,['placeholder'=>'Nama Lengkap','class'=>'form-control'])}}</td>
     </tr>
     <tr>
+        <td>Foto</td>
+        <td>{{ Form::file('foto',null,['class'=>'form-control'])}}</td>
+    </tr>
+    <tr>
         <td>Jenis Kelamin</td>
         <td>
             <input type="radio" name="jenis_kelamin" value="laki-laki" checked> Laki Laki
