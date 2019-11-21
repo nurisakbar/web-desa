@@ -1,7 +1,14 @@
 <table class="table table-bordered">
     <tr>
         <td>NIK</td>
-        <td> {{ Form::text('nik',null,['class'=>'form-control','pleceholder'=>'NIK'])}}</td>
+        <td> 
+                <input list="penduduk" name="nik" placeholder="Masukan Nama Penduduk" class="form-control">
+                <datalist id="penduduk">
+                    @foreach($penduduk as $p)
+                        <option value="{{ $p->nik}} | {{ $p->nama}}">
+                    @endforeach
+                </datalist>
+        </td>
     </tr>
     <tr>
         <td>jabatan</td>

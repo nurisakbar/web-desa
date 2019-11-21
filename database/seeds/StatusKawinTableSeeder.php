@@ -12,10 +12,10 @@ class StatusKawinTableSeeder extends Seeder
     public function run()
     {
         $data_agama = [
-            ['status_kawin'=>'Kawin'],
             ['status_kawin'=>'Belum Kawin'],
-            ['status_kawin'=>'Duda'],
-            ['status_kawin'=>'Janda']
+            ['status_kawin'=>'Kawin'],
+            ['status_kawin'=>'CERAI HIDUP'],
+            ['status_kawin'=>'CERAI MATI']
         ];
         \App\Models\StatusKawin::query()->truncate();
         \App\Models\StatusKawin::insert($data_agama);

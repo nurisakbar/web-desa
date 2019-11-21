@@ -120,7 +120,7 @@
                         <li data-target='#luncuran' data-slide-to="8"></li>
                         <li data-target='#luncuran' data-slide-to="9"></li>
                     </ol>
-                    <div class='carousel-inner'>
+                    <div class='carousel-inner' style="height:300px">
 
                         <?php
                         $artikel = \DB::table('artikel')->take(1)->get();
@@ -328,10 +328,11 @@
                                             <span class="cycle-pager"></span>
                                             <!-- Untuk membuat tanda bulat atau link pada slider -->
                                             <?php
-                                             $perangkat = \DB::table('penjabat_desa')->get();
+                                             $perangkat = \DB::table('penjabat_desa')->leftJoin('penduduk','penduduk.nik','penjabat_desa.nik')->get();
                                              foreach($perangkat as $p)
                                              {
-                                                 echo " <img src='https://negari.desa.id/desa/upload/user_pict/NvmRsO_WhatsApp+Image+2019-04-08+at+6.31.03+PM.jpeg' alt='Perbekel Desa'>";
+
+                                                 echo " <img src=".asset('foto_penduduk/'.$p->foto)." alt='Perbekel Desa'>";
                                              }
                                             ?>                                        </div>
                                     </div>

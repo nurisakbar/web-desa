@@ -12,10 +12,16 @@ class PekerjaanTableSeeder extends Seeder
     public function run()
     {
         $data_agama = [
-            ['pekerjaan'=>'Dosen'],
-            ['pekerjaan'=>'Buruh Bangunan'],
-            ['pekerjan'=>'Polisi'],
-            ['pekerjaan'=>'Kuli']
+            ['pekerjaan'=>'BELUM/TIDAK BEKERJA'],
+            ['pekerjaan'=>'MENGURUS RUMAH TANGGA'],
+            ['pekerjan'=>'PELAJAR/MAHASISWA'],
+            ['pekerjaan'=>'PENSIUNAN'],
+            ['pekerjaan'=>'PEGAWAI NEGERI SIPIL (PNS)'],
+            ['pekerjaan'=>'TENTARA NASIONAL INDONESIA (TNI)'],
+            ['pekerjan'=>'KEPOLISIAN RI (POLRI)'],
+            ['pekerjaan'=>'PERDAGANGAN'],
+            ['pekerjan'=>'PETANI/PEKEBUN'],
+            ['pekerjaan'=>'PETERNAK']
         ];
         \App\Models\Pekerjaan::query()->truncate();
         \App\Models\Pekerjaan::insert($data_agama);

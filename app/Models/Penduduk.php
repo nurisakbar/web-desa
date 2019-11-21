@@ -8,6 +8,12 @@ class Penduduk extends Model
 {
     protected $table='penduduk';
 
+    public function getFotoAttribute($value)
+    {
+        return $value==null?'http://images.clipartpanda.com/male-black-hair-clipart-male_user_icon_clip_art.jpg':$value;
+
+    }
+
     // public function getTanggalLahirAttribute($value)
     // {
     //     return date_format(date_create($value),"m-d-Y");

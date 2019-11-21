@@ -53,7 +53,7 @@ class ArtikelController extends Controller
         $destinationPath = 'img_artikel';
         $gambar->move($destinationPath,$file_gambar);
 
-        $input['slug']      = Str::slug($request->title, '-');
+        $input['slug']      = Str::slug($request->judul, '-');
         $input['gambar']    = $file_gambar;
 
         Artikel::create($input);
@@ -111,7 +111,7 @@ class ArtikelController extends Controller
             $input['gambar']    = $file_gambar;
         }
         
-        $input['slug']      = Str::slug($request->title, '-');
+        $input['slug']      = Str::slug($request->judul, '-');
         $artikel            = Artikel::find($id);
         $artikel->update($input);
 

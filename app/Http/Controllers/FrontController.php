@@ -8,6 +8,7 @@ class FrontController extends Controller
 {
     function lapKeuanganPendapatan()
     {
+        $data['tahun_sekarang'] = session('tahun')!=null?session('tahun'):date('y');
         $data['pendapatan'] = \DB::table('pendapatan')
                             ->leftJoin('komponen_dana','komponen_dana.id','pendapatan.komponen_dana_id')
                             ->orderBy('komponen_dana.kode_komponen','ASC')
@@ -47,12 +48,16 @@ class FrontController extends Controller
 
     function pendidikanDalamKK()
     {
-        return view('frontend.pendidikanDalamKK');
+        $data['jml_penduduk'] = \DB::table('penduduk')->count();
+        $data['pendidikan'] = \DB::table('pendidikan')->get();
+        return view('frontend.pendidikanDalamKK',$data);
     }
 
     function pekerjaanDalamKK()
     {
-        return view('frontend.pekerjaanDalamKK');
+        $data['jml_penduduk'] = \DB::table('penduduk')->count();
+        $data['pekerjaan'] = \DB::table('pekerjaan')->get();
+        return view('frontend.pekerjaanDalamKK',$data);
     }
 
     function jkDalamKK()
@@ -67,6 +72,8 @@ class FrontController extends Controller
 
     function perkawinanDalamKK()
     {
-        return view('frontend.perkawinanDalamKK');
+        $data['jml_penduduk'] = \DB::table('penduduk')->count();
+        $data['status_kawin'] = \DB::table('status_kawin')->get();
+        return view('frontend.perkawinanDalamKK',$data);
     }
 }

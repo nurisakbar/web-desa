@@ -68,12 +68,14 @@ class PendudukController extends Controller
             //  'no_kitab'             => 'required',
         ],$message);
 
-        $input = $request->all();
-        $foto         = $request->file('foto');
-        $file_gambar    = $foto->getClientOriginalName();
-        $input['village_id'] = '3204191001';
+        $input                  = $request->all();
+        
+        
+        $input['village_id'] = setting()->id;
         $input['no_kk'] = trim(explode('|',$request->no_kk)[0]);
 
+        $foto                   = $request->file('foto');
+        $file_gambar            = $foto->getClientOriginalName();
         $destinationPath = 'foto_penduduk';
         $foto->move($destinationPath,$file_gambar);
 
@@ -153,14 +155,15 @@ class PendudukController extends Controller
         $input = $request->all();
 
        if ($request->hasFile('foto')) {
-            $foto         = $request->file('foto');
-            $file_gambar    = $foto->getClientOriginalName();
+            $foto                   = $request->file('foto');
+            $file_gambar            = $foto->getClientOriginalName();
             $destinationPath = 'foto_penduduk';
             $foto->move($destinationPath,$file_gambar);
+
             $input['foto']    = $file_gambar;
         }
 
-        $input['village_id'] = '3204191001';
+        //$input['village_id'] = '3204191001';
         $penduduk = Penduduk::where('nik',$id)->first();
         $penduduk->update($input);
         

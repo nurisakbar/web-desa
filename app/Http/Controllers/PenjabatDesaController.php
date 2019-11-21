@@ -26,7 +26,8 @@ class PenjabatDesaController extends Controller
      */
     public function create()
     {
-        return view('PenjabatDesa.create');
+        $data['penduduk'] = \DB::table('penduduk')->select('nik','nama')->get();
+        return view('PenjabatDesa.create',$data);
     }
 
     /**
@@ -47,12 +48,16 @@ class PenjabatDesaController extends Controller
              'jabatan' => 'required',
         ],$message);
 
-       $nik = $request->input('nik');
+        //dd($request->all());
+
+       $nik = explode('|',$request->input('nik'))[0];
 
        $penduduk = Penduduk::where('nik',$nik)->first();
 
        if($penduduk){
-            PenjabatDesa::create($request->all());
+            $input = $request->all();
+            $input['nik'] = $nik;
+            PenjabatDesa::create($input);
         return redirect('admin/penjabatdesa')->with('message','A New Article With Title '.$request->name.' Has Created');
     
        }else{

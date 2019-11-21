@@ -19,7 +19,7 @@
                         <img src="{{ asset('img_artikel/'.$artikel->gambar)}}" alt="{{ $artikel->judul }}" />
                     </div>
                 </div>
-                <div class='artikel-konten'>{{ $artikel->artikel }}</div>
+                <div class='artikel-konten'>{!! $artikel->artikel !!}</div>
             </div>
         </div>
         @endforeach
