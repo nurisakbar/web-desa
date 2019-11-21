@@ -30,7 +30,7 @@
     <tr>
         <td>{{ $p->kode_komponen}}</td>
         <td>{{ $p->nama_komponen}}</td>
-        <td>{{ $p->nilai}}</td>
+        <td>{{ number_format($p->nilai, 0, '.','.') }}</td>
     </tr>
     @endforeach
 </table>

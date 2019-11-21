@@ -39,4 +39,9 @@ function hitungJmlPendudukByStatusKawin($statusKawin,$gender=null)
         return \DB::table('penduduk')->where('status_kawin_id',$statusKawin)->where('jenis_kelamin',$gender)->count();
     }
 }
+
+function formatRupiah($rupiah)
+{
+    $format = "Rp " . number_format($rupiah, 0,'.','.');
+}
 ?>
