@@ -22,6 +22,7 @@
     <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
 </head>
 <body>
     <div id="app">
@@ -56,9 +57,18 @@
                         <li class="nav-item">
                                 <a class="nav-link" href="/admin/setting"><i class="fas fa-user"></i> Setting</a>
                             </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/artikel"><i class="fas fa-user"></i> Artikel</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/arsip"><i class="fas fa-user"></i> Arsip</a>
+                            </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i> Artikel
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="/admin/artikel">Artikel</a>
+                              <a class="dropdown-item" href="/admin/kategori">Kategori</a>
+                            </div>
+                          </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user"></i> Keuangan
@@ -70,6 +80,17 @@
                             </div>
                           </li>
 
+
+                          <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user"></i> Data Desa
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="/admin/dusun">Data Dusun</a>
+                                  <a class="dropdown-item" href="/admin/penjabatdesa">Penjabat Desa</a>
+                                </div>
+                              </li>
+
                           <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user"></i> Kependudukan
@@ -79,12 +100,6 @@
                                   <a class="dropdown-item" href="/admin/penduduk">Penduduk</a>
                                 </div>
                               </li>
-                        {{--  <li class="nav-item">
-                            <a class="nav-link" href="/admin/dusun"><i class="fas fa-user"></i> Dusun</a>
-                        </li>  --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/penjabatdesa"><i class="fas fa-user"></i> Penjabat Desa</a>
-                        </li>
                         <li class="nav-item">
                                 <a class="nav-link" href="/" target="new"><i class="fas fa-eye"></i> Lihat Web</a>
                             </li>

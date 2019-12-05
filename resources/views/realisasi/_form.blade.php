@@ -4,22 +4,22 @@
                     <tr>
                         <td>Komponen Dana</td>
                         <td>
-                            <input list="komponen" class="form-control" name="komponen_dana_id" placeholder="Nama Komponen">
-                            <datalist id="komponen">
-                                @foreach($komponenDana as $komponen)
-                                <option value="{{ $komponen->nama_komponen}}">
-                                @endforeach
-                            </datalist>
+                            <input type="text" id="komponen" placeholder="Masukan Nama Komponen" name="komponen_dana_id" class="form-control">
                         </td>
                     </tr>
                     <tr>
-                        <td width="200">Jumlah Pemasukan</td>
-                        <td> {{ Form::text('nilai',null,['class'=>'form-control','placeholder'=>'Jumlah Pemasukan'])}}</td>
+                        <td width="200">Jumlah Pemasukan /  Tahun</td>
+                        <td> 
+                            <div class="row">
+                                <div class="col-md-5">
+                                        {{ Form::text('nilai',null,['class'=>'form-control','placeholder'=>'Jumlah Pemasukan'])}}
+                                </div>
+                                <div class="col-md-5">
+                                        {{ Form::text('tahun',date('Y'),['class'=>'form-control','placeholder'=>'Tahun'])}}
+                                </div>
+                            </div>
+                        </td>
                     </tr>
-                    <tr>
-                            <td width="200">Tahun</td>
-                            <td> {{ Form::text('tahun',null,['class'=>'form-control','placeholder'=>'Tahun'])}}</td>
-                        </tr>
                     <tr>
                         <td></td>
                         <td>
@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-4">
             <div class="alert alert-primary" role="alert">
-                    <b>Perhatian</b> : <br> Nama Komponen Diambil Dari Data Komponen Keuangan<br> Silahkan Ketik Nama Komponen Dan Pilih
+                    <b>Perhatian</b> : <hr> Nama Komponen Diambil Dari Data Komponen Keuangan<br> Silahkan Ketik Nama Komponen Dan Pilih
                   </div>
     </div>
 </div>

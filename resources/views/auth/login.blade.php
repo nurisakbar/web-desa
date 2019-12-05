@@ -35,7 +35,7 @@
     <div class="row justify-content-center" style="margin-top: 7em;">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header" align="center"><img src="{{ asset('gambar/logo.png') }}"></div>
+                <div class="card-header" align="center"><img src="{{ asset('logo.jpeg') }}"></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

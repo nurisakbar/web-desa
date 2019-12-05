@@ -9,15 +9,17 @@
     <meta name='theme' content='batudaa' />
     <meta name='theme:version' content='1.1.1' />
     <meta name='theme:url' content='http://github.com/batudaa/batudaa-theme' />
-    <meta name='keywords' content="sid, sistem informasi desa, web, blog, informasi, website, batudaa, desa, kecamatan, kabupaten, indonesia, kampung, Negari, Banjarangkan, Klungkung" />
+    <meta name='keywords' content="sid, sistem informasi desa, web, blog, informasi, website, batudaa, desa, kecamatan, kabupaten, indonesia" />
     <meta property="og:site_name" content="{{ setting()->village_name }}" />
     <meta property="og:type" content="article" />
-    <title>Website Resmi Desa {{ setting()->village_name }}</title>
-    <meta name='description' content="Website Resmi Desa {{ setting()->village_name }}" />
+    <title>Website Resmi Gampong {{ setting()->village_name }}</title>
+    <meta name='description' content="Website Resmi Gampong{{ setting()->village_name }}" />
     <meta property="og:title" content="{{ setting()->village_name }}" />
-    <meta property='og:description' content="Website Resmi Desa {{ setting()->village_name }}" />
+    <meta property='og:description' content="Website Resmi Gampong {{ setting()->village_name }}" />
     <meta property='og:url' content="https://negari.desa.id/index.php/first" />
-    <link rel="shortcut icon" href="https://negari.desa.id/favicon.ico" />
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{ asset('logo.jpeg')}}" />
+	
     <link type='text/css' href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel='stylesheet' />
     <link type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel='stylesheet' />
     <link type='text/css' href='{{ asset('batudaa/vendor/fancybox/jquery.fancybox.css')}}' rel='stylesheet' />
@@ -43,9 +45,11 @@
                 </button>
                 <a href="/"><img src="{{ asset('logo.jpeg')}}" class='hidden-xs'></a>
                 <a class='navbar-brand with-subbrand' href="/">
-                    <div>
-                        <div class='title hidden-sm'><span class='hidden-xs web-title-desa'>Desa </span>{{ setting()->village_name }}</div>
-                        <div class='sub-title hidden-xs hidden-sm'><span class='web-title-kabupaten'>KABUPATEN </span>{{ setting()->district_name}}, {{ setting()->province_name}}</div>
+                     <div> 
+        <div class='title hidden-sm'>GAMPONG {{ setting()->village_name }}</div>
+                        
+        <div class='sub-title hidden-xs hidden-sm'><span class='web-title-kecamatan'>KEC.</span> {{ 
+          setting()->district_name}}, {{ setting()->regency_name}}</div>
                     </div>
                 </a>
             </div>
@@ -66,34 +70,53 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class='$item[status]'>{{ link_to('/','Home')}}</li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profil Gampong <i class='fa fa-angle-down'></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Sejarah Desa</a></li>
-                            <li><a href="#">Profil Wilayah Desa</a></li>
-                            <li><a href="#">Arti Lambang Desa</a></li>
-                        </ul>
+                  
+<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile 
+  Gampong<i class='fa fa-angle-down'></i></a> 
+  <ul class="dropdown-menu">
+    <li>{{ link_to('laporan-keuangan-pendapatan','Visi & Misi')}}</li>
+    <li>{{ link_to('laporan-keuangan-realisasi','Sejarah Gampong')}}</li>
+    <li>{{ link_to('laporan-keuangan-pendapatan','Wilayah Gampong')}}</li>
+    <li>{{ link_to('pengurus-desa','Perangkat Gampong')}}</li>
+  </ul>
+</li>
                     </li>
-                        <li class='$item[status]'>{{ link_to('pengurus-desa','Lembaga Gampong')}}</li>
-                       <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Data Penduduk<i class='fa fa-angle-down'></i></a>
-                        <ul class="dropdown-menu">
-                            <li>{{ link_to('data-pendidikan-dalam-kk','Data Pendidikan Dalam KK')}}</li>
-                            <li>{{ link_to('data-pekerjaan-dalam-kk','Data Pekerjaan Dalam KK')}}</li>
-                            <li>{{ link_to('data-jk-dalam-kk','Data Jenis Kelamin Dalam KK')}}</li>
-                            <li>{{ link_to('data-umur-dalam-kk','Data Kelompok Umur Dalam KK')}}</li>
-                            <li>{{ link_to('data-perkawinan-dalam-kk','Data Perkawinan Dalam KK')}}</li>
-                        </ul>
-                    </li> 
-                    
-                    
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Transparansi Keuangan <i class='fa fa-angle-down'></i></a>
-                        <ul class="dropdown-menu">
-                            <li>{{ link_to('laporan-keuangan-pendapatan','Pendapatan')}}</li>
-                            <li>{{ link_to('laporan-keuangan-realisasi','Realisasi Penggunaan')}}</li>
-                        </ul>
-                    </li>
-                    <li class='hidden-xs'><a href='javascript:void(0)' id='btnSearch' class=""><i class='fa fa-search'></i></a></li>
-                </ul>
+					
+<ul class="nav navbar-nav navbar-right">
+  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> 
+    Usahaa Masyarakat<i class='fa fa-angle-down'></i></a> 
+    <ul class="dropdown-menu">
+      <li><a href="/artikel/sejarah-desa">Kelompok Tani</a></li>
+      <li><a href="/artikel/profile-wilayah-desa">Kelompok Tani Pengolahan Air</a></li>
+      <li><a href="#">Kelompok Tani Peternak</a></li>
+    </ul>
+  </li>
+  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Lembaga Gampong <i class='fa fa-angle-down'></i></a> 
+    <ul class="dropdown-menu">
+      <li><a href="/artikel/sejarah-desa">Kepemudaan</a></li>
+      <li><a href="/artikel/profile-wilayah-desa">Karang taruna</a></li>
+      <li><a href="#">PKK</a></li>
+    </ul>
+  </li>
+  <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Data 
+    Penduduk<i class='fa fa-angle-down'></i></a> 
+    <ul class="dropdown-menu">
+      <li>{{ link_to('data-pendidikan-dalam-kk','Data Pendidikan Dalam KK')}}</li>
+      <li>{{ link_to('data-pekerjaan-dalam-kk','Data Pekerjaan Dalam KK')}}</li>
+      <li>{{ link_to('data-jk-dalam-kk','Data Jenis Kelamin Dalam KK')}}</li>
+      <li>{{ link_to('data-umur-dalam-kk','Data Kelompok Umur Dalam KK')}}</li>
+      <li>{{ link_to('data-perkawinan-dalam-kk','Data Perkawinan Dalam KK')}}</li>
+    </ul>
+  </li>
+  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Transparansi 
+    Keuangan <i class='fa fa-angle-down'></i></a> 
+    <ul class="dropdown-menu">
+      <li>{{ link_to('laporan-keuangan-pendapatan','Pendapatan')}}</li>
+      <li>{{ link_to('laporan-keuangan-realisasi','Realisasi Penggunaan')}}</li>
+    </ul>
+  </li>
+  <li class='hidden-xs'><a href='javascript:void(0)' id='btnSearch' class=""><i class='fa fa-search'></i></a></li>
+</ul>
 
             </div>
             <!-- #navbar -->
@@ -120,7 +143,7 @@
                         <li data-target='#luncuran' data-slide-to="8"></li>
                         <li data-target='#luncuran' data-slide-to="9"></li>
                     </ol>
-                    <div class='carousel-inner' style="height:300px">
+                    <div class='carousel-inner' style="height:400px">
 
                         <?php
                         $artikel = \DB::table('artikel')->take(1)->get();
@@ -184,10 +207,9 @@
     </script>
 
     <div class='marquee-box hide'>
-        <div id="marquee">
-            <span>Selamat Datang di Website Resmi Desa Negari , Kecamatan Banjarangkan, Kabupaten Klungkung. Media komunikasi dan transparansi Pemerintah Desa Negari untuk seluruh masyarakat.</span>
-            <span>&nbsp;</span>
-        </div>
+        
+  <div id="marquee"> <span>SELAMAT DATANG DI WEBSITE RESMI GAMPONG {{ setting()->village_name }}, {{ 
+          setting()->district_name}}, {{ setting()->regency_name}} SEBAGAI MEDIA KOMUNIKASI, INFORMASI SERTA TRANSPARANSI PEMERINTAH GAMPONG UNTUK MASYARAKAT.</span> <span>&nbsp;</span> </div>
     </div>
     <script language='javascript'>
         $(document).ready(function() {
@@ -207,25 +229,14 @@
 
                     <div class='btd-right-menu'>
                         <div class='row'>
-                            {{--  <div class='col-sm-6 col-md-12'>
-                                <div class='list-frame'>
-                                    <div class='list-view'>
-                                        <h1 class='title'><span>Pengaduan Online</span></h1>
-                                        <div>
-                                            <a href="https://wa.me/628561333111?text=Saya mau .........">
-                                                <img src="https://aan.desa.id/wa.jpg" alt="Pengaduan Online" style="width:42px;height:42px;border:0;">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class='mb20'></div>
-                            </div>  --}}
+                           
                             <div class='col-sm-6 col-md-12'>
                                 <div class='list-frame'>
                                     <div class='list-view'>
-                                        <h1 class='title'><span>Peta Gampong</span></h1>
+                                        <h3 class='title'><span>Peta Gampong</span></h3>
                                         <div>
-                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15781.33166144278!2d115.36686522718249!3d-8.563951401508003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd21407275927c7:0x5030bfbca832130!2sNegari,+Banjarangkan,+Klungkung+Regency,+Bali!5e0!3m2!1sen!2sid!4v1546483850806" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15893.298864840483!2d96.10232861480485!3d5.211570039495705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3040bcd8bcfd5a07%3A0x72867f38b6bfc0e5!2sMns%20Blang%20Sukon%2C%20Bandar%20Baru%2C%20Kabupaten%20Pidie%20Jaya%2C%20Aceh!5e0!3m2!1sid!2sid!4v1574777153429!5m2!1sid!2sid"        
+											 width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -308,6 +319,7 @@
                                 <style type="text/css">
                                     #aparatur_desa img {
                                         width: 100%;
+                                        height: 400;
                                     }
                                     
                                     #aparatur_desa .cycle-pager span {
@@ -334,138 +346,69 @@
 
                                                  echo " <img src=".asset('foto_penduduk/'.$p->foto)." alt='Perbekel Desa'>";
                                              }
-                                            ?>                                        </div>
+                                            ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class='mb20'></div>
                             </div>
+
+                            
+
+
                             <div class='clearfix visible-sm'></div>
-                            <div class='col-sm-6 col-md-12'>
-                                <!-- widget SocMed -->
-
-                                <div class="box box-default">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><i class="fa fa-globe"></i> Info Media Sosial</h3>
-                                    </div>
-                                    <div class="box-body">
-                                    </div>
-                                </div>
-
-                                <div class='mb20'></div>
-                            </div>
-                            <div class='col-sm-6 col-md-12'>
-                                <!-- widget Menu-->
-
-                                <div class="box box-primary box-solid">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><i class="fa fa-bars"></i> Kategori</h3>
-                                    </div>
-                                    <div class="box-body">
-                                        <ul id="ul-menu" class="main">
-                                            <li><a href="https://negari.desa.id/index.php/first/kategori/1">Berita Desa</a>
-                                            </li>
-                                            <li><a href="https://negari.desa.id/index.php/first/kategori/4">Agenda Desa</a>
-                                            </li>
-                                            <li><a href="https://negari.desa.id/index.php/first/kategori/5">Peraturan Desa</a>
-                                            </li>
-                                            <li><a href="https://negari.desa.id/index.php/first/kategori/23">Perpustakaan Desa</a>
-                                            </li>
-                                            <li><a href="https://negari.desa.id/index.php/first/kategori/24">Transparansi Keuangan</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class='mb20'></div>
-                            </div>
+            
                             <div class='clearfix visible-sm'></div>
                             <div class='col-sm-6 col-md-12'>
                                 <!-- widget Arsip Artikel -->
 
                                 <div class="box box-primary box-solid">
                                     <div class="box-header">
-                                        <h3 class="box-title"><a href="https://negari.desa.id/index.php/first/arsip"><i class="fa fa-archive"></i> Arsip Artikel</a></h3>
+                                        <h3 class="box-title"><a href="#"><i class="fa fa-archive"></i> Artikel Terbaru</a></h3>
                                     </div>
                                     <div class="box-body">
                                         <ul id="ul-menu">
-                                            <li><a href="https://negari.desa.id/index.php/first/artikel/107">Kegiatan di Kantor Desa Negari (13 November 2019)</a></li>
-                                            <li><a href="https://negari.desa.id/index.php/first/artikel/106">APBDes Negari Tahun 2019</a></li>
-                                            <li><a href="https://negari.desa.id/index.php/first/artikel/105">Pemberian Bantuan Kepada anak Yatim Piatu Desa Negari</a></li>
-                                            <li><a href="https://negari.desa.id/index.php/first/artikel/104">BADAN USAHA MILIK DESA (BUMDES) TRI ARTA GUNA DESA NEGARI</a></li>
-                                            <li><a href="https://negari.desa.id/index.php/first/artikel/62">LPM</a></li>
-                                            <li><a href="https://negari.desa.id/index.php/first/artikel/64">Karang Taruna</a></li>
-                                            <li><a href="https://negari.desa.id/index.php/first/artikel/99">Sejarah Desa Negari</a></li>
+                                            <?php
+                                            $artikel = \DB::table('artikel')->take(5)->get();
+                                            foreach($artikel as $a)
+                                            {
+                                                echo "<li><a href='/artikel/".$a->slug."'>".$a->judul."</a></li>";
+                                            }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
 
                                 <div class='mb20'></div>
                             </div>
-                            <div class='col-sm-6 col-md-12'>
-                                <!-- Widget Agenda -->
 
-                                <div class='mb20'></div>
-                            </div>
                             <div class='clearfix visible-sm'></div>
                             <div class='col-sm-6 col-md-12'>
-                                <!-- widget Galeri-->
-                                <div class="box box-warning box-solid">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><a href="https://negari.desa.id/index.php/first/gallery"><i class="fa fa-camera"></i> Galeri Foto</a></h3>
-                                    </div>
-                                    <div class="box-body">
-                                        <ul id="li-komentar" class="sidebar-latest">
-                                        </ul>
-                                    </div>
-                                </div>
+                                <!-- widget Arsip Artikel -->
 
-                                <div class='mb20'></div>
-                            </div>
-                            <div class='col-sm-6 col-md-12'>
-                                <!-- widget Statistik Pengunjung -->
-
-                                <div class="box box-success">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><i class="fa fa-bar-chart-o"></i> Statistik Pengunjung</h3>
-                                    </div>
-                                    <div class="box-body">
-                                        <div id="container" align="center">
-                                            <table cellpadding="0" cellspacing="0" class="counter">
-                                                <tr>
-                                                    <td> Hari ini</td>
-                                                    <td><img src="https://negari.desa.id//assets/images/counter/0.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/0.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/0.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/0.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/animasi/7.gif" align="absmiddle" /></td>
-                                                </tr>
-                                                <tr>
-                                                    <td valign="middle" height="20">Kemarin </td>
-                                                    <td valign="middle"><img src="https://negari.desa.id//assets/images/counter/0.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/0.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/0.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/7.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/animasi/9.gif" align="absmiddle" /></td>
-                                                </tr>
-                                                <tr>
-                                                    <td valign="middle" height="20">Jumlah pengunjung</td>
-                                                    <td valign="middle"><img src="https://negari.desa.id//assets/images/counter/1.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/6.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/6.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/3.gif" align="absmiddle" /><img src="https://negari.desa.id//assets/images/counter/animasi/8.gif" align="absmiddle" /></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class='mb20'></div>
-                            </div>
-                            <div class='clearfix visible-sm'></div>
-                            <div class='col-sm-6 col-md-12'>
-                                <!-- widget Komentar-->
                                 <div class="box box-primary box-solid">
                                     <div class="box-header">
-                                        <h3 class="box-title"><i class="fa fa-comments"></i> Komentar Terkini</h3>
+                                        <h3 class="box-title"><a href="#"><i class="fa fa-archive"></i> File Terbaru</a></h3>
                                     </div>
                                     <div class="box-body">
-                                        <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="2" direction="up" width="100%" height="100" align="center" behavior=”alternate”>
-                                            <ul class="sidebar-latest" id="li-komentar">
-                                            </ul>
-                                        </marquee>
+                                        <ul id="ul-menu">
+                                            <?php
+                                            $artikel = \DB::table('arsip')->take(5)->get();
+                                            foreach($artikel as $a)
+                                            {
+                                                echo "<li><a target='new tab' href='".asset('nama_file/'.$a->nama_file)."'>".$a->judul."</a></li>";
+                                            }
+                                            ?>
+                                        </ul>
                                     </div>
                                 </div>
+
                                 <div class='mb20'></div>
                             </div>
+                  
+                    
+                   
+                   
                         </div>
                     </div>
                 </div>
@@ -482,6 +425,7 @@
             </div>
         </div>  --}}
     </div>
+    @stack('js')    
 </body>
 
 </html>

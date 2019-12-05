@@ -14,7 +14,12 @@ class RealisasiController extends Controller
      */
     public function index()
     {
-        $data['realisasi'] = Realisasi::all();
+        
+        $data['realisasi'] = \DB::table('realisasi as r')
+                            ->select('r.*','k.nama_komponen')
+                            ->leftJoin('komponen_dana as k','k.kode_komponen','r.kode_komponen')
+                            ->where('k.keterangan','realisasi')
+                            ->get();
         return view('realisasi.index',$data);
     }
 
@@ -50,9 +55,17 @@ class RealisasiController extends Controller
         ],$message);
 
         $input = $request->all();
-        $input['komponen_dana_id']=\App\Models\KomponenDana::where('nama_komponen',$request->komponen_dana_id)->first()['id'];
-        realisasi::create($input);
-        return redirect('admin/realisasi')->with('message','Laporan Pemasukan Berhasil Disimpan');
+        $input['kode_komponen']=\App\Models\KomponenDana::where('nama_komponen','like',"%$request->komponen_dana_id%")
+                                ->whereRaw('length(kode_komponen)>4')
+                                ->first()['kode_komponen'];
+        if($input['kode_komponen']==null)
+        {
+            return redirect('admin/realisasi/create')->with('message','Komponen '.$request->komponen_dana_id.' Tidak Ditemukan');
+        }else
+        {
+            realisasi::create($input);
+            return redirect('admin/realisasi')->with('message','Laporan Pemasukan Berhasil Disimpan');
+        }
     }
 
     /**

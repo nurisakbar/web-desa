@@ -7,6 +7,11 @@ use App\Models\Dusun;
 
 class DusunController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -43,17 +48,18 @@ class DusunController extends Controller
 
         $request->validate([
              'nama_dusun' => 'required',
-             'kode_dusun' => 'required',
-             'nik'        => 'required'
+             //'kode_dusun' => 'required',
+             'nama'        => 'required'
         ],$message);
 
         $input          = $request->all();
-        $input['nik']   = trim(explode('|',$request->nik)[0]);
-        if(\DB::table('penduduk')->where('nik',$input['nik'])->first()==null)
+        $penduduk = \DB::table('penduduk')->where('nama',$request->nama)->first();
+        if($penduduk==null)
         {
             return \Redirect::back()->withInput($request->all())->with('message','Data Kepala Dusun Yang Anda Input Tidak Terdata');
         }else
         {
+            $input['nik'] = $penduduk->nik;
             Dusun::create($input);
             return redirect('admin/dusun')->with('message','A New Dusun With Title  Has Created');
         }
@@ -103,13 +109,14 @@ class DusunController extends Controller
 
 
         $input          = $request->all();
-        $input['nik']   = trim(explode('|',$request->nik)[0]);
-        if(\DB::table('penduduk')->where('nik',$input['nik'])->first()==null)
+        $penduduk = \DB::table('penduduk')->where('nama',$request->nama)->first();
+        if($penduduk==null)
         {
             return \Redirect::back()->withInput($request->all())->with('message','Data Kepala Dusun Yang Anda Input Tidak Terdata');
         }else
         {
             $dusun = Dusun::find($id);
+            $input['nik'] = $penduduk->nik;
             $dusun->update($input);
             return redirect('admin/dusun')->with('message','A New Dusun With Title  Has Created');
         }

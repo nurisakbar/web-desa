@@ -33,6 +33,7 @@ class PendudukController extends Controller
         $data['pendidikan']     = \App\Models\Pendidikan::pluck('pendidikan','id');
         $data['pekerjaan']      = \App\Models\Pekerjaan::pluck('pekerjaan','id');
         $data['agama']          = \App\Models\Agama::pluck('agama','id');
+        $data['dusun']          = \App\Models\Dusun::pluck('nama_dusun','id');
         $data['statusKawin']    = \App\Models\StatusKawin::pluck('status_kawin','id');
         $data['statusHubungan'] = $this->statusHubungan;
         return view('penduduk.create',$data);
@@ -68,18 +69,19 @@ class PendudukController extends Controller
             //  'no_kitab'             => 'required',
         ],$message);
 
-        $input                  = $request->all();
-        
-        
+        $input                  = $request->all();       
         $input['village_id'] = setting()->id;
-        $input['no_kk'] = trim(explode('|',$request->no_kk)[0]);
-
-        $foto                   = $request->file('foto');
-        $file_gambar            = $foto->getClientOriginalName();
-        $destinationPath = 'foto_penduduk';
-        $foto->move($destinationPath,$file_gambar);
-
-        $input['foto']    = $file_gambar;
+        if ($request->hasFile('foto')) {
+            $foto                   = $request->file('foto');
+            $file_gambar            = $foto->getClientOriginalName();
+            $destinationPath = 'foto_penduduk';
+            $foto->move($destinationPath,$file_gambar);
+    
+            $input['foto']    = $file_gambar;
+        }else
+        {
+            $input['foto'] = null;
+        }
 
         // validasi apakah nomor kk ada di tabel kartu keluarga atau tidak
         if(\DB::table('kartu_keluarga')->where('nomor_kk',$input['no_kk'])->first()==null)
@@ -98,9 +100,15 @@ class PendudukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function cari()
     {
-        //
+        $keyword = $_GET['term'];
+
+        $penduduk = \App\Models\Penduduk::where('nama','like',"%$keyword%")->get();
+        foreach($penduduk as $row){
+            $data[] = $row->nama;
+        }
+        return json_encode($data);
     }
 
     /**
@@ -116,6 +124,7 @@ class PendudukController extends Controller
         $data['pendidikan']     = \App\Models\Pendidikan::pluck('pendidikan','id');
         $data['pekerjaan']      = \App\Models\Pekerjaan::pluck('pekerjaan','id');
         $data['agama']          = \App\Models\Agama::pluck('agama','id');
+        $data['dusun']          = \App\Models\Dusun::pluck('nama_dusun','id');
         $data['statusKawin']    = \App\Models\StatusKawin::pluck('status_kawin','id');
         $data['statusHubungan'] = $this->statusHubungan;
         return view('penduduk.edit',$data);

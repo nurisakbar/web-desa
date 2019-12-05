@@ -6,27 +6,17 @@ $pendudu = isset($dusun)?"value=".$dusun->penduduk->nama."":'';
         <div class="col-md-8">
             <table class="table table-bordered">
                 <tr>
-                    <td>Kode & Nama Dusun</td>
+                    <td>Nama Dusun</td>
                     <td>
-                        <div class="row">
-                            <div class="col-md-3">
-                                {{ Form::text('kode_dusun',null,['class'=>'form-control','placeholder'=>'Kode Dusun'])}}
-                            </div>
-                            <div class="col-md-8">
-                                {{ Form::text('nama_dusun',null,['class'=>'form-control','placeholder'=>'Nama Dusun'])}}
-                            </div>
-                        </div>
+    
+                        {{ Form::text('nama_dusun',null,['class'=>'form-control','placeholder'=>'Nama Dusun'])}}
+    
                     </td>
                 </tr>
                 <tr>
                     <td>Kepala Dusun</td>
                     <td>
-                        <input list="penduduk" {{ $pendudu}} name="nik" placeholder="Cari Penduduk" class="form-control">
-                        <datalist id="penduduk">
-                            @foreach($penduduk as $pp)
-                            <option value="{{ $pp->nik}} | {{ $pp->nama}}">
-                                @endforeach
-                        </datalist>
+                        <input type="text" id="nama_penduduk" placeholder="Masukan Nama Warga" name="nama" class="form-control" value="{{ isset($dusun)==null?null:$dusun->penduduk->nama}}">
                     </td>
                 </tr>
                 <tr>
@@ -45,3 +35,16 @@ $pendudu = isset($dusun)?"value=".$dusun->penduduk->nama."":'';
             </div>
         </div>
     </div>
+
+
+    @push('js')
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script>
+        $(function() {
+          $( "#nama_penduduk" ).autocomplete({
+            source: '/admin/penduduk/cari'
+          });
+        });
+        </script>
+@endpush

@@ -12,6 +12,7 @@ class Dusun extends Model
 
         public function penduduk()
         {
-                return $this->belongsTo('App\Models\Penduduk','nik','nik'); 
+                return $this->belongsTo('App\Models\Penduduk','nik','nik')->withDefault(['nama'=>'Belum Ditentukan']); 
         }
+        
 }

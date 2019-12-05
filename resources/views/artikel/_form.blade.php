@@ -4,6 +4,10 @@
         <td> {{ Form::text('judul',null,['class'=>'form-control'])}}</td>
     </tr>
     <tr>
+        <td>Kategori</td>
+        <td> {{ Form::select('kategori',$kategori,null,['class'=>'form-control']) }} </td>
+    </tr>
+    <tr>
         <td>artikel</td>
         <td>{{ Form::textarea('artikel',null,['class'=>'form-control'])}}</td>
     </tr>

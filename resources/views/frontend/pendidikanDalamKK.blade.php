@@ -6,6 +6,11 @@
         <span>Data Penduduk Berdasarkan Pendidikan</span>
     </h1>
 
+    <div style="width: 100%">
+            {!! $usersChart->container() !!}
+        </div>
+
+
     <div class='list-view artikel-daftar'>
         <table class="table table-bordered">
             <tr>
@@ -23,31 +28,45 @@
                 <th>n</th>
                 <th>%</th>
             </tr>
-            <?php $no=1;?>
+            <?php 
+            $no=1;
+            $totalLaki = 0;
+            $totalPerempuan = 0;
+            ?>
             @foreach($pendidikan as $p)
+            <?php
+            $totalLaki = $totalLaki+hitungJmlPendudukByPendidikan($p->id,'laki-laki');
+            $totalPerempuan = $totalPerempuan+hitungJmlPendudukByPendidikan($p->id,'perempuan');
+            ?>
             <tr>
                 <td>{{ $no}}</td>
                 <td>{{ $p->pendidikan }}</td>
                 <td>{{ hitungJmlPendudukByPendidikan($p->id) }}</td>
-                <td>{{ (hitungJmlPendudukByPendidikan($p->id)*$jml_penduduk)/100}}</td>
+                <td>{{ ceil((hitungJmlPendudukByPendidikan($p->id)/$jml_penduduk)*100)}} %</td>
                 <td>{{ hitungJmlPendudukByPendidikan($p->id,'laki-laki') }}</td>
-                <td>{{ (hitungJmlPendudukByPendidikan($p->id,'laki-laki')*$jml_penduduk)/100}}</td>
+                <td>{{ ceil((hitungJmlPendudukByPendidikan($p->id,'laki-laki')/$jml_penduduk)*100)}} %</td>
                 <td>{{ hitungJmlPendudukByPendidikan($p->id,'perempuan') }}</td>
-                <td>{{ (hitungJmlPendudukByPendidikan($p->id,'perempuan')*$jml_penduduk)/100}}</td>
+                <td>{{ ceil((hitungJmlPendudukByPendidikan($p->id,'perempuan')/$jml_penduduk)*100)}} %</td>
             </tr>
             <?php $no++?>
             @endforeach
-            <tr>
+            {{-- <tr>
                     <td></td>
                     <td>Total</td>
+                    <td>{{ $totalLaki}}</td>
+                    <td></td>
+                    <td>{{ $totalPerempuan }}</td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                </tr> --}}
         </table>
         <div class='clearfix mb20'></div>
     </div>
 </div>
 @endsection()
+@push('js')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.6/highcharts.js" charset="utf-8"></script>
+
+{!! $usersChart->script() !!}
+@endpush

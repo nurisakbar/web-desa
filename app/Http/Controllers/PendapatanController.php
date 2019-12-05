@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pendapatan;
+use Redirect;
+use Illuminate\Support\Facades\Input;
 
 class PendapatanController extends Controller
 {
@@ -14,7 +16,11 @@ class PendapatanController extends Controller
      */
     public function index()
     {
-        $data['pendapatan'] = Pendapatan::all();
+        $data['pendapatan'] = \DB::table('pendapatan as r')
+                                ->select('r.*','k.nama_komponen')
+                                ->leftJoin('komponen_dana as k','k.kode_komponen','r.kode_komponen')
+                                ->where('k.keterangan','pendapatan')
+                                ->get();
         return view('pendapatan.index',$data);
     }
 
@@ -27,6 +33,7 @@ class PendapatanController extends Controller
     {
         $data['komponenDana'] = \App\Models\KomponenDana::where('keterangan','pendapatan')
                                 ->whereRaw('length(kode_komponen)>4')
+                                ->where('kode_komponen','00')
                                 ->get();
         return view('pendapatan.create',$data);
     }
@@ -50,9 +57,25 @@ class PendapatanController extends Controller
         ],$message);
 
         $input = $request->all();
-        $input['komponen_dana_id']=\App\Models\KomponenDana::where('nama_komponen',$request->komponen_dana_id)->first()['id'];
-        Pendapatan::create($input);
-        return redirect('admin/pendapatan')->with('message','Laporan Pemasukan Berhasil Disimpan');
+        if($request->komponen_dana_id=='Silpa /Kas Tahun Lalu')
+        {
+            $input['kode_komponen'] = "00";
+        }else
+        {
+            $input['kode_komponen']=\App\Models\KomponenDana::where('nama_komponen',$request->komponen_dana_id)
+            ->whereRaw('length(kode_komponen)>4')
+            ->first()['kode_komponen'];
+        }
+        if(Pendapatan::where('tahun',$request->tahun)->where('kode_komponen',$input['kode_komponen'])->count()>0)
+        {
+            return Redirect::back()->withInput(Input::all())->with('message','komponen '.$request->komponen_dana_id.' untuk tahun '.$request->tahun.'sudah ada');
+            //return redirect('/admin/pendapatan/create')->with('message','komponen '.$request->komponen_dana_id.' untuk tahun '.$request->tahun.'sudah ada');
+        }else
+        {
+            Pendapatan::create($input);
+            return redirect('admin/pendapatan')->with('message','Laporan Pemasukan Berhasil Disimpan');
+        }
+
     }
 
     /**

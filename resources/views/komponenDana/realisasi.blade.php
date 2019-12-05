@@ -8,7 +8,7 @@
             <div class="card-body">
                @include('alert')
               
-               @include('komponenDana.tab')
+               @include('komponendana.tab')
                <hr>
                <table id="example" class="table table-striped table-bordered" style="width:100%">
                   <thead>
@@ -31,8 +31,8 @@
                               Pilih Aksi
                               </a>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                 <a class="dropdown-item" href="/admin/komponendana/{{$row->id}}/edit"><i class="fas fa-edit"></i> Edit</a>
-                                 {{ Form::open(['url'=>'/admin/komponendana/'.$row->id,'method'=>'delete'])}}
+                                 <a class="dropdown-item" href="/admin/komponendana/{{$row->kode_komponen}}/edit"><i class="fas fa-edit"></i> Edit</a>
+                                 {{ Form::open(['url'=>'/admin/komponendana/'.$row->kode_komponen,'method'=>'delete'])}}
                                  <button type="submit" class="dropdown-item"><i class="fas fa-trash-alt"></i> Hapus</button>
                                  {{ Form::close()}}
                               </div>

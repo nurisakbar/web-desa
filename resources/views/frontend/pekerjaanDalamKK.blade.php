@@ -7,6 +7,12 @@
     </h1>
 
     <div class='list-view artikel-daftar'>
+
+            <div style="width: 100%">
+                    {!! $usersChart->container() !!}
+                </div>
+
+
         <table class="table table-bordered">
             <tr>
                 <th rowspan="2">No</th>
@@ -37,7 +43,7 @@
             </tr>
             <?php $no++?>
             @endforeach
-            <tr>
+            {{-- <tr>
                     <td></td>
                     <td>Total</td>
                     <td></td>
@@ -45,9 +51,16 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
+                </tr> --}}
         </table>
         <div class='clearfix mb20'></div>
     </div>
 </div>
 @endsection()
+
+@push('js')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.0.6/highcharts.js" charset="utf-8"></script>
+
+{!! $usersChart->script() !!}
+@endpush

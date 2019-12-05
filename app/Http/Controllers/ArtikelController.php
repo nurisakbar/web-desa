@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Artikel;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -14,7 +15,7 @@ class ArtikelController extends Controller
 
     public function index()
     {
-        $data['articles'] = Artikel::all();
+        $data['articles'] = Artikel::orderBy('created_at','asc')->get();
         return view('artikel.index',$data);
     }
 
@@ -25,7 +26,8 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        return view('artikel.create');
+        $data['kategori'] = Kategori::pluck('nama_kategori','nama_kategori');
+        return view('artikel.create',$data);
     }
 
     /**
@@ -79,6 +81,7 @@ class ArtikelController extends Controller
      */
     public function edit($id)
     {
+        $data['kategori'] = Kategori::pluck('nama_kategori','nama_kategori');
         $data['artikel'] = Artikel::find($id);
         return view('artikel.edit',$data);
     }

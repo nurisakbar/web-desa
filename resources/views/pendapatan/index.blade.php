@@ -12,18 +12,18 @@
                <table id="example" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                      <tr>
-                        <th width="180">Kode</th>
+                        <th width="90">Kode</th>
                         <th>Sumber Pendapatan</th>
-                        <th>Nilai</th>
-                        <th>Tahun</th>
+                        <th width="90">Nilai</th>
+                        <th width="90">Tahun</th>
                         <th width="100">Aksi</th>
                      </tr>
                   </thead>
                   <tbody>
                      @foreach($pendapatan as $row)
                      <tr>
-                        <td>{{$row->komponen->kode_komponen}}</td>
-                        <td>{{$row->komponen->nama_komponen}}</td>
+                        <td>{{$row->kode_komponen}}</td>
+                        <td>{{$row->nama_komponen}}</td>
                         <td>{{ $row->nilai }}</td>
                         <td>2019</td>
                         <td>

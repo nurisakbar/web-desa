@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                     @include('validation')
+                    @include('alert')
 
                     {{ Form::open(['url'=>'/admin/realisasi','files'=>true])}}
 
@@ -21,3 +22,15 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script>
+        $(function() {
+          $( "#komponen" ).autocomplete({
+            source: '/admin/komponen/cari/realisasi'
+          });
+        });
+        </script>
+@endpush

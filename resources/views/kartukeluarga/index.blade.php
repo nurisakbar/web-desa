@@ -15,6 +15,7 @@
                         <th width="150">Nomor KK</th>
                         <th>Nama</th>
                         <th>Alamat</th>
+                        <th>Taraf Kehidupan</th>
                         <th>Aksi</th>
                      </tr>
                   </thead>
@@ -24,6 +25,7 @@
                         <td>{{$row->nomor_kk}}</td>
                         <td>{{$row->nama_kk}}</td>
                         <td>{{ $row->alamat}}</td>
+                        <td>{{ $row->tarafkehidupan->taraf_kehidupan}}</td>
                         <td>
                            <div class="dropdown show">
                               <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

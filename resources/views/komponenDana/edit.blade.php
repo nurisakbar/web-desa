@@ -10,9 +10,9 @@
                 <div class="card-body">
                     @include('validation')
 
-                    {{ Form::model($komponendana,['url'=>'/admin/komponendana/'.$komponendana->id,'files'=>true,'method'=>'PUT'])}}
+                    {{ Form::model($komponendana,['url'=>'/admin/komponendana/'.$komponendana->kode_komponen,'files'=>true,'method'=>'PUT'])}}
 
-                    @include('komponenDana._form')
+                    @include('komponendana._form')
 
                     {{ Form::close()}}
                 </div>

@@ -19,12 +19,7 @@ $kk       = isset($penduduk)?"value=".$penduduk->no_kk." disabled":'';
                     @endif
                 </div>
                 <div class="col-md-5">
-                    <input list="kk" {{ $kk}} name="no_kk" placeholder="Masukan Nomor KK" class="form-control">
-                    <datalist id="kk">
-                        @foreach($kartu_keluarga as $kk)
-                            <option value="{{ $kk->nomor_kk}} | {{ $kk->nama_kk}}">
-                        @endforeach
-                    </datalist>
+                        {{ Form::text('no_kk',null,['placeholder'=>'Nomor KK','class'=>'form-control'])}}
                 </div>
             </div>
         </td>
@@ -101,6 +96,12 @@ $kk       = isset($penduduk)?"value=".$penduduk->no_kk." disabled":'';
         <td>Status Hubungan Dalam Keluarga</td>
         <td>
             {{ Form::select('status_hubungan',$statusHubungan,null,['class'=>'form-control'])}}
+        </td>
+    </tr>
+    <tr>
+        <td>Dusun</td>
+        <td>
+            {{ Form::select('dusun_id',$dusun,null,['class'=>'form-control'])}}
         </td>
     </tr>
     <tr>

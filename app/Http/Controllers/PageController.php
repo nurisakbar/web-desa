@@ -28,4 +28,11 @@ class PageController extends Controller
         $data['artikel'] = Artikel::where('slug',$slug)->first();
         return view('frontend.detail-artikel',$data);
     }
+
+    function artikelByCategory($slug)
+    {
+        $kategory = \DB::table('kategoris')->where('slug',$slug)->first();
+        $data['artikels'] = Artikel::where('kategori',$kategory->nama_kategori)->paginate(8);
+        return view('frontend.home',$data);
+    }
 }

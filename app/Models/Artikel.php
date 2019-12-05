@@ -8,5 +8,12 @@ class Artikel extends Model
 {
     protected $table="artikel";
 
-    public $fillable=['judul','artikel','gambar','slug'];
+    public $fillable=['judul','kategori','artikel','gambar','slug'];
+
+
+
+    function kategory()
+    {
+        return $this->belongsTo('App\Models\Kategori','kategori','nama_kategori');
+    }
 }

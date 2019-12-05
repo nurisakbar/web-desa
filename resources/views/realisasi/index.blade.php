@@ -22,8 +22,8 @@
                   <tbody>
                      @foreach($realisasi as $row)
                      <tr>
-                        <td>{{$row->komponen->kode_komponen}}</td>
-                        <td>{{$row->komponen->nama_komponen}}</td>
+                        <td>{{$row->kode_komponen}}</td>
+                        <td>{{$row->nama_komponen}}</td>
                         <td>{{ $row->nilai }}</td>
                         <td>2019</td>
                         <td>
@@ -33,7 +33,7 @@
                               </a>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                            
-                                 {{ Form::open(['url'=>'/admin/pendapatan/'.$row->id,'method'=>'delete'])}}
+                                 {{ Form::open(['url'=>'/admin/pendapatan/'.$row->kode_komponen,'method'=>'delete'])}}
                                  <button type="submit" class="dropdown-item"><i class="fas fa-trash-alt"></i> Hapus</button>
                                  {{ Form::close()}}
                               </div>

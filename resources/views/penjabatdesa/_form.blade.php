@@ -1,13 +1,8 @@
 <table class="table table-bordered">
     <tr>
-        <td>NIK</td>
+        <td>Nama Penjabat</td>
         <td> 
-                <input list="penduduk" name="nik" placeholder="Masukan Nama Penduduk" class="form-control">
-                <datalist id="penduduk">
-                    @foreach($penduduk as $p)
-                        <option value="{{ $p->nik}} | {{ $p->nama}}">
-                    @endforeach
-                </datalist>
+            <input type="text" id="nama_penduduk" placeholder="Masukan Nama Warga" name="nama" class="form-control" >
         </td>
     </tr>
     <tr>
@@ -22,3 +17,15 @@
         </td>
     </tr>
 </table>
+
+@push('js')
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script>
+        $(function() {
+          $( "#nama_penduduk" ).autocomplete({
+            source: '/admin/penduduk/cari'
+          });
+        });
+        </script>
+@endpush

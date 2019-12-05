@@ -14,6 +14,10 @@
                         <td> {{ Form::text('alamat',null,['class'=>'form-control','placeholder'=>'Alamat'])}}</td>
                     </tr>
                     <tr>
+                        <td>Taraf Kehidupan</td>
+                        <td> {{ Form::select('taraf_kehidupan_id',$tarafKehidupan,null,['class'=>'form-control'])}}</td>
+                    </tr>
+                    <tr>
                         <td></td>
                         <td>
                             <button type="submit" class="btn btn-danger">Simpan</button>

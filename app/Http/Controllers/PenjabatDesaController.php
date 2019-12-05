@@ -27,7 +27,7 @@ class PenjabatDesaController extends Controller
     public function create()
     {
         $data['penduduk'] = \DB::table('penduduk')->select('nik','nama')->get();
-        return view('PenjabatDesa.create',$data);
+        return view('penjabatdesa.create',$data);
     }
 
     /**
@@ -44,21 +44,17 @@ class PenjabatDesaController extends Controller
         ];
 
         $request->validate([
-             'nik'     => 'required',
+             'nama'     => 'required',
              'jabatan' => 'required',
         ],$message);
 
-        //dd($request->all());
-
-       $nik = explode('|',$request->input('nik'))[0];
-
-       $penduduk = Penduduk::where('nik',$nik)->first();
+       $penduduk = Penduduk::where('nama',$request->nama)->first();
 
        if($penduduk){
             $input = $request->all();
-            $input['nik'] = $nik;
+            $input['nik'] = $penduduk->nik;
             PenjabatDesa::create($input);
-        return redirect('admin/penjabatdesa')->with('message','A New Article With Title '.$request->name.' Has Created');
+        return redirect('admin/penjabatdesa')->with('message','Data Penjabat Desa Berhasil Ditambahkan');
     
        }else{
            return redirect('admin/penjabatdesa/create')->with('message','Nik yang anda input'.$request->name.' tidak terdata');
@@ -85,7 +81,7 @@ class PenjabatDesaController extends Controller
      */
     public function edit($id)
     {
-        
+        $data['penduduk'] = \DB::table('penduduk')->select('nik','nama')->get();
         $data['penjabatDesa'] = PenjabatDesa::find($id);
         return view('penjabatdesa.edit',$data);
     }
@@ -108,13 +104,13 @@ class PenjabatDesaController extends Controller
              'jabatan' => 'required',
         ],$message);
 
-        $nik = $request->input('nik');
-
-       $penduduk = Penduduk::where('nik',$nik)->first();
+        $penduduk = Penduduk::where('nama',$request->nama)->first();
 
        if($penduduk){
             $PenjabatDesa         = PenjabatDesa::find($id);
-        $PenjabatDesa->update($request->all());
+            $input = $request->all();
+            $input['nik'] = $penduduk->nik;
+            $PenjabatDesa->update($input);
 
         return redirect('admin/penjabatdesa')->with('message','Penjabat Desa Berhasil Diubah');
        }else{

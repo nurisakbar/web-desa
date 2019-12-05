@@ -12,7 +12,7 @@
 
                     {{ Form::open(['url'=>'/admin/komponendana','files'=>true])}}
 
-                    @include('komponenDana._form')
+                    @include('komponendana._form')
 
                     {{ Form::close()}}
                 </div>

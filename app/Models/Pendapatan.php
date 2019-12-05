@@ -8,11 +8,11 @@ class Pendapatan extends Model
 {
     protected $table='pendapatan';
 
-    protected $fillable=['komponen_dana_id','nilai','tahun'];
+    protected $fillable=['kode_komponen','nilai','tahun'];
 
 
     function komponen()
     {
-        return $this->belongsTo('App\Models\KomponenDana','komponen_dana_id','id');
+        return $this->belongsTo('App\Models\KomponenDana','kode_komponen','kode_komponen');
     }
 }

@@ -13,6 +13,7 @@
                   <thead>
                      <tr>
                         <th>Judul</th>
+                        <th>Kategori</th>
                         <th>Tanggal</th>
                         <th width="100">Aksi</th>
                      </tr>
@@ -21,6 +22,7 @@
                      @foreach($articles as $row)
                      <tr>
                         <td>{{$row->judul}}</td>
+                        <td>{{$row->kategori}}</td>
                         <td>{{$row->created_at}}</td>
                         <td>
                            <div class="dropdown show">
