@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 05, 2019 at 04:54 PM
--- Server version: 10.1.43-MariaDB
--- PHP Version: 7.3.6
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 05 Des 2019 pada 16.06
+-- Versi server: 10.3.16-MariaDB
+-- Versi PHP: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `fekrafco_webdesa`
+-- Database: `web-desa`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `agama`
+-- Struktur dari tabel `agama`
 --
 
 CREATE TABLE `agama` (
@@ -36,7 +36,7 @@ CREATE TABLE `agama` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `agama`
+-- Dumping data untuk tabel `agama`
 --
 
 INSERT INTO `agama` (`id`, `agama`, `created_at`, `updated_at`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `agama` (`id`, `agama`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `arsip`
+-- Struktur dari tabel `arsip`
 --
 
 CREATE TABLE `arsip` (
@@ -60,7 +60,7 @@ CREATE TABLE `arsip` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `arsip`
+-- Dumping data untuk tabel `arsip`
 --
 
 INSERT INTO `arsip` (`judul`, `nama_file`, `slug`, `created_at`, `updated_at`) VALUES
@@ -75,14 +75,14 @@ INSERT INTO `arsip` (`judul`, `nama_file`, `slug`, `created_at`, `updated_at`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artikel`
+-- Struktur dari tabel `artikel`
 --
 
 CREATE TABLE `artikel` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `judul` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `kategori` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `id_kategori` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `artikel` text COLLATE utf8_unicode_ci NOT NULL,
   `gambar` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -90,10 +90,10 @@ CREATE TABLE `artikel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `artikel`
+-- Dumping data untuk tabel `artikel`
 --
 
-INSERT INTO `artikel` (`id`, `judul`, `slug`, `kategori`, `artikel`, `gambar`, `created_at`, `updated_at`) VALUES
+INSERT INTO `artikel` (`id`, `judul`, `slug`, `id_kategori`, `artikel`, `gambar`, `created_at`, `updated_at`) VALUES
 (3, 'Kani Binmas Polsek Indra Jaya Brigadir Ibrahim Melaksanakan Mediasi Kasus Pencemaran Nama Baik Di Desa Neulop Dua', 'kani-binmas-polsek-indra-jaya-brigadir-ibrahim-melaksanakan-mediasi-kasus-pencemaran-nama-baik-di-desa-neulop-dua', 'berita lama', '<p>Kanit Binmas Polsek Indra Jaya Brigadir Ibrahim dan 2 ( Dua ) Pers Bhabinkamtibmas Polsek Indrajaya Sedang Mediasi Kasus Pencemaran Nama Baik Desa Oleh 6 ( Enam ) Remaja Gp.Neulop Dua Dengan Tokoh Masyarakat dan pemuda Gp.Glee Gapui Agar Tidak Terjadi Penganiayaan oleh massa / Pemuda Gp.Glee Gapui Kec.Indrajaya Kab.Pidie Pada Hari Kamis 17 September 2015.Proses Mediasi di Mulai pada pukul 20.00 Wib s/d 24.00 Wib berjalan aman dan lancar</p>', 'Neulop2.png', '2019-11-29 20:36:48', '2019-11-29 20:36:48'),
 (4, 'Belasan Rumah Warga Neulop Dua dan Beberapa Desa Lainnya Dalam Kabupaten Pidie Rusak Diterjang Puting Beliung', 'belasan-rumah-warga-neulop-dua-dan-beberapa-desa-lainnya-dalam-kabupaten-pidie-rusak-diterjang-puting-beliung', 'berita lama', '<p>Pada hari ini Jumat tanggal 14 September 2018 sekira pukul 15.30 wib telah terjadi bencana alam hujan disertai angin puting beliung yang mengakibatkan kerusakan rumah sebanyak 20 unit di Kec. Indrajaya kab. Pidie adapun dampak bencana alam hujan disertai angin puting beliung yang menyebabkan kerusakan rumah sbb:</p>\r\n\r\n<p>1.Yasir, 34Thn, gesyik, Mesjid Baro bluek kec. Indrajaya rumah mengalami kerusakan atap rumah terbang.kermat 20.000.000 juta rupiah.</p>\r\n\r\n<p>2.T.syarwan,53 thn,pns,wakheuh kec.indrajaya rumah mengalami atap rumah rusak.kermat 50.000.000 juta rupiah.</p>\r\n\r\n<p>3.Usman Bin ali,tani,60 thn,dayah kerak kec indrajaya atap rumah rusak kermat 20.000.000 juta rupiah.</p>\r\n\r\n<p>4.Ramli,70 thn, Tani, dayah kerak kec.indrajaya rumah mengalami rusak berat kermat 50.000.000 juta rupiah.</p>\r\n\r\n<ol>\r\n	<li>kartini bin gani,irt, 55 thn, dayah kerako rumah mengalami kerusakan atap seng kermat 30.000.000 juta rupiah.</li>\r\n</ol>\r\n\r\n<p>6.Sariari,48 Thn,irt,bale baroh gapui kec.indrajaya rusak atap rumah kermat 25.000.000.</p>\r\n\r\n<p>7.Anwar bin ali,72 thn, Tani,gp.yubme kec indrajaya mengalami atap seng rusak parah kermat 20.000.000 juta rupiah.</p>\r\n\r\n<p>8.Nurma binti kaoy, 40 thn, irt, yubme kec.indrajaya rusak atap seng kermat 500.000.</p>\r\n\r\n<p>9.Menasah/tempat ibadah lama gampong yubme rusak berat kermat 15.000.000 juta rupiah.</p>\r\n\r\n<p>10.Anwar,48 thn,tani,Neulop dua kec.indrajaya rusak atap rumah kermat 20.000.000 juta.</p>\r\n\r\n<ol>\r\n	<li>Rusli hasan,45 thn,wiraswasta, Neulop dua kec.indrajaya rusak atap rumah kermat 70.000.000 juta rupiah.</li>\r\n</ol>\r\n\r\n<p>12.Handani, 42 thn,bengkel las,Neulop dua kec indrajaya rusak atap rumah kermat 10.000.000.</p>\r\n\r\n<ol>\r\n	<li>Halimah,57 thn,irt, Neulop dua kec.indrajaya rusak ringan kermat 15.000.000.</li>\r\n	<li>Sayuti mahmud,52 thn, jualan, Neulop dua kec indrajaya rusak ringan 20.000.000.</li>\r\n	<li>Maimunah ibrahim,50 thn,tani, Neulop dua kec.indrajaya rusak atap rumah kermat 60.000.000.</li>\r\n	<li>Rapiah hasan,52 Thn, Tani, bale baroh gapui kec.indrajaya rusak atap rumah kermat 50.000.000.</li>\r\n</ol>\r\n\r\n<p>17.Umi kalsum, 60 thn, irt, bale baroh gapui kec.indrajaya rusak atap rumah kermat 25.000.000.</p>\r\n\r\n<p>18.Rusli agani,65 thn,pengnguran, bale baroh gapui kec.indrajaya rusak atap rumah kermat 20.000.000.</p>\r\n\r\n<p>19.khairul atar, 30thn, tani,bale baroh gapui kec.indrajaya rusak atap rumah kermat 10.000.000.</p>\r\n\r\n<p>20.Abdul Rahman,53 thn, Tani,bale baroh gapui rusak atap rumah kermat 25.000.000.</p>\r\n\r\n<p>&nbsp;</p>', 'Neulop22.png', '2019-11-29 21:05:18', '2019-11-29 22:36:54'),
 (6, 'Promosi ke Liga 1, Persiraja Ingin Pertahankan Hendri Susilo', 'promosi-ke-liga-1-persiraja-ingin-pertahankan-hendri-susilo', 'berita lama', '<p>Persiraja Banda Aceh akan tampil di Liga 1 Indonesia musim 2020. Kesuksesan itu membuat manajemen puas dengan kinerja pelatih Hendri Susilo. Ihwal itu, manajemen bertekad mempertahankan pria asal Padang dalam gelaran kompetisi musim depan.</p>\r\n\r\n<p>Di bawah arahan Hendri, Persiraja berhasil kembali promosi ke kasta tertinggi sepakbola Indonesia setelah terakhir kali terjadi 12 tahun lalu.</p>\r\n\r\n<p>&ldquo;Kalau regulasi membenarkan lisensi yang dimiliki oleh Hendri sekarang, kami wajib pakai beliau. Tidak ada yang salah dengan beliau,&rdquo; ujar Presiden Klub Persiraja, Nazaruddin, disela-sela acara penyambutan tim pasca lolos ke Liga 1 di Stadion H. Dimurthala, Banda Aceh, Kamis malam, 28 November 2019.</p>\r\n\r\n<p>Nazaruddin mengatakan kepemimpinan Hendri Susilo sebagai pelatih kepala sangat baik. Dibantu dengan tiga asisten, Akhyar Ilyas, Wahyu AW, dan Sisgiardi, mereka dianggap mampu mengeluarkan potensi para pemain.</p>\r\n\r\n<p>Padahal menurut pria yang akrab disapa Dek Gam, Persiraja bukanlah tim yang diperhitungkan untuk lolos ke Liga 1. Namun dengan tangan dingin Hendri dan para asisten serta semangat pantang menyerah dari para pemain, Persiraja berhasil membalikkan segala prediksi di awal kompetisi.</p>\r\n\r\n<p>Namun manajemen juga masih menunggu persyaratan di Liga 1 musim depan, khususnya mengenai lisensi pelatih. &ldquo;Tapi kalau lisensi beliau tidak cukup syarat, kami ajak beliau untuk jadi Direktur Teknis atau menjadi Asisten Pelatih. Yang jelas, kami tetap mau menggunakan jasa beliau,&rdquo; tegas Nazaruddin.</p>\r\n\r\n<p>Sebelum musim depan, Persiraja terakhir kali mengecap ketatnya persaingan di kasta teratas sepakbola Indonesia pada tahun 2007. Dalam kompetisi bertajuk Divisi Utama Liga Djarum Indonesia yang masih menggunakan sistem dua wilayah, Persiraja harus rela terdegradasi setelah hanya berada di peringkat 17 klasemen wilayah barat.</p>\r\n\r\n<p>Pasukan Laskar Rencong sebenarnya sempat pernah akan promosi pada tahun 2011. Saat itu, Persiraja berada diperingkat dua Divisi Utama setelah kalah dari Persiba Bantul di partai puncak. Namun, bonden Kutaraja urung tampil di kasta tertinggi musim berikutnya karena konflik internal di tubuh PSSI yang mengakibatkan dualisme kompetisi.</p>\r\n\r\n<p>&nbsp;</p>', 'ss.png', '2019-11-29 21:10:54', '2019-12-04 20:36:03'),
@@ -106,7 +106,7 @@ INSERT INTO `artikel` (`id`, `judul`, `slug`, `kategori`, `artikel`, `gambar`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `districts`
+-- Struktur dari tabel `districts`
 --
 
 CREATE TABLE `districts` (
@@ -116,7 +116,7 @@ CREATE TABLE `districts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `districts`
+-- Dumping data untuk tabel `districts`
 --
 
 INSERT INTO `districts` (`id`, `regency_id`, `name`) VALUES
@@ -7343,7 +7343,7 @@ INSERT INTO `districts` (`id`, `regency_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dusun`
+-- Struktur dari tabel `dusun`
 --
 
 CREATE TABLE `dusun` (
@@ -7355,7 +7355,7 @@ CREATE TABLE `dusun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `dusun`
+-- Dumping data untuk tabel `dusun`
 --
 
 INSERT INTO `dusun` (`id`, `nama_dusun`, `created_at`, `updated_at`, `nik`) VALUES
@@ -7365,7 +7365,7 @@ INSERT INTO `dusun` (`id`, `nama_dusun`, `created_at`, `updated_at`, `nik`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kartu_keluarga`
+-- Struktur dari tabel `kartu_keluarga`
 --
 
 CREATE TABLE `kartu_keluarga` (
@@ -7379,7 +7379,7 @@ CREATE TABLE `kartu_keluarga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `kartu_keluarga`
+-- Dumping data untuk tabel `kartu_keluarga`
 --
 
 INSERT INTO `kartu_keluarga` (`nomor_kk`, `nama_kk`, `alamat`, `village_id`, `created_at`, `updated_at`, `taraf_kehidupan_id`) VALUES
@@ -7393,7 +7393,7 @@ INSERT INTO `kartu_keluarga` (`nomor_kk`, `nama_kk`, `alamat`, `village_id`, `cr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategoris`
+-- Struktur dari tabel `kategoris`
 --
 
 CREATE TABLE `kategoris` (
@@ -7405,7 +7405,7 @@ CREATE TABLE `kategoris` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `kategoris`
+-- Dumping data untuk tabel `kategoris`
 --
 
 INSERT INTO `kategoris` (`id`, `slug`, `nama_kategori`, `created_at`, `updated_at`) VALUES
@@ -7418,7 +7418,7 @@ INSERT INTO `kategoris` (`id`, `slug`, `nama_kategori`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komponen_dana`
+-- Struktur dari tabel `komponen_dana`
 --
 
 CREATE TABLE `komponen_dana` (
@@ -7430,7 +7430,7 @@ CREATE TABLE `komponen_dana` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `komponen_dana`
+-- Dumping data untuk tabel `komponen_dana`
 --
 
 INSERT INTO `komponen_dana` (`kode_komponen`, `nama_komponen`, `keterangan`, `created_at`, `updated_at`) VALUES
@@ -7718,7 +7718,7 @@ INSERT INTO `komponen_dana` (`kode_komponen`, `nama_komponen`, `keterangan`, `cr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -7728,7 +7728,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -7764,7 +7764,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Struktur dari tabel `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -7776,7 +7776,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pekerjaan`
+-- Struktur dari tabel `pekerjaan`
 --
 
 CREATE TABLE `pekerjaan` (
@@ -7787,7 +7787,7 @@ CREATE TABLE `pekerjaan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `pekerjaan`
+-- Dumping data untuk tabel `pekerjaan`
 --
 
 INSERT INTO `pekerjaan` (`id`, `pekerjaan`, `created_at`, `updated_at`) VALUES
@@ -7805,7 +7805,7 @@ INSERT INTO `pekerjaan` (`id`, `pekerjaan`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pendapatan`
+-- Struktur dari tabel `pendapatan`
 --
 
 CREATE TABLE `pendapatan` (
@@ -7818,7 +7818,7 @@ CREATE TABLE `pendapatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `pendapatan`
+-- Dumping data untuk tabel `pendapatan`
 --
 
 INSERT INTO `pendapatan` (`id`, `kode_komponen`, `nilai`, `created_at`, `updated_at`, `tahun`) VALUES
@@ -7834,7 +7834,7 @@ INSERT INTO `pendapatan` (`id`, `kode_komponen`, `nilai`, `created_at`, `updated
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pendidikan`
+-- Struktur dari tabel `pendidikan`
 --
 
 CREATE TABLE `pendidikan` (
@@ -7845,7 +7845,7 @@ CREATE TABLE `pendidikan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `pendidikan`
+-- Dumping data untuk tabel `pendidikan`
 --
 
 INSERT INTO `pendidikan` (`id`, `pendidikan`, `created_at`, `updated_at`) VALUES
@@ -7863,7 +7863,7 @@ INSERT INTO `pendidikan` (`id`, `pendidikan`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penduduk`
+-- Struktur dari tabel `penduduk`
 --
 
 CREATE TABLE `penduduk` (
@@ -7891,7 +7891,7 @@ CREATE TABLE `penduduk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `penduduk`
+-- Dumping data untuk tabel `penduduk`
 --
 
 INSERT INTO `penduduk` (`id`, `no_kk`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `agama_id`, `pendidikan_id`, `jenis_pekerjaan_id`, `status_kawin_id`, `no_passport`, `no_kitap`, `dusun_id`, `created_at`, `updated_at`, `nik`, `nama_ayah`, `nama_ibu`, `status_hubungan`, `kewarganegaraan`, `foto`) VALUES
@@ -7912,7 +7912,7 @@ INSERT INTO `penduduk` (`id`, `no_kk`, `nama`, `jenis_kelamin`, `tempat_lahir`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penjabat_desa`
+-- Struktur dari tabel `penjabat_desa`
 --
 
 CREATE TABLE `penjabat_desa` (
@@ -7924,7 +7924,7 @@ CREATE TABLE `penjabat_desa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `penjabat_desa`
+-- Dumping data untuk tabel `penjabat_desa`
 --
 
 INSERT INTO `penjabat_desa` (`id`, `jabatan`, `nik`, `created_at`, `updated_at`) VALUES
@@ -7936,7 +7936,7 @@ INSERT INTO `penjabat_desa` (`id`, `jabatan`, `nik`, `created_at`, `updated_at`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `provinces`
+-- Struktur dari tabel `provinces`
 --
 
 CREATE TABLE `provinces` (
@@ -7945,7 +7945,7 @@ CREATE TABLE `provinces` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `provinces`
+-- Dumping data untuk tabel `provinces`
 --
 
 INSERT INTO `provinces` (`id`, `name`) VALUES
@@ -7987,7 +7987,7 @@ INSERT INTO `provinces` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `realisasi`
+-- Struktur dari tabel `realisasi`
 --
 
 CREATE TABLE `realisasi` (
@@ -8000,7 +8000,7 @@ CREATE TABLE `realisasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `realisasi`
+-- Dumping data untuk tabel `realisasi`
 --
 
 INSERT INTO `realisasi` (`id`, `kode_komponen`, `nilai`, `tahun`, `created_at`, `updated_at`) VALUES
@@ -8023,7 +8023,7 @@ INSERT INTO `realisasi` (`id`, `kode_komponen`, `nilai`, `tahun`, `created_at`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `regencies`
+-- Struktur dari tabel `regencies`
 --
 
 CREATE TABLE `regencies` (
@@ -8033,7 +8033,7 @@ CREATE TABLE `regencies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `regencies`
+-- Dumping data untuk tabel `regencies`
 --
 
 INSERT INTO `regencies` (`id`, `province_id`, `name`) VALUES
@@ -8555,7 +8555,7 @@ INSERT INTO `regencies` (`id`, `province_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `setting`
+-- Struktur dari tabel `setting`
 --
 
 CREATE TABLE `setting` (
@@ -8566,7 +8566,7 @@ CREATE TABLE `setting` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `setting`
+-- Dumping data untuk tabel `setting`
 --
 
 INSERT INTO `setting` (`id`, `village_id`, `created_at`, `updated_at`) VALUES
@@ -8575,7 +8575,7 @@ INSERT INTO `setting` (`id`, `village_id`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status_kawin`
+-- Struktur dari tabel `status_kawin`
 --
 
 CREATE TABLE `status_kawin` (
@@ -8586,7 +8586,7 @@ CREATE TABLE `status_kawin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `status_kawin`
+-- Dumping data untuk tabel `status_kawin`
 --
 
 INSERT INTO `status_kawin` (`id`, `status_kawin`, `created_at`, `updated_at`) VALUES
@@ -8598,7 +8598,7 @@ INSERT INTO `status_kawin` (`id`, `status_kawin`, `created_at`, `updated_at`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `taraf_kehidupan`
+-- Struktur dari tabel `taraf_kehidupan`
 --
 
 CREATE TABLE `taraf_kehidupan` (
@@ -8609,7 +8609,7 @@ CREATE TABLE `taraf_kehidupan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `taraf_kehidupan`
+-- Dumping data untuk tabel `taraf_kehidupan`
 --
 
 INSERT INTO `taraf_kehidupan` (`id`, `taraf_kehidupan`, `created_at`, `updated_at`) VALUES
@@ -8619,7 +8619,7 @@ INSERT INTO `taraf_kehidupan` (`id`, `taraf_kehidupan`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -8634,7 +8634,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -8644,8 +8644,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `view_penduduk`
--- (See below for the actual view)
+-- Stand-in struktur untuk tampilan `view_penduduk`
+-- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `view_penduduk` (
 `id` bigint(20) unsigned
@@ -8674,8 +8674,8 @@ CREATE TABLE `view_penduduk` (
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `view_region`
--- (See below for the actual view)
+-- Stand-in struktur untuk tampilan `view_region`
+-- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `view_region` (
 `id` char(10)
@@ -8688,7 +8688,7 @@ CREATE TABLE `view_region` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `villages`
+-- Struktur dari tabel `villages`
 --
 
 CREATE TABLE `villages` (
@@ -8698,7 +8698,7 @@ CREATE TABLE `villages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `villages`
+-- Dumping data untuk tabel `villages`
 --
 
 INSERT INTO `villages` (`id`, `district_id`, `name`) VALUES
@@ -83714,7 +83714,7 @@ INSERT INTO `villages` (`id`, `district_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure for view `view_penduduk`
+-- Struktur untuk view `view_penduduk`
 --
 DROP TABLE IF EXISTS `view_penduduk`;
 
@@ -83723,118 +83723,118 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Structure for view `view_region`
+-- Struktur untuk view `view_region`
 --
 DROP TABLE IF EXISTS `view_region`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`fekrafco`@`localhost` SQL SECURITY DEFINER VIEW `view_region`  AS  select `v`.`id` AS `id`,`v`.`name` AS `village_name`,`d`.`name` AS `district_name`,`r`.`name` AS `regency_name`,`p`.`name` AS `province_name` from (((`villages` `v` left join `districts` `d` on((`d`.`id` = `v`.`district_id`))) left join `regencies` `r` on((`r`.`id` = `d`.`regency_id`))) left join `provinces` `p` on((`p`.`id` = `r`.`province_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`fekrafco`@`localhost` SQL SECURITY DEFINER VIEW `view_region`  AS  select `v`.`id` AS `id`,`v`.`name` AS `village_name`,`d`.`name` AS `district_name`,`r`.`name` AS `regency_name`,`p`.`name` AS `province_name` from (((`villages` `v` left join `districts` `d` on(`d`.`id` = `v`.`district_id`)) left join `regencies` `r` on(`r`.`id` = `d`.`regency_id`)) left join `provinces` `p` on(`p`.`id` = `r`.`province_id`)) ;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `agama`
+-- Indeks untuk tabel `agama`
 --
 ALTER TABLE `agama`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `artikel`
+-- Indeks untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dusun`
+-- Indeks untuk tabel `dusun`
 --
 ALTER TABLE `dusun`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kategoris`
+-- Indeks untuk tabel `kategoris`
 --
 ALTER TABLE `kategoris`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pendapatan`
+-- Indeks untuk tabel `pendapatan`
 --
 ALTER TABLE `pendapatan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `penduduk`
+-- Indeks untuk tabel `penduduk`
 --
 ALTER TABLE `penduduk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `penjabat_desa`
+-- Indeks untuk tabel `penjabat_desa`
 --
 ALTER TABLE `penjabat_desa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `realisasi`
+-- Indeks untuk tabel `realisasi`
 --
 ALTER TABLE `realisasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `taraf_kehidupan`
+-- Indeks untuk tabel `taraf_kehidupan`
 --
 ALTER TABLE `taraf_kehidupan`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `artikel`
+-- AUTO_INCREMENT untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `dusun`
+-- AUTO_INCREMENT untuk tabel `dusun`
 --
 ALTER TABLE `dusun`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `kategoris`
+-- AUTO_INCREMENT untuk tabel `kategoris`
 --
 ALTER TABLE `kategoris`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `pendapatan`
+-- AUTO_INCREMENT untuk tabel `pendapatan`
 --
 ALTER TABLE `pendapatan`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `penduduk`
+-- AUTO_INCREMENT untuk tabel `penduduk`
 --
 ALTER TABLE `penduduk`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `penjabat_desa`
+-- AUTO_INCREMENT untuk tabel `penjabat_desa`
 --
 ALTER TABLE `penjabat_desa`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `realisasi`
+-- AUTO_INCREMENT untuk tabel `realisasi`
 --
 ALTER TABLE `realisasi`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `taraf_kehidupan`
+-- AUTO_INCREMENT untuk tabel `taraf_kehidupan`
 --
 ALTER TABLE `taraf_kehidupan`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
