@@ -8,7 +8,7 @@ class Artikel extends Model
 {
     protected $table="artikel";
 
-    public $fillable=['judul','kategori','artikel','gambar','slug'];
+    public $fillable=['judul','id_kategori','artikel','gambar','slug'];
 
 
 
