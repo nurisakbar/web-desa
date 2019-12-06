@@ -11,7 +11,7 @@
                             
                         @include('validation')
 
-                        {{ Form::open(['url'=>'user','files'=>true])}}
+                        {{ Form::open(['url'=>'admin/user','files'=>true])}}
                     
                         @include('user.form')
                         

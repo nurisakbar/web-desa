@@ -55,14 +55,17 @@
                             @endif
                         @else
                         <li class="nav-item">
-                                <a class="nav-link" href="/admin/setting"><i class="fas fa-user"></i> Setting</a>
+                                <a class="nav-link" href="/admin/setting"><i class="fas fa-cogs"></i> Setting</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/admin/arsip"><i class="fas fa-user"></i> Arsip</a>
+                                <a class="nav-link" href="/admin/arsip"><i class="fas fa-file-image"></i> Arsip</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/user"><i class="fas fa-user"></i> User</a>
                             </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user"></i> Artikel
+                                <i class="fas fa-newspaper"></i> Artikel
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="/admin/artikel">Artikel</a>
@@ -71,7 +74,7 @@
                           </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user"></i> Keuangan
+                                <i class="fas fa-wallet"></i> Keuangan
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="/admin/komponendana">Komponen Keuangan</a>
@@ -83,7 +86,7 @@
 
                           <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user"></i> Data Desa
+                                    <i class="fas fa-database"></i> Data Desa
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item" href="/admin/dusun">Data Dusun</a>
@@ -93,7 +96,7 @@
 
                           <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user"></i> Kependudukan
+                                    <i class="fas fa-street-view"></i> Kependudukan
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item" href="/admin/kartukeluarga">Kartu Keluarga</a>

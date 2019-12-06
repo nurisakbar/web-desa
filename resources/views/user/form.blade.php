@@ -20,7 +20,7 @@ $btnLabel = isset($user)?'Update':'Create';
         <td></td>
         <td>
             {{ Form::submit($btnLabel,['class'=>'btn btn-success'])}}
-            {{ link_to('user','Back',['class'=>'btn btn-info'])}}
+            {{ link_to('admin/user','Back',['class'=>'btn btn-info'])}}
         </td>
     </tr>
 </table>
