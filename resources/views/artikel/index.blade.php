@@ -7,8 +7,10 @@
             <div class="card-header">Daftar Artikel</div>
             <div class="card-body">
                @include('alert')
+               @if(Auth::user()->admin==1)
                <a href="/admin/artikel/create" class="btn btn-info">Tambah Artikel</a>
                <hr>
+               @endif
                <table id="example" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                      <tr>
@@ -22,7 +24,7 @@
                      @foreach($articles as $row)
                      <tr>
                         <td>{{$row->judul}}</td>
-                        <td>{{$row->kategori}}</td>
+                        <td>{{$row->kategory->nama_kategori}}</td>
                         <td>{{$row->created_at}}</td>
                         <td>
                            <div class="dropdown show">

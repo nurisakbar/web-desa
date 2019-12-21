@@ -98,7 +98,7 @@ class ArsipController extends Controller
 
         $request->validate([
              'judul' => 'required',
-             'arsip' => 'required',
+             //'arsip' => 'required',
         ],$message);
 
         $input              = $request->all();

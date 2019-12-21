@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Realisasi;
-
+use Redirect;
+use Illuminate\Support\Facades\Input;
 class RealisasiController extends Controller
 {
     /**
@@ -19,6 +20,7 @@ class RealisasiController extends Controller
                             ->select('r.*','k.nama_komponen')
                             ->leftJoin('komponen_dana as k','k.kode_komponen','r.kode_komponen')
                             ->where('k.keterangan','realisasi')
+                            ->orderBy('r.tahun','DESC')
                             ->get();
         return view('realisasi.index',$data);
     }
@@ -58,10 +60,15 @@ class RealisasiController extends Controller
         $input['kode_komponen']=\App\Models\KomponenDana::where('nama_komponen','like',"%$request->komponen_dana_id%")
                                 ->whereRaw('length(kode_komponen)>4')
                                 ->first()['kode_komponen'];
+        
         if($input['kode_komponen']==null)
         {
             return redirect('admin/realisasi/create')->with('message','Komponen '.$request->komponen_dana_id.' Tidak Ditemukan');
-        }else
+        }elseif(Realisasi::where('tahun',$request->tahun)->where('kode_komponen',$input['kode_komponen'])->count()>0)
+        {
+            return Redirect::back()->withInput(Input::all())->with('message','komponen '.$request->komponen_dana_id.' untuk tahun '.$request->tahun.' sudah ada');
+        }
+        else
         {
             realisasi::create($input);
             return redirect('admin/realisasi')->with('message','Laporan Pemasukan Berhasil Disimpan');
@@ -87,7 +94,14 @@ class RealisasiController extends Controller
      */
     public function edit($id)
     {
-        $data['realisasi'] = Realisasi::find($id);
+        $data['realisasi'] = Realisasi::where('id',$id)
+                            ->join('komponen_dana','komponen_dana.kode_komponen','realisasi.kode_komponen')
+                            ->where('komponen_dana.keterangan','realisasi')
+                            ->first();
+        $data['komponenDana'] = \App\Models\KomponenDana::where('keterangan','realisasi')
+                            ->whereRaw('length(kode_komponen)>4')
+                            ->get();
+        
         return view('realisasi.edit',$data);
     }
 
@@ -105,9 +119,9 @@ class RealisasiController extends Controller
         ];
 
         $request->validate([
-             'nama_komponen' => 'required',
-             'kode_komponen' => 'required',
-             'keterangan'        => 'required'
+             //'nama_komponen' => 'required',
+             'nilai' => 'required',
+             'tahun'        => 'required'
         ],$message);
 
         $realisasi = Realisasi::find($id);

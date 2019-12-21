@@ -13,6 +13,8 @@
 Route::get('/', 'PageController@home');
 Route::get('artikel/{slug}', 'PageController@DetailArtikel');
 Route::get('kategori/{slug}', 'PageController@artikelByCategory');
+Route::get('laporan-keuangan','FrontController@laporankeuangan');
+Route::get('laporan-keuangan-pdf','FrontController@laporankeuanganPdf');
 Route::get('laporan-keuangan-pendapatan','FrontController@lapKeuanganPendapatan');
 Route::get('laporan-keuangan-realisasi','FrontController@lapKeuanganRealisasi');
 Route::get('pengurus-desa','FrontController@pengurusDesa');
@@ -23,12 +25,15 @@ Route::get('data-jk-dalam-kk','FrontController@jkDalamKK');
 Route::get('data-umur-dalam-kk','FrontController@umurDalamKK');
 Route::get('data-perkawinan-dalam-kk','FrontController@perkawinanDalamKK');
 Auth::routes();
-Route::Resource('user','UserController');
+
 Route::group(['prefix' => 'admin'], function () {
     Route::Resource('artikel','ArtikelController');
     Route::Resource('kategori','KategoriController');
     Route::get('penduduk/cari','PendudukController@cari');
+    Route::get('penduduk/pdf','PendudukController@pdf');
+    Route::get('penduduk/excel','PendudukController@excel');
     Route::Resource('penduduk','PendudukController');
+    Route::Resource('user','UserController');
     Route::Resource('arsip','ArsipController');
     Route::Resource('penjabatdesa','PenjabatDesaController');
     Route::Resource('kartukeluarga','KartuKeluargaController');

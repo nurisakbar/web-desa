@@ -22,9 +22,9 @@
                                     <td>{{ $user['name']}}</td>
                                     <td>{{ $user['email']}}</td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td width="40"><a href="user/{{ $user->id}}/edit" class="btn btn-info"><i class="far fa-edit"></i></a></td>
+                                    {{--  <td width="40"><a href="admin/user/{{ $user->id}}/edit" class="btn btn-info"><i class="far fa-edit"></i></a></td>  --}}
                                     <td width="40">
-                                        {{ Form::open(['url'=>'user/'.$user->id,'method'=>'delete'])}}
+                                        {{ Form::open(['url'=>'admin/user/'.$user->id,'method'=>'delete'])}}
                                           <button class="btn btn-warning"><i class="fas fa-trash-alt"></i></button>
                                         {{ Form::close()}}
                                     </td>
@@ -34,7 +34,7 @@
 
                         <div class="row">
                             <div class="col-md-2">
-                                {{ link_to('user/create','Create User',['class'=>'btn btn-danger'])}}
+                                {{ link_to('/admin/user/create','Create User',['class'=>'btn btn-danger'])}}
                             </div>
                             <div class="col-md-10">
                                 {{ $users->links()}}

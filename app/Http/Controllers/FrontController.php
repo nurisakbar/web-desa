@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Charts\pendidikan;
 use App\Charts\UserChart;
-
+use Fpdf;
 class FrontController extends Controller
 {
     function lapKeuanganPendapatan()
@@ -15,6 +15,17 @@ class FrontController extends Controller
         $data['komponen'] = \DB::select("SELECT * from komponen_dana where keterangan='pendapatan' and left(kode_komponen,2) in(select distinct(left(kode_komponen,2)) as kode_komponen from pendapatan where tahun='".$data['tahun_sekarang']."') order by kode_komponen ASC");
         //dd($data['komponen']);
         return view('frontend.laporan_keuangan_pendapatan',$data);
+    }
+
+    function laporankeuangan()
+    {
+        $data['tahun']      = \DB::select('SELECT DISTINCT(tahun) as tahun FROM pendapatan');
+        $data['tahun_sekarang'] = session('tahun')!=null?session('tahun'):date('Y');
+        $data['komponen_pendapatan'] = \DB::select("SELECT * from komponen_dana where keterangan='pendapatan' and left(kode_komponen,2) in(select distinct(left(kode_komponen,2)) as kode_komponen from pendapatan where tahun='".$data['tahun_sekarang']."') order by kode_komponen ASC");
+        $data['komponen_realisasi'] = \DB::select("SELECT * from komponen_dana where keterangan='realisasi' and left(kode_komponen,2) in(select distinct(left(kode_komponen,2)) as kode_komponen from realisasi where tahun='".$data['tahun_sekarang']."') order by kode_komponen ASC");
+        $data['resume_pendapatan'] = \DB::select("SELECT * FROM komponen_dana WHERE keterangan='pendapatan' and kode_komponen in(SELECT DISTINCT left(kode_komponen,2) as kode_komponen FROM pendapatan where tahun='".$data['tahun_sekarang']."')");
+        $data['resume_realisasi'] = \DB::select("SELECT * FROM komponen_dana WHERE keterangan='realisasi' and kode_komponen in(SELECT DISTINCT left(kode_komponen,2) as kode_komponen FROM realisasi where tahun='".$data['tahun_sekarang']."')");
+        return view('frontend.laporan_keuangan',$data);
     }
 
     function lapKeuanganRealisasi()
@@ -237,5 +248,125 @@ class FrontController extends Controller
         $data['jml_penduduk'] = \DB::table('penduduk')->count();
         $data['status_kawin'] = \DB::table('status_kawin')->get();
         return view('frontend.perkawinanDalamKK',$data);
+    }
+
+    function laporankeuanganPdf()
+    {
+        $data['tahun_sekarang'] = session('tahun')!=null?session('tahun'):date('Y');
+        $data['komponen_pendapatan'] = \DB::select("SELECT * from komponen_dana where keterangan='pendapatan' and left(kode_komponen,2) in(select distinct(left(kode_komponen,2)) as kode_komponen from pendapatan where tahun='".$data['tahun_sekarang']."') order by kode_komponen ASC");
+        $data['komponen_realisasi'] = \DB::select("SELECT * from komponen_dana where keterangan='realisasi' and left(kode_komponen,2) in(select distinct(left(kode_komponen,2)) as kode_komponen from realisasi where tahun='".$data['tahun_sekarang']."') order by kode_komponen ASC");
+        $data['resume_pendapatan'] = \DB::select("SELECT * FROM komponen_dana WHERE keterangan='pendapatan' and kode_komponen in(SELECT DISTINCT left(kode_komponen,2) as kode_komponen FROM pendapatan where tahun='".$data['tahun_sekarang']."')");
+        $data['resume_realisasi'] = \DB::select("SELECT * FROM komponen_dana WHERE keterangan='realisasi' and kode_komponen in(SELECT DISTINCT left(kode_komponen,2) as kode_komponen FROM realisasi where tahun='".$data['tahun_sekarang']."')");
+        Fpdf::AddPage('P','A4');
+    
+        Fpdf::SetFont('Arial', 'B', 9);
+        Fpdf::Cell(40, 5, 'Laporan Keuangan '.$data['tahun_sekarang'],0,1);
+        Fpdf::Cell(40, 5, 'Gampong',0,0);
+        Fpdf::Cell(40, 5, ': '.setting()->village_name,0,1);
+        Fpdf::Cell(40, 5, 'Kecamatan',0,0);
+        Fpdf::Cell(40, 5, ': '.setting()->district_name,0,1);
+        Fpdf::Cell(40, 5, 'Kabupaten',0,0);
+        Fpdf::Cell(40, 5, ': '.setting()->regency_name,0,1);
+        Fpdf::Cell(40, 5, 'Provinsi',0,0);
+        Fpdf::Cell(40, 5, ': Aceh',0,1);
+        Fpdf::Cell(40, 3, '',0,1);
+
+        Fpdf::Cell(198, 5, 'Pendapatan',1,1);
+        Fpdf::Cell(198, 5, 'Detail Pendapatan',1,1);
+        Fpdf::Cell(18, 5, 'Kode',1);
+        Fpdf::Cell(158, 5, 'Sumber Pendapatan',1);
+        Fpdf::Cell(22, 5, 'Jumlah',1,1);
+        Fpdf::SetFont('Arial', '', 9);
+
+        foreach($data['komponen_pendapatan'] as $pendapatan)
+        {
+            
+            
+            $jumlahP = hitungPendapatan($pendapatan->kode_komponen,$data['tahun_sekarang'],'pendapatan');
+            if($jumlahP>0)
+            {
+                Fpdf::Cell(18, 5, $pendapatan->kode_komponen,1,0,'R');
+                Fpdf::Cell(158, 5, $pendapatan->nama_komponen,1);
+                Fpdf::Cell(22, 5, formatRupiah($jumlahP),1,1,'R');
+            }
+        }
+
+        Fpdf::Cell(198, 10, '',0,1);
+        Fpdf::Cell(198, 5, 'Pengeluaran',1,1);
+        Fpdf::Cell(198, 5, 'Detail Pengeluaran',1,1);
+        Fpdf::Cell(18, 5, 'Kode',1);
+        Fpdf::Cell(158, 5, 'Sumber Pendapatan',1);
+        Fpdf::Cell(22, 5, 'Jumlah',1,1);
+        foreach($data['komponen_realisasi'] as $realisasi)
+        {
+            
+            
+            $jumlahP = hitungPendapatan($realisasi->kode_komponen,$data['tahun_sekarang'],'realisasi');
+            if($jumlahP>0)
+            {
+                Fpdf::Cell(18, 5, $realisasi->kode_komponen,1,0,'R');
+                Fpdf::Cell(158, 5, $realisasi->nama_komponen,1);
+                Fpdf::Cell(22, 5, formatRupiah($jumlahP),1,1,'R');
+            }
+        }
+
+        Fpdf::Cell(198, 10, '',0,1);
+        Fpdf::Cell(176, 5, 'Sumber Pendapatan',1);
+        Fpdf::Cell(22, 5, 'Jumlah',1,1);
+        $jumlahPendapatan = 0;
+        foreach($data['resume_pendapatan'] as $rp)
+        {
+            $jumlahP = hitungPendapatan($rp->kode_komponen,$data['tahun_sekarang'],'pendapatan');
+            $jumlahPendapatan = $jumlahPendapatan+$jumlahP;
+            if($jumlahP>0)
+            {
+                Fpdf::Cell(176, 5, $rp->nama_komponen,1);
+                Fpdf::Cell(22, 5, formatRupiah($jumlahP),1,1,'R');
+            }
+        }
+        Fpdf::Cell(176, 5, 'Jumlah Pendapatan',1);
+        Fpdf::Cell(22, 5, formatRupiah($jumlahPendapatan),1,1,'R');
+
+        Fpdf::Cell(198, 5, '',0,1);
+        Fpdf::Cell(176, 5, 'Sumber Pengeluaran',1);
+        Fpdf::Cell(22, 5, 'Jumlah',1,1);
+        $jumlahPengeluaran = 0;
+        foreach($data['resume_realisasi'] as $rr)
+        {
+            $jumlahP = hitungPendapatan($rr->kode_komponen,$data['tahun_sekarang'],'realisasi');
+            $jumlahPengeluaran = $jumlahPengeluaran+$jumlahP;
+            if($jumlahP>0)
+            {
+                Fpdf::Cell(176, 5, $rr->nama_komponen,1);
+                Fpdf::Cell(22, 5, formatRupiah($jumlahP),1,1,'R');
+            }
+        }
+
+        Fpdf::Cell(176, 5, 'Jumlah Pengeluaran',1);
+        Fpdf::Cell(22, 5, formatRupiah($jumlahPengeluaran),1,1,'R');
+
+        Fpdf::Cell(100,5,'',0,1);
+        Fpdf::Cell(176, 5, 'Jumlah Pendapatan',1);
+        Fpdf::Cell(22, 5, formatRupiah($jumlahPendapatan),1,1,'R');
+        Fpdf::Cell(176, 5, 'Jumlah Pengeluaran',1);
+        Fpdf::Cell(22, 5, formatRupiah($jumlahPengeluaran),1,1,'R');
+        Fpdf::Cell(176, 5, 'Surplus/ Devisit',1);
+        Fpdf::Cell(22, 5, formatRupiah($jumlahPendapatan- $jumlahPengeluaran),1,1,'R');
+
+        Fpdf::Cell(198, 5, '',0,1);
+        Fpdf::Cell(138, 5, '',0,0);
+        Fpdf::Cell(38, 5, setting()->village_name.', '.date('d-m-Y'),0,1);
+
+        Fpdf::Cell(138, 5, '',0,0);
+        Fpdf::Cell(38, 5, 'Mengetahui Keusyik',0,1,1);
+        Fpdf::Cell(138, 5, '',0,0);
+        Fpdf::Cell(38, 5, setting()->village_name,0,1);
+
+        Fpdf::Cell(198, 10, '',0,1);
+        Fpdf::Cell(138, 5, '',0,0);
+        Fpdf::Cell(38, 5, penjabatDesa(),0);
+
+        Fpdf::Output();
+        exit;
     }
 }

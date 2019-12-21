@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Penduduk;
 use App\Models\KartuKeluarga;
+use Fpdf;
+
+use App\Exports\PendudukExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PendudukController extends Controller
 {
@@ -19,6 +23,7 @@ class PendudukController extends Controller
     public function index()
     {
         $data['penduduk'] = Penduduk::all();
+        $data['dusun']          = \App\Models\Dusun::pluck('nama_dusun','id');
         return view('penduduk.index',$data);
     }
 
@@ -192,5 +197,75 @@ class PendudukController extends Controller
 
         
         return redirect('admin/penduduk')->with('message','Data Penduduk Berhasil Dihapus');
+    }
+
+    function pdf()
+    {
+        if(isset($_GET['dusun_id']))
+        {
+            $penduduk = Penduduk::where('dusun_id',$_GET['dusun_id'])->get();
+            $dusun    = \DB::table('dusun')->where('id',$_GET['dusun_id'])->first();
+        }else
+        {
+            $penduduk = Penduduk::all();
+        }
+
+        Fpdf::AddPage('L','A4');
+        Fpdf::SetFont('Arial', 'B', 10);
+        if(isset($_GET['dusun_id']))
+        {
+            Fpdf::Cell(40, 5, 'Dusun',0,0);
+            Fpdf::Cell(40, 5, ': '.$dusun->nama_dusun,0,1);
+        }
+        Fpdf::Cell(40, 5, 'Gampong',0,0);
+        Fpdf::Cell(40, 5, ': '.setting()->village_name,0,1);
+        Fpdf::Cell(40, 5, 'Kecamatan',0,0);
+        Fpdf::Cell(40, 5, ': '.setting()->district_name,0,1);
+        Fpdf::Cell(40, 5, 'Kabupaten',0,0);
+        Fpdf::Cell(40, 5, ': '.setting()->regency_name,0,1);
+        Fpdf::Cell(40, 5, 'Provinsi',0,0);
+        Fpdf::Cell(40, 5, ': Aceh',0,1);
+        Fpdf::Cell(40, 7, '',0,1);
+
+        
+        Fpdf::Cell(35, 5, 'Nomor KK',1);
+        Fpdf::Cell(35, 5, 'NIK',1);
+        Fpdf::Cell(70, 5, 'Nama',1);
+        Fpdf::Cell(40, 5, 'Tempat, Tgl Lahir',1);
+        Fpdf::Cell(15, 5, 'Agama',1);
+        // Fpdf::Cell(50, 5, 'Pendidikan',1);
+        Fpdf::Cell(30, 5, 'Jenis Kelamin',1);
+        Fpdf::Cell(30, 5, 'Dusun',1,1);
+
+        Fpdf::SetFont('Arial', '', 10);
+        
+        $number = 0;
+        foreach($penduduk as $p)
+        {
+            Fpdf::Cell(35, 5, $p->no_kk,1);
+            Fpdf::Cell(35, 5, $p->nik,1);
+            Fpdf::Cell(70, 5, $p->nama,1);
+            Fpdf::Cell(40, 5, $p->tempat_lahir.','.$p->tanggal_lahir,1);
+            Fpdf::Cell(15, 5, $p->agama->agama,1);
+            // Fpdf::Cell(50, 5, $p->pendidikan->pendidikan,1);
+            Fpdf::Cell(30, 5, $p->jenis_kelamin,1);
+            Fpdf::Cell(30, 5, $p->dusun->nama_dusun,1,1);
+            $number++;
+        }
+
+        Fpdf::Output();
+        exit;
+    }
+
+    function excel()
+    {
+        if(isset($_GET['dusun_id']))
+        {
+            return Excel::download(new PendudukExport($_GET['dusun_id']), 'penduduk.xlsx');
+        }else
+        {
+            return Excel::download(new PendudukExport, 'penduduk.xlsx');
+        }
+        
     }
 }

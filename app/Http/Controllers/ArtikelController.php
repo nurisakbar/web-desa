@@ -26,7 +26,7 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        $data['kategori'] = Kategori::pluck('nama_kategori','nama_kategori');
+        $data['kategori'] = Kategori::pluck('nama_kategori','id');
         return view('artikel.create',$data);
     }
 
@@ -81,7 +81,7 @@ class ArtikelController extends Controller
      */
     public function edit($id)
     {
-        $data['kategori'] = Kategori::pluck('nama_kategori','nama_kategori');
+        $data['kategori'] = Kategori::pluck('nama_kategori','id');
         $data['artikel'] = Artikel::find($id);
         return view('artikel.edit',$data);
     }

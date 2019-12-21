@@ -7,8 +7,10 @@
             <div class="card-header">Daftar Dusun</div>
             <div class="card-body">
                @include('alert')
+               @if(Auth::user()->admin==1)
                <a href="/admin/dusun/create" class="btn btn-info">Tambah Dusun</a>
                <hr>
+               @endif
                <table id="example" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                      <tr>

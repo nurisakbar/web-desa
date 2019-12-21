@@ -14,6 +14,6 @@ class Artikel extends Model
 
     function kategory()
     {
-        return $this->belongsTo('App\Models\Kategori','kategori','nama_kategori');
+        return $this->belongsTo('App\Models\Kategori','id_kategori','id');
     }
 }

@@ -20,6 +20,8 @@
         "laravelcollective/html": "^5.8",
         "maatwebsite/excel": "^3.1",
         "spatie/laravel-permission": "^2.37",
+        "maatwebsite/excel": "^3.1",
+        "codedge/laravel-fpdf": "^1.5",
         "zizaco/entrust": "dev-master"
     },
     "require-dev": {

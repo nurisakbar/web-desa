@@ -5,7 +5,7 @@
     </tr>
     <tr>
         <td>Kategori</td>
-        <td> {{ Form::select('kategori',$kategori,null,['class'=>'form-control']) }} </td>
+        <td> {{ Form::select('id_kategori',$kategori,null,['class'=>'form-control']) }} </td>
     </tr>
     <tr>
         <td>artikel</td>

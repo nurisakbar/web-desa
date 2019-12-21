@@ -104,17 +104,18 @@
       <li>{{ link_to('data-pendidikan-dalam-kk','Data Pendidikan Dalam KK')}}</li>
       <li>{{ link_to('data-pekerjaan-dalam-kk','Data Pekerjaan Dalam KK')}}</li>
       <li>{{ link_to('data-jk-dalam-kk','Data Jenis Kelamin Dalam KK')}}</li>
-      <li>{{ link_to('data-umur-dalam-kk','Data Kelompok Umur Dalam KK')}}</li>
       <li>{{ link_to('data-perkawinan-dalam-kk','Data Perkawinan Dalam KK')}}</li>
     </ul>
   </li>
-  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Transparansi 
+  <li class='$item[status]'>{{ link_to('laporan-keuangan','Laporan Keuangan')}}</li>
+
+  {{-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Transparansi 
     Keuangan <i class='fa fa-angle-down'></i></a> 
     <ul class="dropdown-menu">
       <li>{{ link_to('laporan-keuangan-pendapatan','Pendapatan')}}</li>
       <li>{{ link_to('laporan-keuangan-realisasi','Realisasi Penggunaan')}}</li>
     </ul>
-  </li>
+  </li> --}}
   <li class='hidden-xs'><a href='javascript:void(0)' id='btnSearch' class=""><i class='fa fa-search'></i></a></li>
 </ul>
 
@@ -319,7 +320,7 @@
                                 <style type="text/css">
                                     #aparatur_desa img {
                                         width: 100%;
-                                        height: 400;
+                                        height: 400px;
                                     }
                                     
                                     #aparatur_desa .cycle-pager span {
@@ -357,6 +358,26 @@
 
 
                             <div class='clearfix visible-sm'></div>
+
+                            <div class='col-sm-6 col-md-12'>
+                                <!-- widget Arsip Artikel -->
+
+                                <div class="box box-primary box-solid">
+                                    <div class="box-header">
+                                        <h3 class="box-title"><a href="#"><i class="fa fa-archive"></i> Kategori</a></h3>
+                                    </div>
+                                    <div class="box-body">
+                                        <ul id="ul-menu">
+                                            <?php
+                                            $artikel = \DB::table('kategoris')->take(5)->get();
+                                            foreach($artikel as $a)
+                                            {
+                                                echo "<li><a href='/kategori/".$a->slug."'>".$a->nama_kategori."</a></li>";
+                                            }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </div>
             
                             <div class='clearfix visible-sm'></div>
                             <div class='col-sm-6 col-md-12'>
@@ -393,7 +414,7 @@
                                     <div class="box-body">
                                         <ul id="ul-menu">
                                             <?php
-                                            $artikel = \DB::table('arsip')->take(5)->get();
+                                            $artikel = \DB::table('arsip')->orderBy('created_at','DESC')->take(5)->get();
                                             foreach($artikel as $a)
                                             {
                                                 echo "<li><a target='new tab' href='".asset('nama_file/'.$a->nama_file)."'>".$a->judul."</a></li>";
@@ -417,13 +438,26 @@
     </div>
 
     <div id="footer">
-        {{--  <div class='container'>
+        <div class='container'>
             <div class='row'>
-                <div class='col-md-6 col-xs-3 lang'>
+                <div class='col-md-1 lang'>
                     <a href='#' class='btn btn-warning'><i class='fa fa-arrow-up'></i></a>
                 </div>
+                <div class="col-md-6">
+                    WebDes Vers SD.01<br>
+                    Gampong {{ setting()->village_name }}<br>
+                    Kecamatan {{ setting()->district_name}}, {{ setting()->regency_name}} – Aceh
+                </div>
+                <div class="col-md-1">
+                    <a target="new" href="http://kemendesa.go.id"><img src="{{ asset('220px-Kemendes_Logo.png')}}" width="70"></a>
+                </div>
+                <div class="col-md-3">
+                    <a target="new" href="https://aceh.tribunnews.com"><img src="{{ asset('serambi.png')}}" width="180"></a><br><br>
+                    <a target="new" href="https://www.kompas.com"><img src="{{ asset('logo-kompascom-2017.png')}}" width="180">
+                   
+                </div>
             </div>
-        </div>  --}}
+        </div>
     </div>
     @stack('js')    
 </body>

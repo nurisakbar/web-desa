@@ -20,7 +20,9 @@ class PendapatanController extends Controller
                                 ->select('r.*','k.nama_komponen')
                                 ->leftJoin('komponen_dana as k','k.kode_komponen','r.kode_komponen')
                                 ->where('k.keterangan','pendapatan')
+                                ->orderBy('r.tahun','DESC')
                                 ->get();
+        
         return view('pendapatan.index',$data);
     }
 
@@ -62,9 +64,18 @@ class PendapatanController extends Controller
             $input['kode_komponen'] = "00";
         }else
         {
-            $input['kode_komponen']=\App\Models\KomponenDana::where('nama_komponen',$request->komponen_dana_id)
+            $cekKomponen = \App\Models\KomponenDana::where('nama_komponen',$request->komponen_dana_id)
             ->whereRaw('length(kode_komponen)>4')
-            ->first()['kode_komponen'];
+            ->first();
+            if($cekKomponen==null)
+            {
+                return Redirect::back()->withInput(Input::all())->with('message','komponen yang anda input salah');
+            }else
+            {
+                $input['kode_komponen']=\App\Models\KomponenDana::where('nama_komponen',$request->komponen_dana_id)
+                ->whereRaw('length(kode_komponen)>4')
+                ->first()['kode_komponen'];
+            }
         }
         if(Pendapatan::where('tahun',$request->tahun)->where('kode_komponen',$input['kode_komponen'])->count()>0)
         {
@@ -97,7 +108,10 @@ class PendapatanController extends Controller
      */
     public function edit($id)
     {
-        $data['pendapatan'] = Pendapatan::find($id);
+        $data['pendapatan'] = Pendapatan::where('id',$id)
+                            ->join('komponen_dana','komponen_dana.kode_komponen','pendapatan.kode_komponen')
+                            ->where('komponen_dana.keterangan','pendapatan')
+                            ->first();
         return view('pendapatan.edit',$data);
     }
 
@@ -115,9 +129,9 @@ class PendapatanController extends Controller
         ];
 
         $request->validate([
-             'nama_komponen' => 'required',
-             'kode_komponen' => 'required',
-             'keterangan'        => 'required'
+             //'nama_komponen' => 'required',
+             'nilai' => 'required',
+             'tahun'        => 'required'
         ],$message);
 
         $pendapatan = Pendapatan::find($id);

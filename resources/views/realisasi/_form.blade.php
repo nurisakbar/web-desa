@@ -4,7 +4,11 @@
                     <tr>
                         <td>Komponen Dana</td>
                         <td>
+                            @if(isset($realisasi))
+                            <input type="text" id="komponen" placeholder="Masukan Nama Komponen" name="komponen_dana_id" value="{{ $realisasi->nama_komponen}}" disabled class="form-control">
+                            @else
                             <input type="text" id="komponen" placeholder="Masukan Nama Komponen" name="komponen_dana_id" class="form-control">
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -15,7 +19,12 @@
                                         {{ Form::text('nilai',null,['class'=>'form-control','placeholder'=>'Jumlah Pemasukan'])}}
                                 </div>
                                 <div class="col-md-5">
+                                        @if(isset($realisasi))
+                                        {{ Form::text('tahun',null,['class'=>'form-control','placeholder'=>'Tahun'])}}
+                                        @else
                                         {{ Form::text('tahun',date('Y'),['class'=>'form-control','placeholder'=>'Tahun'])}}
+                                        @endif
+                                        
                                 </div>
                             </div>
                         </td>
@@ -24,7 +33,7 @@
                         <td></td>
                         <td>
                             <button type="submit" class="btn btn-danger">Simpan</button>
-                            <a href="/admin/artikel" class="btn btn-danger">Kembali</a>
+                            <a href="/admin/realisasi" class="btn btn-danger">Kembali</a>
                         </td>
                     </tr>
                 </table>

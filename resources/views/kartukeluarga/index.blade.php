@@ -7,8 +7,10 @@
             <div class="card-header">Kartu Keluarga</div>
             <div class="card-body">
                @include('alert')
+               @if(Auth::user()->admin==1)
                <a href="/admin/kartukeluarga/create" class="btn btn-info">Tambah Data</a>
                <hr>
+               @endif
                <table class="table table-bordered" id="example">
                   <thead>
                      <tr>

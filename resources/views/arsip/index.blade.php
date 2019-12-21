@@ -7,6 +7,7 @@
             <div class="card-header">Daftar Upload Arsip</div>
             <div class="card-body">
                @include('alert')
+              
                <a href="/admin/arsip/create" class="btn btn-info">Upload Arsip Baru</a>
                <hr>
                <table id="example" class="table table-striped table-bordered" style="width:100%">

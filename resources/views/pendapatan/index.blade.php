@@ -7,8 +7,10 @@
             <div class="card-header">Laporan Pemasukan Keuangan</div>
             <div class="card-body">
                @include('alert')
+               
                <a href="/admin/pendapatan/create" class="btn btn-info">Tambah Pemasukan</a>
                <hr>
+               
                <table id="example" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                      <tr>
@@ -25,14 +27,14 @@
                         <td>{{$row->kode_komponen}}</td>
                         <td>{{$row->nama_komponen}}</td>
                         <td>{{ $row->nilai }}</td>
-                        <td>2019</td>
+                        <td>{{ $row->tahun }}</td>
                         <td>
                            <div class="dropdown show">
                               <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Pilih Aksi
                               </a>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                           
+                                 <a class="dropdown-item" href="/admin/pendapatan/{{$row->id}}/edit"><i class="fas fa-edit"></i> Edit</a>
                                  {{ Form::open(['url'=>'/admin/pendapatan/'.$row->id,'method'=>'delete'])}}
                                  <button type="submit" class="dropdown-item"><i class="fas fa-trash-alt"></i> Hapus</button>
                                  {{ Form::close()}}

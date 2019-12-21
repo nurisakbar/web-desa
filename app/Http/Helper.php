@@ -47,7 +47,8 @@ function hitungJmlPendudukByGender($gender)
 
 function formatRupiah($rupiah)
 {
-    $format = "Rp " . number_format($rupiah, 0,'.','.');
+    $format = number_format($rupiah, 0,'.','.');
+    return $format;
 }
 
 
@@ -63,10 +64,11 @@ function hitungPendapatan($kodeKomponen,$tahun,$keterangan)
     }
     else
     {
-        $count = \DB::select("SELECT sum(nilai) as total from $keterangan where left(kode_komponen,2)='$kodeKomponen' and tahun=$tahun");
+        $count = \DB::select("SELECT sum(nilai) as total from $keterangan where left(kode_komponen,2)='$kodeKomponen' and tahun='$tahun'");
     }
     
-    return $count[0]->total;    
+    return $count[0]->total;
+        
 }
 
 
@@ -74,5 +76,18 @@ function hitungTotalUang($tahun,$keterangan)
 {
     $count = \DB::select("SELECT SUM(nilai) as total_pendapatan FROM $keterangan WHERE tahun='$tahun'");
     return $count[0]->total_pendapatan;
+}
+
+function penjabatDesa()
+{
+    $penjabat = \DB::table('penjabat_desa')->join('penduduk','penduduk.nik','penjabat_desa.nik')->where('penjabat_desa.jabatan','kepala desa')->first();
+    if($penjabat==null)
+    {
+        return 'tidak ada kepala desa';
+    }else
+    {
+        return $penjabat->nama;
+    }
+    
 }
 ?>

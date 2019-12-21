@@ -17,10 +17,16 @@ $btnLabel = isset($user)?'Update':'Create';
         <td>{{ Form::password('password',['placeholder'=>'user password','class'=>'form-control'])}}</td>
     </tr>
     <tr>
+        <td>Level</td>
+        <td>
+            {{ Form::select('admin',[1=>'admin',0=>'User'],null,['class'=>'form-control'])}}
+        </td>
+    </tr>
+    <tr>
         <td></td>
         <td>
             {{ Form::submit($btnLabel,['class'=>'btn btn-success'])}}
-            {{ link_to('user','Back',['class'=>'btn btn-info'])}}
+            {{ link_to('/admin/user','Back',['class'=>'btn btn-info'])}}
         </td>
     </tr>
 </table>

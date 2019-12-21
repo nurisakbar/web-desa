@@ -32,7 +32,8 @@ class PageController extends Controller
     function artikelByCategory($slug)
     {
         $kategory = \DB::table('kategoris')->where('slug',$slug)->first();
-        $data['artikels'] = Artikel::where('kategori',$kategory->nama_kategori)->paginate(8);
+        $data['artikels'] = Artikel::where('id_kategori',$kategory->id)->paginate(8);
+        $data['kategori'] = $kategory;
         return view('frontend.home',$data);
     }
 }
