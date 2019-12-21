@@ -14,7 +14,7 @@ class ArsipController extends Controller
 
     public function index()
     {
-        $data['articles'] = Arsip::orderBy('created_at','asc')->get();
+        $data['arsip'] = Arsip::orderBy('created_at','asc')->get();
         return view('arsip.index',$data);
     }
 
