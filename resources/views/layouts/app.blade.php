@@ -54,6 +54,7 @@
                                 </li>
                             @endif
                         @else
+<<<<<<< HEAD
 
 
                         @if(Auth::user()->admin==1)
@@ -61,6 +62,20 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user"></i> Data Master
+=======
+                        <li class="nav-item">
+                                <a class="nav-link" href="/admin/setting"><i class="fas fa-cogs"></i> Setting</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/arsip"><i class="fas fa-file-image"></i> Arsip</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/user"><i class="fas fa-user"></i> User</a>
+                            </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-newspaper"></i> Artikel
+>>>>>>> 6a310f1d9fc33261da7c2bf6b01bae6ecc45b15f
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="/admin/dusun">Dusun</a>
@@ -83,7 +98,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user"></i> Keuangan
+                                <i class="fas fa-wallet"></i> Keuangan
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="/admin/pendapatan">Laporan Pendapatan</a>
@@ -94,7 +109,7 @@
 
                           <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user"></i> Data Desa
+                                    <i class="fas fa-database"></i> Data Desa
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item" href="/admin/dusun">Data Dusun</a>
@@ -104,7 +119,7 @@
 
                           <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-user"></i> Kependudukan
+                                    <i class="fas fa-street-view"></i> Kependudukan
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item" href="/admin/kartukeluarga">Kartu Keluarga</a>

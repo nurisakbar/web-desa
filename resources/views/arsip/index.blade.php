@@ -20,7 +20,7 @@
                      </tr>
                   </thead>
                   <tbody>
-                     @foreach($articles as $row)
+                     @foreach($arsip as $row)
                      <tr>
                         <td>{{$row->judul}}</td>
 						<td>{{$row->nama_file}}</td>
