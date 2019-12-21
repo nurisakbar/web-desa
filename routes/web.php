@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('dusun','DusunController');
     Route::resource('pendapatan','PendapatanController');
     Route::resource('realisasi','RealisasiController');
+    Route::resource('user','PenggunaController');
     Route::get('/komponen/cari/{jenis}','KomponenDanaController@cari');
     Route::get('komponendana/realisasi','KomponenDanaController@realisasi');
     Route::resource('komponendana','KomponenDanaController');
