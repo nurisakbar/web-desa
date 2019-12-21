@@ -26,7 +26,11 @@ $btnLabel = isset($user)?'Update':'Create';
         <td></td>
         <td>
             {{ Form::submit($btnLabel,['class'=>'btn btn-success'])}}
+<<<<<<< HEAD
             {{ link_to('/admin/user','Back',['class'=>'btn btn-info'])}}
+=======
+            {{ link_to('admin/user','Back',['class'=>'btn btn-info'])}}
+>>>>>>> 6a310f1d9fc33261da7c2bf6b01bae6ecc45b15f
         </td>
     </tr>
 </table>
