@@ -11,7 +11,11 @@
                             
                         @include('validation')
 
+<<<<<<< HEAD
                         {{ Form::open(['url'=>'/admin/user','files'=>true])}}
+=======
+                        {{ Form::open(['url'=>'admin/user','files'=>true])}}
+>>>>>>> 6a310f1d9fc33261da7c2bf6b01bae6ecc45b15f
                     
                         @include('user.form')
                         

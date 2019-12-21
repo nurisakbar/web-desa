@@ -11,7 +11,7 @@
                             
                         @include('validation')
 
-                        {{ Form::model($user,['url'=>'user/'.$user->id,'method'=>'PUT'])}}
+                        {{ Form::model($user,['url'=>'admin/user/'.$user->id,'method'=>'PUT'])}}
                     
                         @include('user.form')
                         
