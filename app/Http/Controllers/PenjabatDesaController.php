@@ -104,18 +104,16 @@ class PenjabatDesaController extends Controller
              'jabatan' => 'required',
         ],$message);
 
-        $penduduk = Penduduk::where('nama',$request->nama)->first();
+        $penduduk = Penduduk::where('nik',$request->nik)->first();
 
-       if($penduduk){
-            $PenjabatDesa         = PenjabatDesa::find($id);
-            $input = $request->all();
-            $input['nik'] = $penduduk->nik;
-            $PenjabatDesa->update($input);
+        if($penduduk){
+            $PenjabatDesa = PenjabatDesa::find($id);
+            $PenjabatDesa->update($request->all());
 
-        return redirect('admin/penjabatdesa')->with('message','Penjabat Desa Berhasil Diubah');
-       }else{
-           return redirect('/admin/penjabatdesa')->with('message','Nik yang anda input tidak terdata');
-       }
+            return redirect('admin/penjabatdesa')->with('message','Penjabat Desa Berhasil Diubah');
+        }else{
+             return redirect('/admin/penjabatdesa')->with('message','Nik yang anda input tidak terdata');
+        }
         
     }
 

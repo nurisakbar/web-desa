@@ -45,7 +45,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('komponendana/realisasi','KomponenDanaController@realisasi');
     Route::resource('komponendana','KomponenDanaController');
     Route::get('setting','HomeController@setting');
-    Route::post('setting','HomeController@savesetting');
+    Route::post('setting','HomeController@savesetting'); 
+    Route::get('laporan-pdf','ExportController@pdf');
 });
 Auth::routes();
 

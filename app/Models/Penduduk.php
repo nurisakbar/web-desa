@@ -34,5 +34,10 @@ class Penduduk extends Model
         return $this->belongsTo('App\Models\Pendidikan')->withDefault(['pendidikan'=>'null']);
     }
 
+    function kartu_keluarga()
+    {
+        return $this->belongsTo('App\Models\KartuKeluarga');
+    }
+
     protected $fillable= ['dusun_id','no_kk','nama','nama_ayah','nama_ibu','jenis_kelamin','tempat_lahir','tanggal_lahir','agama_id','pendidikan_id','jenis_pekerjaan_id','status_kawin_id','no_passport','no_kitap','nik','status_hubungan','kewarganegaraan','foto'];
 }

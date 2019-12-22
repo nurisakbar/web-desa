@@ -54,15 +54,6 @@
                                 </li>
                             @endif
                         @else
-<<<<<<< HEAD
-
-
-                        @if(Auth::user()->admin==1)
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-user"></i> Data Master
-=======
                         <li class="nav-item">
                                 <a class="nav-link" href="/admin/setting"><i class="fas fa-cogs"></i> Setting</a>
                             </li>
@@ -72,35 +63,29 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/user"><i class="fas fa-user"></i> User</a>
                             </li>
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-newspaper"></i> Export
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="/admin/laporan-pdf">pdf</a>
+                            </div>
+                          </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-newspaper"></i> Artikel
->>>>>>> 6a310f1d9fc33261da7c2bf6b01bae6ecc45b15f
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="/admin/dusun">Dusun</a>
-                              <a class="dropdown-item" href="/admin/komponendana">Komponen Data</a>
+                              <a class="dropdown-item" href="/admin/artikel">Artikel</a>
                               <a class="dropdown-item" href="/admin/kategori">Kategori</a>
-                              <a class="dropdown-item" href="/admin/setting">Setting</a>
-                              <a class="dropdown-item" href="/admin/user">Pengguna</a>
                             </div>
                           </li>
-                          @endif
-
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/arsip"><i class="fas fa-user"></i> Arsip</a>
-                            </li>
-
-                            <li class="nav-item">
-                                    <a class="nav-link" href="/admin/artikel"><i class="fas fa-user"></i> Artikel</a>
-                                </li>
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-wallet"></i> Keuangan
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="/admin/komponendana">Komponen Keuangan</a>
                               <a class="dropdown-item" href="/admin/pendapatan">Laporan Pendapatan</a>
                               <a class="dropdown-item" href="/admin/realisasi">Laporan Realisasi</a>
                             </div>

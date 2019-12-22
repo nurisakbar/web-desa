@@ -16,10 +16,10 @@
                         <tr>
                             <td>NIK</td>
                             <td> 
-                                    <input list="penduduk" value="{{ $penjabatDesa->penduduk->nama }}" name="nik" placeholder="Masukan Nama Penduduk" class="form-control">
+                                    <input list="penduduk" value="{{ $penjabatDesa->penduduk->nik }}" name="nik" placeholder="Masukan Nama Penduduk" class="form-control">
                                     <datalist id="penduduk">
                                         @foreach($penduduk as $p)
-                                            <option value="{{ $p->nik}} | {{ $p->nama}}">
+                                            <option value="{{ $p->nik}}">
                                         @endforeach
                                     </datalist>
                             </td>
